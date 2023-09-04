@@ -1,129 +1,135 @@
 .landingpage-container {
-  width: 100%;
-  display: flex;
-  overflow: auto;
-  min-height: 100vh;
-  align-items: center;
-  flex-direction: column;
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
 }
 .landingpage-landingpage {
-  width: 100%;
-  height: 1003px;
-  display: flex;
-  overflow: hidden;
-  position: relative;
-  align-items: flex-start;
-  flex-shrink: 0;
-  background-color: rgba(255, 255, 255, 1);
+    width: 100%;
+    height: 1003px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    align-items: flex-start;
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 1);
 }
 .landingpage-frame344261 {
-  top: 0px;
-  left: 7px;
-  width: 1860px;
-  height: 1002px;
-  position: absolute;
+    top: 0px;
+    left: 7px;
+    width: 1860px;
+    height: 1002px;
+    position: absolute;
 }
 .landingpage-download11 {
-  top: 172px;
-  left: 0px;
-  right: 0px;
-  width: 920px;
-  height: 188px;
-  margin: auto;
-  position: absolute;
+    top: 172px;
+    left: 0px;
+    right: 0px;
+    width: 920px;
+    height: 188px;
+    margin: auto;
+    position: absolute;
 }
 .landingpage-medium-primary {
-  top: 35px;
-  right: 217px;
-  width: 140px;
-  margin: auto;
-  display: flex;
-  padding: 14px 34px;
-  position: absolute;
-  align-items: center;
-  flex-shrink: 0;
-  border-radius: 6px;
-  justify-content: center;
-  background-color: rgba(200, 200, 200, 1);
+    top: 35px;
+    right: 217px;
+    width: 140px;
+    margin: auto;
+    display: flex;
+    padding: 14px 34px;
+    position: absolute;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 6px;
+    justify-content: center;
+    background-color: rgba(200, 200, 200, 1);
 }
 .landingpage-text {
-  color: var(--dl-color-dark-dark1);
-  height: auto;
-  font-size: 18px;
-  font-style: Bold;
-  text-align: center;
-  font-family: Inter;
-  font-weight: 700;
-  line-height: 22px;
-  font-stretch: normal;
-  text-decoration: none;
+    color: var(--dl-color-dark-dark1);
+    height: auto;
+    font-size: 18px;
+    font-style: Bold;
+    text-align: center;
+    font-family: Inter;
+    font-weight: 700;
+    line-height: 22px;
+    font-stretch: normal;
+    text-decoration: none;
+}
+.landingpage-medium-primary:hover {
+    color: rgb(255, 255, 255);
+}
+.landingpage-medium-primary1:hover {
+    color: rgb(255, 255, 255);
 }
 .landingpage-medium-primary1 {
-  top: 35px;
-  right: 38px;
-  width: 142px;
-  margin: auto;
-  display: flex;
-  padding: 14px 34px;
-  position: absolute;
-  align-items: center;
-  border-radius: 6px;
-  justify-content: center;
-  background-color: rgba(242, 101, 34, 1);
+    top: 35px;
+    right: 38px;
+    width: 142px;
+    margin: auto;
+    display: flex;
+    padding: 14px 34px;
+    position: absolute;
+    align-items: center;
+    border-radius: 6px;
+    justify-content: center;
+    background-color: rgba(242, 101, 34, 1);
 }
 .landingpage-text02 {
-  color: var(--dl-color-light-light1);
-  height: auto;
-  font-size: 18px;
-  font-style: Bold;
-  text-align: center;
-  font-family: Inter;
-  font-weight: 700;
-  line-height: 22px;
-  font-stretch: normal;
-  text-decoration: none;
+    color: var(--dl-color-light-light1);
+    height: auto;
+    font-size: 18px;
+    font-style: Bold;
+    text-align: center;
+    font-family: Inter;
+    font-weight: 700;
+    line-height: 22px;
+    font-stretch: normal;
+    text-decoration: none;
 }
 .landingpage-text04 {
-  left: 756px;
-  color: rgba(0, 0, 0, 0.8);
-  bottom: 35px;
-  height: auto;
-  margin: auto;
-  position: absolute;
-  font-size: 14px;
-  font-style: Regular;
-  text-align: left;
-  font-family: Lato;
-  font-weight: 400;
-  line-height: 173.6%;
-  font-stretch: normal;
-  text-decoration: none;
+    left: 745px;
+    color: rgba(0, 0, 0, 0.8);
+    bottom: 35px;
+    height: auto;
+    margin: auto;
+    position: absolute;
+    font-size: 14px;
+    font-style: Regular;
+    text-align: center;
+    font-family: Lato;
+    font-weight: 400;
+    line-height: 173.6%;
+    font-stretch: normal;
+    text-decoration: none;
 }
 .landingpage-text05 {
-  top: 443px;
-  left: 0px;
-  color: rgb(0, 0, 0);
-  right: 0px;
-  width: 900px;
-  height: auto;
-  margin: auto;
-  position: absolute;
-  font-size: 30px;
-  font-style: SemiBold;
-  text-align: center;
-  font-family: Poppins;
-  font-weight: 600;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
+    top: 443px;
+    left: 0px;
+    color: rgb(0, 0, 0);
+    right: 0px;
+    width: 1000px;
+    height: auto;
+    margin: auto;
+    position: absolute;
+    font-size: 30px;
+    font-style: SemiBold;
+    text-align: center;
+    font-family: Poppins;
+    font-weight: 600;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
 }
 .landingpage-text06 {
-  color: #000000;
-  font-weight: 600;
+    color: #000000;
+    font-weight: 600;
 }
 .landingpage-text07 {
-  color: #f26522;
+    color: #f26522;
 }
 .landingpage-text08 {
-  font-weight: 700;
+    font-weight: 700;
 }

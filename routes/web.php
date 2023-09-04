@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 Route::get('/home',[HomeController::class, 'index'])->middleware('auth')->name('home');
 
+
 //user routes
 
 

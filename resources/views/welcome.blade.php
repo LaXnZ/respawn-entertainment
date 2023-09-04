@@ -21,16 +21,16 @@
         <div class="landingpage-container relative bg-light-gray bg-center bg-white dark:bg-gray-900 selection:bg-red-500 selection:text-white" style="background-image: url('assets/images/bg.png'); background-size: cover;">
             @if (Route::has('login'))
             <div class="mx-auto sm:flex sm:justify-between items-center p-6">
-                <div class="btn-landing-page landingpage-medium-primary">
-                    <span class="landingpage-text"><a href="{{ route('login') }}">Login</a></span>
+                <div class=" landingpage-medium-primary">
+                    <button class="landingpage-text"><a href="{{ route('login') }}">Login</a></button>
                 </div>
-                <div class="btn-landing-page landingpage-medium-primary1">
-                    <span class="landingpage-text02"><a href="{{ route('register') }}">Register</a></span>
+                <div class="landingpage-medium-primary1">
+                    <button class="landingpage-text02"><a href="{{ route('register') }}">Register</a></button>
                 </div>
             </div>
             @endif
-            <div class="sm:flex items-center mx-auto p-6">
-                <img alt="download115533" src="assets/images/logo.png" class="landingpage-download11" />
+            <div >
+                <img alt="logo" src="assets/images/logo.png"  />
                 
               
                     <span class="landingpage-text05">
@@ -38,7 +38,8 @@
                         <span class="landingpage-text07">Respawn Entertainment</span>
                         <span class="landingpage-text08"></span>
                         <span>: Your Ultimate Gaming Destination!</span>
-                      
+                      <br>
+                      <br>
                         <span>
                           At Respawn Entertainment, we&apos;re not just another gaming cafe and
                           shop; we&apos;re your portal to an immersive world of gaming
@@ -52,7 +53,7 @@
         </div>
 
     </body>
-    <footer style="text-align: center"> <span class="landingpage-text04">
-        <span>© Copyright 2023, All Rights Reserved by Lanz</span>
-      </span></footer>
+    <footer > 
+        <p class="landingpage-text04">© Copyright 2023, All Rights Reserved by Respawn Entertainment</p>
+      </footer>
 </html>
