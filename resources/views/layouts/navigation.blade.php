@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <img style="width:50px" alt="logo" src="assets/images/logo_no_context.png"  />
                     </a>
                 </div>
 
@@ -37,6 +37,15 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
+
+                        @auth
+
+                        <x-dropdown-link :href="route('profile.edit')">
+                            {{ __('Profile') }}
+                        </x-dropdown-link> 
+                        
+                        @endauth
+                        
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">

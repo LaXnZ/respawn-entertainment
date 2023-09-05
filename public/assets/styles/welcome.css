@@ -75,7 +75,7 @@
     align-items: center;
     border-radius: 6px;
     justify-content: center;
-    background-color: rgba(242, 101, 34, 1);
+    background-color: rgba(200, 200, 200, 1);
 }
 .landingpage-text02 {
     color: var(--dl-color-light-light1);
