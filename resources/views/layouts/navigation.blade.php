@@ -41,7 +41,7 @@
                         @auth
 
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('Edit Users') }}
                         </x-dropdown-link> 
                         
                         @endauth
