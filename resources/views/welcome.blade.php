@@ -18,7 +18,7 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="landingpage-container relative bg-light-gray bg-center bg-white dark:bg-gray-900 selection:bg-red-500 selection:text-white" style="background-image: url('assets/images/bg.png'); background-size: cover;">
+        <div class="landingpage-container relative bg-light-gray bg-center bg-white dark:bg-gray-900 selection:bg-red-500 selection:text-white" style="background-image: url('assets/images/bg.jpg'); background-size: cover;">
             @if (Route::has('login'))
             <div class="mx-auto sm:flex sm:justify-between items-center p-6">
                 <div class=" landingpage-medium-primary">
@@ -30,7 +30,7 @@
             </div>
             @endif
             <div >
-                <img alt="logo" src="assets/images/logo.png"  />
+                <img alt="logo" src="assets/images/logo.png"/>
                 
               
                     <span class="landingpage-text05">
@@ -48,12 +48,10 @@
                           shopper in search of gaming gear and collectibles, you&apos;ve come to
                           the right place.
                         </span>
+                    </div>
                
-            </div>
         </div>
 
     </body>
-    <footer > 
-        <p class="landingpage-text04">© Copyright 2023, All Rights Reserved by Respawn Entertainment</p>
-      </footer>
+    
 </html>
