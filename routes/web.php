@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -21,7 +22,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home',[HomeController::class, 'index'])->middleware('auth')->name('home');
+Auth::routes(
+    [
+        'verify' => true
+      
+    ]
+);
+
+
+Route::get('/home',[HomeController::class, 'index'])->middleware('auth')->name('home')->middleware('verified');
 
 
 //user routes
