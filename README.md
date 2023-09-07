@@ -1,6 +1,6 @@
 # Respawn Entertainment
 
-![Respawn Entertainment](public\assets\images\logo.png)
+![Respawn Entertainment](public/assets/images/logo.png)
 
 ## Overview
 
@@ -97,6 +97,4 @@ This is a tailored Customer Relationship Management (CRM) system designed to add
 
 ---
 
-**Note:** This README provides a high-level overview of the Gaming Cafe and Shop CRM system. For detailed documentation and usage instructions, please refer to the project's documentation or the [Wiki](https://github.com/yourusername/gaming-cafe-crm/wiki) section.
 
-![Powered by Laravel and Tailwind CSS](powered-by-laravel-tailwind.png)
