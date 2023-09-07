@@ -18,7 +18,7 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="landingpage-container relative bg-light-gray bg-center bg-white dark:bg-gray-900 selection:bg-red-500 selection:text-white" style="background-image: url('assets/images/bg.jpg'); background-size: cover;">
+        <div class="landingpage-container relative bg-light-gray bg-center bg-white dark:bg-gray-900 selection:bg-red-500 selection:text-white" style="background-image: url('assets/images/bg.svg'); background-size: cover;">
             @if (Route::has('login'))
             <div class="mx-auto sm:flex sm:justify-between items-center p-6">
                 <div class=" landingpage-medium-primary">
