@@ -35,7 +35,7 @@
     </body>
     <footer  style="background-image: url('assets/images/bg.jpg'); background-size: cover;">
         
-        <img class="pl-20" src="assets/images/footer.png">
+        <img class="pl-20 pb-6" src="assets/images/footer.png">
    
     </footer>
 </html>
