@@ -32,6 +32,16 @@
                         {{ __('Products') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex pl-96 ">
+                    <x-nav-link class="bg-slate-300 hover:bg-orange-600 w-13 h-7 rounded-md mt-5  px-2" >
+                        {{ __('About Us') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ">
+                    <x-nav-link class="bg-slate-300 hover:bg-orange-600 w-13 h-7 rounded-md mt-5  px-2" >
+                        {{ __('Contact') }}
+                    </x-nav-link>
+                </div>
                
             </div>
 

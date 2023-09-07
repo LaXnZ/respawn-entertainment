@@ -27,6 +27,7 @@
                 <div class="landingpage-medium-primary1">
                     <button class="landingpage-text"><a href="{{ route('register') }}">Register</a></button>
                 </div>
+                
             </div>
             @endif
             <div >
@@ -50,7 +51,12 @@
                         </span>
                     </div>
                
-        </div>
+        
+
+        
+</div>
+
+
 
     </body>
     

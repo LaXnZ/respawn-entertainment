@@ -35,28 +35,28 @@
 .landingpage-medium-primary {
     color: white;
     top: 35px;
-    right: 217px;
-    width: 140px;
+    right: 210px;
+    width: 100px;
     margin: auto;
     display: flex;
-    padding: 14px 34px;
+    padding: 10px 34px;
     position: absolute;
     align-items: center;
     flex-shrink: 0;
-    border-radius: 6px;
+    border-radius: 4px ;
     justify-content: center;
-    background-color: rgba(38, 49, 65, 0.836);
+    background-color: rgb(31 41 55);
 }
 .landingpage-text {
     color: var(--dl-color-dark-dark1);
     height: auto;
     font-size: 18px;
-    font-style: Bold;
+    
     text-align: center;
     font-family: Inter;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 22px;
-    font-stretch: normal;
+
     text-decoration: none;
 }
 .landingpage-medium-primary:hover {
@@ -68,16 +68,16 @@
 .landingpage-medium-primary1 {
     color: white;
     top: 35px;
-    right: 38px;
-    width: 142px;
+    right: 60px;
+    width: 100px;
     margin: auto;
     display: flex;
-    padding: 14px 34px;
+    padding: 10px 34px;
     position: absolute;
     align-items: center;
-    border-radius: 6px;
+    border-radius: 4px ;
     justify-content: center;
-    background-color: rgba(38, 49, 65, 0.836);
+    background-color: rgb(31 41 55);
 }
 .landingpage-text02 {
     color: var(--dl-color-light-light1);
