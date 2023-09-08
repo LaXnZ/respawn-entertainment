@@ -1,0 +1,9 @@
+
+  
+  /* CSS to hide bottom divs initially */
+  .section:not(.animate-slide) {
+    opacity: 0;
+    transform: translateY(50px); /* Adjust the value as needed */
+    transition: opacity 1s, transform 1s;
+  }
+  
