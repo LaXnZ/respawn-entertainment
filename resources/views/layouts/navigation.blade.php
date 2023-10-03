@@ -56,14 +56,14 @@
                         </button>
                     </x-slot>
 
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
+                    <x-slot name="content" >
+                        <x-dropdown-link class="nav_text" :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
                         @auth
 
-                        <x-dropdown-link :href="route('profile.edit')">
+                        <x-dropdown-link class="nav_text" :href="route('profile.edit')">
                             {{ __('Edit Users') }}
                         </x-dropdown-link> 
                         
@@ -74,7 +74,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
+                            <x-dropdown-link class="nav_text" :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
