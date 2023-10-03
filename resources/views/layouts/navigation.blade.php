@@ -5,39 +5,35 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}">
+                    <a href="home">
                         <img style="width:50px" alt="logo" src="assets/images/logo_no_context.png"  />
                     </a>
                 </div>
 
                
-                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ">
+            
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex pt-3">
                     <x-nav-link class="bg-slate-300 hover:bg-orange-600 w-13 h-7 rounded-md mt-5  px-2" :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Games') }}
                     </x-nav-link>
-                </div> --}}
-
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ">
-                    <x-nav-link class="bg-slate-300 hover:bg-orange-600 w-13 h-7 rounded-md mt-5  px-2" >
-                        {{ __('Games') }}
-                    </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex pt-3">
                     <x-nav-link class="bg-slate-300 hover:bg-orange-600 w-13 h-7 rounded-md mt-5  px-2" >
                         {{ __('Cafes') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ">
-                    <x-nav-link class="bg-slate-300 hover:bg-orange-600 w-13 h-7 rounded-md mt-5  px-2" >
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex pt-3"  >
+                    <x-nav-link class="bg-slate-300 hover:bg-orange-600 w-13 h-7 rounded-md mt-5  px-2" :href="route('shop')" :active="request()->routeIs('home')">
                         {{ __('Products') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex pl-96 ">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex pl-96 pt-3">
                     <x-nav-link class="bg-slate-300 hover:bg-orange-600 w-13 h-7 rounded-md mt-5  px-2" >
                         {{ __('About Us') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex pt-3">
                     <x-nav-link class="bg-slate-300 hover:bg-orange-600 w-13 h-7 rounded-md mt-5  px-2" >
                         {{ __('Contact') }}
                     </x-nav-link>

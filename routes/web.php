@@ -3,7 +3,11 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
+use App\Livewire\CartComponent;
+use App\Livewire\CheckoutComponent;
+use App\View\Components\CartComponent as ComponentsCartComponent;
+use App\View\Components\CheckoutComponent as ComponentsCheckoutComponent;
+use App\View\Components\ShopComponent as ShopComponent;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -18,9 +22,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes(
     [
@@ -32,12 +33,16 @@ Auth::routes(
 Route::get('/home',[HomeController::class, 'index'])->middleware('auth')->name('home')->middleware('verified');
 
 
-//user routes
+//shop routes
+Route::get('/shop',[ShopComponent::class, 'shop'])->middleware('auth')->name('shop')->middleware('verified');
+Route::get('/cart',[ComponentsCartComponent::class, 'cart'])->middleware('auth')->name('shop.cart')->middleware('verified');
+Route::get('/checkout',[ComponentsCheckoutComponent::class, 'checkout'])->middleware('auth')->name('shop.checkout')->middleware('verified');
+
 
 
 //admin routes (admin middleware -> middleware(['auth','admin'])
 
-
+//profile routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

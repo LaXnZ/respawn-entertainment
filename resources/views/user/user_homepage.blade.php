@@ -15,10 +15,10 @@
           </div>
   
           <div class="basis-1/2 self-center">
-            <img
+            <img 
               alt="main-image"
               width="600"
-              src="assets/images/main-image.png"
+              src="assets/images/main-image.png" 
             />
           </div>
         </div>
@@ -55,7 +55,7 @@
               type="button"
               class="ml-32 mt-6 bg-orange-600 text-white font-semibold rounded border-r border-gray-100 py-2 hover:bg-orange-700 px-3"
             >
-              <a href="/">Browse Products</a>
+              <a href="/shop">Browse Products</a>
             </button>
           </div>
   
