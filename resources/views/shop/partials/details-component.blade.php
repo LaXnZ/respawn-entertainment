@@ -4,9 +4,9 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow">Home</a>
-                    <span></span> Fashion
-                    <span></span> Abstract Print Patchwork Dress
+                    <a class="nav_text" href="/home" rel="nofollow">Home</a>
+                    <span></span> <a class="nav_text" href="/shop" rel="nofollow">Shop</a>
+                    <span></span> {{$product->name}}
                 </div>
             </div>
         </div>
@@ -23,7 +23,8 @@
                                         <!-- MAIN SLIDES -->
                                         <div class="product-image-slider">
                                             <figure class="border-radius-10">
-                                                <img src="{{asset('assets/imgs/shop/product-')}}{{$product->id}}-2.jpg}}" alt="product image">
+                                                <img src="{{asset('assets/imgs/shop/product-')}}{{$product->id}}-1.jpg" alt="product image">
+                                       
                                             </figure>
                                             <figure class="border-radius-10">
                                                 <img src="{{asset('assets/imgs/shop/product-16-1.jpg')}}" alt="product image">
@@ -44,16 +45,7 @@
                                                 <img src="{{asset('assets/imgs/shop/product-16-7.jpg')}}" alt="product image">
                                             </figure>
                                         </div>
-                                        <!-- THUMBNAILS -->
-                                        <div class="slider-nav-thumbnails pl-15 pr-15">
-                                            <div><img src="{{asset('assets/imgs/shop/thumbnail-3.jpg')}}" alt="product image"></div>
-                                            <div><img src="{{asset('assets/imgs/shop/thumbnail-4.jpg')}}" alt="product image"></div>
-                                            <div><img src="{{asset('assets/imgs/shop/thumbnail-5.jpg')}}" alt="product image"></div>
-                                            <div><img src="{{asset('assets/imgs/shop/thumbnail-6.jpg')}}" alt="product image"></div>
-                                            <div><img src="{{asset('assets/imgs/shop/thumbnail-7.jpg')}}" alt="product image"></div>
-                                            <div><img src="{{asset('assets/imgs/shop/thumbnail-8.jpg')}}" alt="product image"></div>
-                                            <div><img src="{{asset('assets/imgs/shop/thumbnail-9.jpg')}}" alt="product image"></div>
-                                        </div>
+                                      
                                     </div>
                                     <!-- End Gallery -->
                                     <div class="social-icons single-share">
@@ -83,7 +75,7 @@
                                         </div>
                                         <div class="clearfix product-price-cover">
                                             <div class="product-price primary-color float-left">
-                                                <ins><span class="text-brand">{{$product->regular_price}}</span></ins>
+                                                <ins><span class="text-brand">${{$product->regular_price}}.00</span></ins>
                                                 
                                                 <span class="save-price  font-md color3 ml-15">25% Off</span>
                                             </div>
@@ -135,9 +127,9 @@
                                             </div>
                                         </div>
                                         <ul class="product-meta font-xs color-grey mt-50">
-                                            <li class="mb-5">SKU: <a href="#">FWM15VKT</a></li>
-                                            <li class="mb-5">Tags: <a href="#" rel="tag">Cloth</a>, <a href="#" rel="tag">Women</a>, <a href="#" rel="tag">Dress</a> </li>
-                                            <li>Availability:<span class="in-stock text-success ml-5">8 Items In Stock</span></li>
+                                            <li class="mb-5 ">SKU: <a class="nav_text" href="#">{{$product->SKU}}</a></li>
+                                            <li class="mb-5 ">Tags: <a class="nav_text" href="#" rel="tag">Cloth</a>, <a  class="nav_text" href="#" rel="tag">Women</a>, <a  class="nav_text" href="#" rel="tag">Dress</a> </li>
+                                            <li>Availability:<span class="in-stock text-success ml-5">{{$product->quantity}} Items {{$product->stock_status}}</span></li>
                                         </ul>
                                     </div>
                                     <!-- Detail Info -->
@@ -452,14 +444,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content-wrap">
-                                                    <h2><a href="product-details.html" tabindex="0">Ulstra Bass Headphone</a></h2>
+                                                    <h2><a href="product-details.html" tabindex="0">PS 5 Dark Limited Edition</a></h2>
                                                     <div class="rating-result" title="90%">
                                                         <span>
                                                         </span>
                                                     </div>
                                                     <div class="product-price">
-                                                        <span>$238.85 </span>
-                                                        <span class="old-price">$245.8</span>
+                                                        <span>$538.85 </span>
+                                                        <span class="old-price">$645.8</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -469,8 +461,8 @@
                                                 <div class="product-img-action-wrap">
                                                     <div class="product-img product-img-zoom">
                                                         <a href="product-details.html" tabindex="0">
-                                                            <img class="default-img" src="assets/imgs/shop/product-3-1.jpg')}}" alt="">
-                                                            <img class="hover-img" src="assets/imgs/shop/product-4-2.jpg')}}" alt="">
+                                                            <img class="default-img" src="{{asset('assets/imgs/shop/product-3-1.jpg')}}" alt="">
+                                                            <img class="hover-img" src="{{asset('assets/imgs/shop/product-3-2.jpg')}}" alt="">
                                                         </a>
                                                     </div>
                                                     <div class="product-action-1">
@@ -483,14 +475,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content-wrap">
-                                                    <h2><a href="product-details.html" tabindex="0">Smart Bluetooth Speaker</a></h2>
+                                                    <h2><a href="product-details.html" tabindex="0">MSI GF63 THIN 12UCX</a></h2>
                                                     <div class="rating-result" title="90%">
                                                         <span>
                                                         </span>
                                                     </div>
                                                     <div class="product-price">
-                                                        <span>$138.85 </span>
-                                                        <span class="old-price">$145.8</span>
+                                                        <span>$1338.85 </span>
+                                                        <span class="old-price">$1445.8</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -500,8 +492,8 @@
                                                 <div class="product-img-action-wrap">
                                                     <div class="product-img product-img-zoom">
                                                         <a href="product-details.html" tabindex="0">
-                                                            <img class="default-img" src="assets/imgs/shop/product-4-1.jpg')}}" alt="">
-                                                            <img class="hover-img" src="assets/imgs/shop/product-4-2.jpg')}}" alt="">
+                                                            <img class="default-img" src="{{asset('assets/imgs/shop/product-4-1.jpg')}}" alt="">
+                                                            <img class="hover-img" src="{{asset('assets/imgs/shop/product-4-2.jpg')}}" alt="">
                                                         </a>
                                                     </div>
                                                     <div class="product-action-1">
@@ -514,14 +506,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content-wrap">
-                                                    <h2><a href="product-details.html" tabindex="0">HomeSpeak 12UEA Goole</a></h2>
+                                                    <h2><a href="product-details.html" tabindex="0">Cosmic Byte Sentinel RGB</a></h2>
                                                     <div class="rating-result" title="90%">
                                                         <span>
                                                         </span>
                                                     </div>
                                                     <div class="product-price">
-                                                        <span>$738.85 </span>
-                                                        <span class="old-price">$1245.8</span>
+                                                        <span>$38.85 </span>
+                                                        <span class="old-price">$45.8</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -531,8 +523,8 @@
                                                 <div class="product-img-action-wrap">
                                                     <div class="product-img product-img-zoom">
                                                         <a href="product-details.html" tabindex="0">
-                                                            <img class="default-img" src="assets/imgs/shop/product-5-1.jpg')}}" alt="">
-                                                            <img class="hover-img" src="assets/imgs/shop/product-3-2.jpg')}}" alt="">
+                                                            <img class="default-img" src="{{asset('assets/imgs/shop/product-5-1.jpg')}}" alt="">
+                                                            <img class="hover-img" src="{{asset('assets/imgs/shop/product-5-2.jpg')}}" alt="">
                                                         </a>
                                                     </div>
                                                     <div class="product-action-1">
@@ -545,7 +537,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content-wrap">
-                                                    <h2><a href="product-details.html" tabindex="0">Dadua Camera 4K 2022EF</a></h2>
+                                                    <h2><a href="product-details.html" tabindex="0">Custom Wireless Xbox Controller</a></h2>
                                                     <div class="rating-result" title="90%">
                                                         <span>
                                                         </span>
@@ -630,7 +622,7 @@
                                     <img src="{{asset('assets/imgs/shop/thumbnail-3.jpg')}}" alt="#">
                                 </div>
                                 <div class="content pt-10">
-                                    <h5><a href="product-details.html">Chen Cardigan</a></h5>
+                                    <h5><a href="product-details.html">Custom Wireless Xbox Controller</a></h5>
                                     <p class="price mb-0 mt-5">$99.50</p>
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:90%"></div>
@@ -642,7 +634,7 @@
                                     <img src="{{asset('assets/imgs/shop/thumbnail-4.jpg')}}" alt="#">
                                 </div>
                                 <div class="content pt-10">
-                                    <h6><a href="product-details.html">Chen Sweater</a></h6>
+                                    <h6><a href="product-details.html">Razer Basilisk X HyperSpeed Wireless Gaming Mouse</a></h6>
                                     <p class="price mb-0 mt-5">$89.50</p>
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:80%"></div>
@@ -654,7 +646,7 @@
                                     <img src="{{asset('assets/imgs/shop/thumbnail-5.jpg')}}" alt="#">
                                 </div>
                                 <div class="content pt-10">
-                                    <h6><a href="product-details.html">Colorful Jacket</a></h6>
+                                    <h6><a href="product-details.html">Steel Series Gaming Headsets</a></h6>
                                     <p class="price mb-0 mt-5">$25</p>
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:60%"></div>
