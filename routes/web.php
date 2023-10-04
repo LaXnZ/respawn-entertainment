@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\View\Components\DetailsComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Livewire\CartComponent;
@@ -42,6 +43,7 @@ Route::get('/home',[HomeController::class, 'index'])->middleware('auth')->name('
 
 //shop routes
 Route::get('/shop',[ShopComponent::class, 'shop'])->middleware('auth')->name('shop')->middleware('verified');
+Route::get('/product/{slug}',[DetailsComponent::class, 'details'])->middleware('auth')->name('product.details')->middleware('verified');
 Route::get('/cart',[ComponentsCartComponent::class, 'cart'])->middleware('auth')->name('shop.cart')->middleware('verified');
 Route::get('/checkout',[ComponentsCheckoutComponent::class, 'checkout'])->middleware('auth')->name('shop.checkout')->middleware('verified');
 

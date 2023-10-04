@@ -1,4 +1,5 @@
 <x-app-layout>
+    
     <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
     <main class="main pb-4">
         <div class="page-header breadcrumb-wrap">
@@ -60,14 +61,20 @@
                         </div>
                         <div class="row product-grid-3">
                             @foreach ($products as $product)
+                            
                             <div class="col-lg-4 col-md-4 col-6 col-sm-6">
                                 <div class="product-cart-wrap mb-30" style="width: 350px; height: 400px;">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="product-details.html">
-                                                <img class="default-img" src="{{asset('assets/imgs/shop/product-')}}{{$product->id}}-1.jpg" alt="{{$product->name}}">
-                                                <img class="hover-img" src="{{asset('assets/imgs/shop/product-')}}{{$product->id}}-2.jpg" alt="{{$product->name}}">
+                                            
+                                            <a href="{{ route('product.details', ['slug' => $product->slug]) }}">
+                                                @if ($product)
+                                                    <img class="default-img" src="{{ asset('assets/imgs/shop/product-' . $product->id . '-1.jpg') }}" alt="{{ $product->name }}">
+                                                    <img class="hover-img" src="{{ asset('assets/imgs/shop/product-' . $product->id . '-2.jpg') }}" alt="{{ $product->name }}">
+                                                @endif
                                             </a>
+                                       
+                                            
                                         </div>
                                         <div class="product-action-1">
                                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
