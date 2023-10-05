@@ -5,8 +5,8 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="home">
-                        <img style="width:50px" alt="logo" src="assets/images/logo_no_context.png"  />
+                    <a href="/home">
+                        <img style="width:50px" alt="logo" src="{{asset('assets/images/logo_no_context.png')}}"  />
                     </a>
                 </div>
 
@@ -130,3 +130,5 @@
         </div>
     </div>
 </nav>
+
+

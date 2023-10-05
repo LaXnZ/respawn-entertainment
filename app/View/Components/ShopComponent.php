@@ -15,11 +15,12 @@ class ShopComponent extends Component
 
     public function shop(){
         $products = Product::paginate(12);
+        $nproducts = Product::latest()->take(3)->get();
         if(Auth::id()){
             $usertype = Auth::user()->usertype;
 
             if($usertype == 'user'){
-                return view('shop/shop', ['products' => $products]);
+                return view('shop/shop', ['products' => $products, 'nproducts' => $nproducts]);
             }
             else if($usertype == 'admin'){
                 return view('admin/admin_dashboard');

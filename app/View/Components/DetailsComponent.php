@@ -16,22 +16,9 @@ class DetailsComponent extends Component
 
         $product = Product::where('slug', $slug)->first();
      
-        // if(Auth::id()){
-        //     $usertype = Auth::user()->usertype;
-        //     if($usertype == 'user'){
-        //         return view('shop/partials/details-component',[
-        //             'product' => $product
-        //         ]);
-        //     }
-        //     else if($usertype == 'admin'){
-        //         return view('admin/admin_dashboard');
-        //     }
-        //     else{
-        //         return redirect()->back();
-        //     }
-
-        // }
-       
+      
+       $rproducts = Product::where('category_id',  $product->category_id)->inRandomOrder()->limit(4)->get();
+       $nproducts = Product::latest()->take(3)->get();
 
         if ($product !== null) {
             if(Auth::id()){
@@ -39,7 +26,7 @@ class DetailsComponent extends Component
                 if($usertype == 'user'){
                     
                     return view('shop/partials/details-component',[
-                        'product' => $product
+                        'product' => $product, 'rproducts' => $rproducts, 'nproducts' => $nproducts
                     ]);
                 }
                 else if($usertype == 'admin'){
