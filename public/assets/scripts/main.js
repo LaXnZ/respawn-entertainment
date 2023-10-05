@@ -24,6 +24,8 @@ function handleScrollAnimation() {
     });
 }
 
+
+
 // Trigger the initial animation when the page loads
 window.addEventListener("load", handleInitialAnimation);
 

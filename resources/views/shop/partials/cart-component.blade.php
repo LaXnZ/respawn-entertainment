@@ -1,5 +1,5 @@
 <x-app-layout>
-    <main class="main">
+    <main class="main pb-24">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
@@ -10,6 +10,8 @@
             </div>
         </div>
         <section class="mt-50">
+            
+          
             <div class="container bg-white rounded-lg p-6 border" >
                 <div class="row">
                     <div class="col-12">
@@ -26,65 +28,43 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="image product-thumbnail"><img src="assets/imgs/shop/product-1-2.jpg" alt="#"></td>
+                                    @if(session('cart') > 0) 
+                                    @php $total = 0; $count=1; $subtotal=array(); @endphp
+                                    @foreach (session('cart') as $product_id => $details)
+                                    @php $total += $details['price'] * $details['quantity'] @endphp
+                                    
+                                    <tr  data-id="{{$product_id}}">
+                                        <td class="image product-thumbnail inline-block"><img src="{{asset('assets/imgs/shop/product-')}}{{$product_id}}-1.jpg" alt="#"></td>
                                         <td class="product-des product-name">
-                                            <h5 class="product-name"><a href="product-details.html">J.Crew Mercantile Women's Short-Sleeve</a></h5>
-                                            <p class="font-xs">Maboriosam in a tonto nesciung eget<br> distingy magndapibus.
-                                            </p>
+                                            <h5 class="product-name"><a href="product-details.html">{{$details['name']}}</a></h5>
+                                           
                                         </td>
-                                        <td class="price" data-title="Price"><span>$65.00 </span></td>
+                                        <td class="price" data-title="Price"><span>${{$details['price']}}.00</span></td>
                                         <td class="text-center" data-title="Stock">
-                                            <div class="detail-qty border radius  m-auto">
-                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                <span class="qty-val">1</span>
-                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                            <div class="w-16  m-auto flex-1">
+                                                
+                                                <input type="number" onchange="updateCart(event,this)" class="qty-val" value="{{ $details['quantity'] }}" />
+
                                             </div>
                                         </td>
-                                        <td class="text-right" data-title="Cart">
-                                            <span>$65.00 </span>
+                                        <td class="text-center" data-title="Cart">
+                                            <span>${{$details['price'] * $details['quantity']}}.00 </span>
                                         </td>
-                                        <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fi-rs-trash"></i></a></td>
+                                        <td class="action" data-title="Remove">
+                                            <button onclick="removeFromCart(event, this)" class="cart_remove">
+                                                <a class="text-muted"><i class="fi-rs-trash"></i></a>
+                                            </button>
+                                        </td>
+                                        
+                                        
+                                        
                                     </tr>
-                                    <tr>
-                                        <td class="image"><img src="assets/imgs/shop/product-11-2.jpg" alt="#"></td>
-                                        <td class="product-des">
-                                            <h5 class="product-name"><a href="product-details.html">Amazon Essentials Women's Tank</a></h5>
-                                            <p class="font-xs">Sit at ipsum amet clita no est,<br> sed amet sadipscing et gubergren</p>
-                                        </td>
-                                        <td class="price" data-title="Price"><span>$75.00 </span></td>
-                                        <td class="text-center" data-title="Stock">
-                                            <div class="detail-qty border radius  m-auto">
-                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                <span class="qty-val">2</span>
-                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
-                                            </div>
-                                        </td>
-                                        <td class="text-right" data-title="Cart">
-                                            <span>$150.00 </span>
-                                        </td>
-                                        <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fi-rs-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="image"><img src="assets/imgs/shop/product-6-1.jpg" alt="#"></td>
-                                        <td class="product-des">
-                                            <h5 class="product-name"><a href="product-details.html">Amazon Brand - Daily Ritual Women's Jersey </a></h5>
-                                            <p class="font-xs">Erat amet et et amet diam et et.<br> Justo amet at dolore
-                                            </p>
-                                        </td>
-                                        <td class="price" data-title="Price"><span>$62.00 </span></td>
-                                        <td class="text-center" data-title="Stock">
-                                            <div class="detail-qty border radius  m-auto">
-                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                <span class="qty-val">1</span>
-                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
-                                            </div>
-                                        </td>
-                                        <td class="text-right" data-title="Cart">
-                                            <span>$62.00 </span>
-                                        </td>
-                                        <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fi-rs-trash"></i></a></td>
-                                    </tr>
+                                    @endforeach
+                                    @else
+           <p>No item in the cart</p>
+            @endif
+
+                                
                                     <tr>
                                         <td colspan="6" class="text-end">
                                             <a href="#" class="text-muted"> <i class="fi-rs-cross-small"></i> Clear Cart</a>
@@ -95,7 +75,7 @@
                         </div>
                         <div class="cart-action text-end">
                             <a class="btn  mr-10 mb-sm-15"><i class="fi-rs-shuffle mr-10"></i>Update Cart</a>
-                            <a class="btn "><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
+                            <a class="btn " href="shop"><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
                         </div>
                         <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
                         <div class="row mb-50">
@@ -404,7 +384,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="cart_total_label">Cart Subtotal</td>
-                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">$240.00</span></td>
+                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">${{$total}}.00</span></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="cart_total_label">Shipping</td>
@@ -412,7 +392,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="cart_total_label">Total</td>
-                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">$240.00</span></strong></td>
+                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">${{$total}}.00</span></strong></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -424,6 +404,67 @@
                     </div>
                 </div>
             </div>
+            
         </section>
     </main>
+
+ 
+    <script type="text/javascript">
+
+
+        function updateCart(event, input) {
+
+            event.preventDefault();
+
+            var ele = $(input);
+          
+            $.ajax({
+                url: '{{ route('update_cart') }}',
+                method: "patch",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: ele.parents('tr').attr('data-id'),
+                    quantity: ele.parents('tr').find('.qty-val').val()
+                },
+                success: function(response) {
+                        console.log(response['status']);
+                        window.location.reload();
+                    }
+                
+            });
+        }
+
+
+        function removeFromCart(event, button) {
+            event.preventDefault(); // Prevent the default behavior of the anchor tag.
+    
+            var ele = $(button);
+    
+            if (confirm("Do you really want to remove?")) {
+                $.ajax({
+                    url: '{{ route('remove_from_cart') }}',
+                    method: "DELETE",
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: ele.parents('tr').attr('data-id')
+                    },
+                    success: function(response) {
+                        console.log(response['status']);
+                        window.location.reload();
+                    }
+                });
+            }
+        }
+        
+
+
+
+
+    </script>
+    
+    
+
+
 </x-app-layout>
+
+
