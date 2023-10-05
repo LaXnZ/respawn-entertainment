@@ -16,7 +16,7 @@ use Laravel\Ui\Presets\React;
 
 use function Livewire\store;
 
-class ShopComponent extends Component
+class CategoryComponent extends Component
 {
     use WithPagination;
 
@@ -80,17 +80,22 @@ class ShopComponent extends Component
 
    
 
-    public function render(): View|Closure|string
+    public function category($slug)
     {
-    
+        $category = Category::where('slug',$slug)->first();
+        $category_id = $category->id;
+        $category_name = $category->name;
+
         $categories = Category::orderBy('name','ASC')->get();
-        $products = Product::paginate(12);
+
+        $products = Product::where('category_id', $category_id)->paginate(12);
+
         $nproducts = Product::latest()->take(3)->get();
         if(Auth::id()){
             $usertype = Auth::user()->usertype;
 
             if($usertype == 'user'){
-                return view('shop/shop', ['products' => $products, 'nproducts' => $nproducts,  'categories'=>$categories]);
+                return view('shop/partials/category-component', ['products' => $products, 'nproducts' => $nproducts,  'categories'=>$categories, 'category_name'=>$category_name]);
             }
             else if($usertype == 'admin'){
                 return view('admin/admin_dashboard');
@@ -104,5 +109,9 @@ class ShopComponent extends Component
         
        
         // return view('components.shop',['products'=>$products, 'categories'=>$categories]);
+    }
+    public function render(): View|Closure|string
+    {
+        return view('components.details-component');
     }
 }

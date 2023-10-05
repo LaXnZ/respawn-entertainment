@@ -19,7 +19,7 @@
                     aria-haspopup="true"
                     aria-expanded="true"
                 >
-                    <a href="cart" class="relative">
+                    <a href="/cart" class="relative">
                         <span class="absolute top-0 right-0 inline-flex items-center justify-center px-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">{{ count((array) session('cart')) }}</span>
                         <svg
                             class="h-6 w-6 text-orange-500"
@@ -74,9 +74,7 @@
                 }
             </style>
             
-            
-            
-            
+
         </div>
 
         
@@ -96,7 +94,7 @@
                     <div class="col-lg-9">
                         <div class="shop-product-fillter">
                             <div class="totall-product">
-                                <p> We found <strong class="text-brand">{{$products->total()}}</strong> items for you!</p>
+                                <p> We found <strong class="text-brand">{{$products->total()}}</strong> items for you from <strong class="text-brand"><b>{{$category_name}}</b></strong> category!</p>
                             </div>
                            
                         </div>

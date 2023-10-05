@@ -1,11 +1,15 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+
+
 use App\View\Components\DetailsComponent;
+use App\View\Components\CategoryComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Livewire\CartComponent;
-use App\Livewire\CheckoutComponent;
+
+
+
 use App\View\Components\CartComponent as ComponentsCartComponent;
 use App\View\Components\CheckoutComponent as ComponentsCheckoutComponent;
 use App\View\Components\ShopComponent as ShopComponent;
@@ -49,7 +53,7 @@ Route::get('/add-to-cart/{id}',[ShopComponent::class, 'addToCart'])->middleware(
 Route::patch('/update-cart',[ShopComponent::class, 'update'])->middleware('auth')->name('update_cart')->middleware('verified');
 Route::delete('/remove-from-cart',[ShopComponent::class, 'remove'])->middleware('auth')->name('remove_from_cart')->middleware('verified');
 Route::get('/checkout',[ComponentsCheckoutComponent::class, 'checkout'])->middleware('auth')->name('shop.checkout')->middleware('verified');
-
+Route::get('/product-category/{slug}',[CategoryComponent::class, 'category'])->middleware('auth')->name('product.category')->middleware('verified');
 
 
 //admin routes (admin middleware -> middleware(['auth','admin'])

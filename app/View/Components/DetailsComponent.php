@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Category;
 use App\Models\Product;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -15,7 +16,10 @@ class DetailsComponent extends Component
         $product = $slug;
 
         $product = Product::where('slug', $slug)->first();
-     
+        $category = Category::where('slug',$slug)->first();
+       
+
+        $categories = Category::orderBy('name','ASC')->get();
       
        $rproducts = Product::where('category_id',  $product->category_id)->inRandomOrder()->limit(4)->get();
        $nproducts = Product::latest()->take(3)->get();
@@ -26,7 +30,7 @@ class DetailsComponent extends Component
                 if($usertype == 'user'){
                     
                     return view('shop/partials/details-component',[
-                        'product' => $product, 'rproducts' => $rproducts, 'nproducts' => $nproducts
+                        'product' => $product, 'rproducts' => $rproducts, 'nproducts' => $nproducts , 'categories' => $categories
                     ]);
                 }
                 else if($usertype == 'admin'){
