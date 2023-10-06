@@ -1,6 +1,6 @@
 <x-app-layout>
   
-    <main class="main">
+    <main class="main pb-36">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">

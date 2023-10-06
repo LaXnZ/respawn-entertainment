@@ -12,7 +12,7 @@
                          
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex pt-3">
-                    <x-nav-link class="bg-slate-300 hover:bg-orange-600 w-13 h-7 rounded-md mt-5  px-2" :href="route('home')" :active="request()->routeIs('home')">
+                    <x-nav-link class="bg-slate-300 hover:bg-orange-600 w-13 h-7 rounded-md mt-5  px-2" >
                         {{ __('Games') }}
                     </x-nav-link>
                 </div>
@@ -22,7 +22,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex pt-3"  >
-                    <x-nav-link class="bg-slate-300 hover:bg-orange-600 w-13 h-7 rounded-md mt-5  px-2" :href="route('shop')" :active="request()->routeIs('home')">
+                    <x-nav-link class="bg-slate-300 hover:bg-orange-600 w-13 h-7 rounded-md mt-5  px-2" :href="route('shop')" :active="request()->routeIs('shop')">
                         {{ __('Products') }}
                     </x-nav-link>
                 </div>
