@@ -66,6 +66,9 @@
                         <x-dropdown-link class="nav_text" :href="route('profile.edit')">
                             {{ __('Edit Users') }}
                         </x-dropdown-link> 
+                        <x-dropdown-link class="nav_text" :href="route('admin.categories')">
+                            {{ __('Edit Categories') }}
+                        </x-dropdown-link> 
                         
                         @endauth
                         

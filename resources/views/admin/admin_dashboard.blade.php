@@ -1,28 +1,11 @@
 <x-app-layout>
-    <div class="flex">
+    <div >
         <!-- Sidebar -->
-        <aside class="w-1/4 bg-gray-800 text-white p-6">
-            <h2 class="text-xl font-semibold mb-4">Admin Dashboard</h2>
-            <nav>
-                <ul>
-                    <li class="mb-2">
-                        <a href="#" class="text-blue-600 hover:underline hover:text-blue-800">Manage Products</a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="#" class="text-blue-600 hover:underline hover:text-blue-800">Manage Cafes</a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="#" class="text-blue-600 hover:underline hover:text-blue-800">Manage Games</a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="#" class="text-blue-600 hover:underline hover:text-blue-800">Manage Users</a>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
+        
+
 
         <!-- Main Content Area -->
-        <main class="w-3/4 p-6 bg-gray-100">
+        <main >
             <x-slot name="header">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                     {{ __('Admin Dashboard') }}

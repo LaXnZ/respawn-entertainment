@@ -7,9 +7,7 @@ use App\View\Components\DetailsComponent;
 use App\View\Components\CategoryComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
-
-
+use App\View\Components\admin\AdminCategoryComponent;
 use App\View\Components\CartComponent as ComponentsCartComponent;
 use App\View\Components\CheckoutComponent as ComponentsCheckoutComponent;
 use App\View\Components\ShopComponent as ShopComponent;
@@ -56,7 +54,8 @@ Route::get('/checkout',[ComponentsCheckoutComponent::class, 'checkout'])->middle
 Route::get('/product-category/{slug}',[CategoryComponent::class, 'category'])->middleware('auth')->name('product.category')->middleware('verified');
 
 
-//admin routes (admin middleware -> middleware(['auth','admin'])
+//admin routes 
+Route::get('/admin/categories',[AdminCategoryComponent::class, 'render'])->middleware('auth')->middleware('admin')->name('admin.categories')->middleware('verified');
 
 //profile routes
 Route::middleware('auth')->group(function () {

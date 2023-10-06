@@ -10,8 +10,6 @@
             </div>
         </div>
         <section class="mt-50">
-            
-          
             <div class="container bg-white rounded-lg p-6 border" >
                 <div class="row">
                     <div class="col-12">
