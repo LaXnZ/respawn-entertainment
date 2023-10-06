@@ -68,6 +68,7 @@
                     </div>
                 </div>
             </div>
+            
             <style>
                 #cart-dropdown:hover + #cart-menu {
                     display: block;
@@ -128,9 +129,14 @@
                                         </div>
                                     </div>
                                     <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop.html">Tech</a>
-                                        </div>
+                                        @foreach ($categories as $category)
+                                            @if ($product->category_id == $category->id)
+                                            <div class="product-category">
+                                                <a href="#">{{$category->name}}</a>
+                                            </div>
+                                            @endif
+                                      
+                                        @endforeach
                                         <h2><a href="product-details.html">{{$product->name}}</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>

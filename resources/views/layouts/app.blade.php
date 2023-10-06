@@ -30,7 +30,7 @@
         
     </head>
     <body class="font-sans antialiased" >
-        <div class=" bg-gray-100 " style="background-image: url('assets/images/bg.svg'); min-height: 150vh;" >
+        <div class=" bg-gray-100 " style="background-image: url('assets/images/bg.svg'); min-height: 100vh;" >
             @include('layouts.navigation')
 
             <!-- Page Heading -->

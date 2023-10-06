@@ -23,6 +23,6 @@ class AdminCategoryComponent extends Component
     public function render(): View|Closure|string
     {
         $categories = Category::orderBy('name','ASC')->paginate(10);
-        return view('/admin/admin-category-component', ['categories'=>$categories]);
+        return view('/admin/category/admin-category-component', ['categories'=>$categories]);
     }
 }

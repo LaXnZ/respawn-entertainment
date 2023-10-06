@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 
 
@@ -7,6 +8,8 @@ use App\View\Components\DetailsComponent;
 use App\View\Components\CategoryComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+use App\View\Components\admin\AdminAddCategoryComponent;
 use App\View\Components\admin\AdminCategoryComponent;
 use App\View\Components\CartComponent as ComponentsCartComponent;
 use App\View\Components\CheckoutComponent as ComponentsCheckoutComponent;
@@ -56,9 +59,21 @@ Route::get('/product-category/{slug}',[CategoryComponent::class, 'category'])->m
 
 //admin routes 
 Route::get('/admin/categories',[AdminCategoryComponent::class, 'render'])->middleware('auth')->middleware('admin')->name('admin.categories')->middleware('verified');
+Route::get('/admin/category/add',[AdminAddCategoryComponent::class, 'render'])->middleware('auth')->middleware('admin')->name('admin.category.add')->middleware('verified');
 Route::get('/admin.products',[ShopComponent::class, 'render'])->middleware('auth')->middleware('admin')->name('shop')->middleware('verified');
 Route::get('/admin.products/{slug}',[DetailsComponent::class, 'details'])->middleware('auth')->middleware('admin')->name('product.details')->middleware('verified');
 Route::get('/admin.product-category/{slug}',[CategoryComponent::class, 'category'])->middleware('auth')->middleware('admin')->name('product.category')->middleware('verified');
+
+ Route::controller(CategoryController::class)->prefix('admin')->group(function(){
+    Route::get('/categories','index')->middleware('auth')->middleware('admin')->name('category')->middleware('verified');
+    Route::get('/category-create','create')->middleware('auth')->middleware('admin')->name('category.create')->middleware('verified');
+    Route::post('/category-store','store')->middleware('auth')->middleware('admin')->name('category.store')->middleware('verified');
+    Route::get('/category-edit/{id}','edit')->middleware('auth')->middleware('admin')->name('category.edit')->middleware('verified');
+    Route::put('/category-edit/{id}','update')->middleware('auth')->middleware('admin')->name('category.update')->middleware('verified');
+    Route::delete('/destroy/{id}','destroy')->middleware('auth')->middleware('admin')->name('category.destroy')->middleware('verified');
+ });
+
+ 
 
 //profile routes
 Route::middleware('auth')->group(function () {
