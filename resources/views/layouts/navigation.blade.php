@@ -9,9 +9,7 @@
                         <img style="width:50px" alt="logo" src="{{asset('assets/images/logo_no_context.png')}}"  />
                     </a>
                 </div>
-
-               
-            
+                         
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex pt-3">
                     <x-nav-link class="bg-slate-300 hover:bg-orange-600 w-13 h-7 rounded-md mt-5  px-2" :href="route('home')" :active="request()->routeIs('home')">
@@ -63,7 +61,7 @@
 
                         @auth
 
-                        <x-dropdown-link class="nav_text" :href="route('profile.edit')">
+                        <x-dropdown-link class="nav_text" :href="route('users')">
                             {{ __('Users') }}
                         </x-dropdown-link> 
                         <x-dropdown-link class="nav_text" :href="route('category')">

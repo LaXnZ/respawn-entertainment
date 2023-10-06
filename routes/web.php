@@ -9,6 +9,7 @@ use App\View\Components\CategoryComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserManagementController;
 use App\View\Components\admin\AdminAddCategoryComponent;
 use App\View\Components\admin\AdminCategoryComponent;
 use App\View\Components\CartComponent as ComponentsCartComponent;
@@ -64,15 +65,25 @@ Route::get('/admin.products',[ShopComponent::class, 'render'])->middleware('auth
 Route::get('/admin.products/{slug}',[DetailsComponent::class, 'details'])->middleware('auth')->middleware('admin')->name('product.details')->middleware('verified');
 Route::get('/admin.product-category/{slug}',[CategoryComponent::class, 'category'])->middleware('auth')->middleware('admin')->name('product.category')->middleware('verified');
 
+// admin category routes
  Route::controller(CategoryController::class)->prefix('admin')->group(function(){
     Route::get('/categories','index')->middleware('auth')->middleware('admin')->name('category')->middleware('verified');
     Route::get('/category-create','create')->middleware('auth')->middleware('admin')->name('category.create')->middleware('verified');
     Route::post('/category-store','store')->middleware('auth')->middleware('admin')->name('category.store')->middleware('verified');
     Route::get('/category-edit/{id}','edit')->middleware('auth')->middleware('admin')->name('category.edit')->middleware('verified');
     Route::put('/category-edit/{id}','update')->middleware('auth')->middleware('admin')->name('category.update')->middleware('verified');
-    Route::delete('/destroy/{id}','destroy')->middleware('auth')->middleware('admin')->name('category.destroy')->middleware('verified');
+    Route::delete('/category-destroy/{id}','destroy')->middleware('auth')->middleware('admin')->name('category.destroy')->middleware('verified');
  });
 
+// user management routes
+Route::controller(UserManagementController::class)->prefix('admin')->group(function(){
+    Route::get('/users','index')->middleware('auth')->middleware('admin')->name('users')->middleware('verified');
+    Route::get('/user-create','create')->middleware('auth')->middleware('admin')->name('user.create')->middleware('verified');
+    Route::post('/user-store','store')->middleware('auth')->middleware('admin')->name('user.store')->middleware('verified');
+    Route::get('/user-edit/{id}','edit')->middleware('auth')->middleware('admin')->name('user.edit')->middleware('verified');
+    Route::put('/user-edit/{id}','update')->middleware('auth')->middleware('admin')->name('user.update')->middleware('verified');
+    Route::delete('/user-destroy/{id}','destroy')->middleware('auth')->middleware('admin')->name('user.destroy')->middleware('verified');
+ });
  
 
 //profile routes

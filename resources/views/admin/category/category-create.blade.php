@@ -16,7 +16,7 @@
                         <div class="cart">
                             <div class="card-holder">
                                 <div class="row">
-                                    <div class="col-md-6"> Add New Category </div>
+                                    <div class="col-md-6 text-3xl font-extrabold"> Add New Category </div>
                                     <div class="col-md-6"> <a href="{{route('category')}}" class="btn btn-success float-end">All Categories </a> </div>
                                 </div>
                             </div>
