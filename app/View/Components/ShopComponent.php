@@ -100,7 +100,13 @@ class ShopComponent extends Component
                     'max_value' => $this->max_value,
                 ]);
             } else if ($usertype == 'admin') {
-                return view('admin/admin_dashboard');
+                return view('shop/shop', [
+                    'products' => $products,
+                    'nproducts' => $nproducts,
+                    'categories' => $categories,
+                    'min_value' => $this->min_value,
+                    'max_value' => $this->max_value,
+                ]);
             } else {
                 return redirect()->back();
             }

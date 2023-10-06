@@ -98,7 +98,8 @@ class CategoryComponent extends Component
                 return view('shop/partials/category-component', ['products' => $products, 'nproducts' => $nproducts,  'categories'=>$categories, 'category_name'=>$category_name]);
             }
             else if($usertype == 'admin'){
-                return view('admin/admin_dashboard');
+                return view('shop/partials/category-component', ['products' => $products, 'nproducts' => $nproducts,  'categories'=>$categories, 'category_name'=>$category_name]);
+         
             }
             else{
                 return redirect()->back();

@@ -56,6 +56,9 @@ Route::get('/product-category/{slug}',[CategoryComponent::class, 'category'])->m
 
 //admin routes 
 Route::get('/admin/categories',[AdminCategoryComponent::class, 'render'])->middleware('auth')->middleware('admin')->name('admin.categories')->middleware('verified');
+Route::get('/admin.products',[ShopComponent::class, 'render'])->middleware('auth')->middleware('admin')->name('shop')->middleware('verified');
+Route::get('/admin.products/{slug}',[DetailsComponent::class, 'details'])->middleware('auth')->middleware('admin')->name('product.details')->middleware('verified');
+Route::get('/admin.product-category/{slug}',[CategoryComponent::class, 'category'])->middleware('auth')->middleware('admin')->name('product.category')->middleware('verified');
 
 //profile routes
 Route::middleware('auth')->group(function () {

@@ -34,7 +34,9 @@ class DetailsComponent extends Component
                     ]);
                 }
                 else if($usertype == 'admin'){
-                    return view('admin/admin_dashboard');
+                    return view('shop/partials/details-component',[
+                        'product' => $product, 'rproducts' => $rproducts, 'nproducts' => $nproducts , 'categories' => $categories
+                    ]);
                 }
                 else{
                     return redirect()->back();
