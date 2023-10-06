@@ -1,5 +1,5 @@
 <x-app-layout>
- 
+
     <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
     <main class="main pb-4 ">
         <div class="page-header breadcrumb-wrap mr-10 flex ">
@@ -192,38 +192,14 @@
                                     <div id="slider-range"></div>
                                     <div class="price_slider_amount">
                                         <div class="label-input">
-                                            <span>Range:</span><input type="text" id="amount" name="price" placeholder="Add Your Price">
+                                            <span>Range:</span><strong><span class="text-info"> ${{$min_value}}</span> - <span class="text-info"> ${{$max_value}}</span></strong>
+                                       
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="list-group">
-                                <div class="list-group-item mb-10 mt-10">
-                                    <label class="fw-900">Color</label>
-                                    <div class="custome-checkbox">
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="">
-                                        <label class="form-check-label" for="exampleCheckbox1"><span>Red (56)</span></label>
-                                        <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox2" value="">
-                                        <label class="form-check-label" for="exampleCheckbox2"><span>Green (78)</span></label>
-                                        <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox3" value="">
-                                        <label class="form-check-label" for="exampleCheckbox3"><span>Blue (54)</span></label>
-                                    </div>
-                                    <label class="fw-900 mt-15">Item Condition</label>
-                                    <div class="custome-checkbox">
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox11" value="">
-                                        <label class="form-check-label" for="exampleCheckbox11"><span>New (1506)</span></label>
-                                        <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox21" value="">
-                                        <label class="form-check-label" for="exampleCheckbox21"><span>Refurbished (27)</span></label>
-                                        <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox31" value="">
-                                        <label class="form-check-label" for="exampleCheckbox31"><span>Used (45)</span></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="shop.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a>
+                            
+                            {{-- <a href="shop.html" class="btn btn-sm btn-default mt-2"><i class="fi-rs-filter mr-5"></i> Fillter</a> --}}
                         </div>
                         <!-- Product sidebar Widget -->
                         <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10 bg-white">
@@ -255,3 +231,25 @@
         </section>
     </main>
 </x-app-layout>
+
+
+<script>
+    $(document).ready(function() {
+    // var min_value = {{$min_value}};
+    // var max_value = {{$max_value}};
+    var slider_range = $("#slider-range");
+    slider_range.slider({
+        range: true,
+        min: 0,
+        max: 1000,
+        values: [0, 1000],
+        change: function(event, ui) {
+            $(".text-info").eq(0).text("$" + ui.values[0]);
+            $(".text-info").eq(1).text("$" + ui.values[1]);
+            $this.set('min_value' , ui.values[0]);
+            $this.set('max_value' , ui.values[1]);
+        }
+    });
+    console.log("Slider initialized");
+});
+</script>

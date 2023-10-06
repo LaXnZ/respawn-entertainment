@@ -26,7 +26,8 @@ class ShopComponent extends Component
     //     session()->flash('success_message', 'Item added in Cart');
     //     return redirect()->route('shop.cart');
     // }
-
+    public $min_value;
+    public $max_value;
     public $pageSize = 12;
 
     public function addToCart($product_id){
@@ -72,37 +73,39 @@ class ShopComponent extends Component
        }
     }
     
-    public function __construct()
+    public function __construct($min_value = 0, $max_value = 1000)
     {
-        //
+        $this->min_value = $min_value;
+        $this->max_value = $max_value;
     }
 
 
-   
 
-    public function render(): View|Closure|string
-    {
     
+    public function render()
+    {
         $categories = Category::orderBy('name','ASC')->get();
-        $products = Product::paginate(12);
+        $products = Product::whereBetween('regular_price', [$this->min_value, $this->max_value])->paginate(12);
         $nproducts = Product::latest()->take(3)->get();
-        if(Auth::id()){
+
+        if (Auth::id()) {
             $usertype = Auth::user()->usertype;
 
-            if($usertype == 'user'){
-                return view('shop/shop', ['products' => $products, 'nproducts' => $nproducts,  'categories'=>$categories]);
-            }
-            else if($usertype == 'admin'){
+            if ($usertype == 'user') {
+                return view('shop/shop', [
+                    'products' => $products,
+                    'nproducts' => $nproducts,
+                    'categories' => $categories,
+                    'min_value' => $this->min_value,
+                    'max_value' => $this->max_value,
+                ]);
+            } else if ($usertype == 'admin') {
                 return view('admin/admin_dashboard');
-            }
-            else{
+            } else {
                 return redirect()->back();
             }
-
         }
 
-        
-       
         // return view('components.shop',['products'=>$products, 'categories'=>$categories]);
     }
 }

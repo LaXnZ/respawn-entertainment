@@ -13,6 +13,9 @@
         <meta property="og:image" content="">
         <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/imgs/theme/favicon.ico')}}">
         <link rel="stylesheet" href="path/to/bootstrap.min.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+   
+
         <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
         <title>{{ config('app.name','Respawn Ent.') }}</title>
@@ -51,6 +54,7 @@
         <script src="//unpkg.com/alpinejs" defer></script>
             <!-- Vendor JS-->
             <script src="path/to/bootstrap.min.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{{asset('assets/js/vendor/modernizr-3.6.0.min.js')}}"></script>
 <script src="{{asset('assets/js/vendor/jquery-3.6.0.min.js')}}"></script>
@@ -73,6 +77,7 @@
 <script src="{{asset('assets/js/plugins/jquery.theia.sticky.js')}}"></script>
 <script src="{{asset('assets/js/plugins/jquery.elevatezoom.js')}}"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></script>
+@stack('scripts')
      
 <!-- Template  JS -->
 <script src="{{asset('assets/js/main.js?v=3.3')}}"></script>
