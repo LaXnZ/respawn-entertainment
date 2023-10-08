@@ -41,10 +41,10 @@
                                 </div>
                             </div>
                             <div class="mt-4">
-                                <a href="#" class="text-green-500 hover:text-green-600">View All Products</a>
+                                <a href="{{route('products')}}" class="text-green-500 hover:text-green-600">View All Products</a>
                             </div>
                             <div class="mt-4">
-                                <a href="#" class="text-green-500 hover:text-green-600">Add New Product</a>
+                                <a href="{{route('product.create')}}" class="text-green-500 hover:text-green-600">Add New Product</a>
                             </div>
                             
                         </div>
@@ -101,6 +101,7 @@
                     @include('admin.users')
                 @endif
             </div>
+            
         </main>
     </div>
 </x-app-layout>

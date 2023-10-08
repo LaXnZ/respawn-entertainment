@@ -67,6 +67,9 @@
                         <x-dropdown-link class="nav_text" :href="route('category')">
                             {{ __('Categories') }}
                         </x-dropdown-link> 
+                        <x-dropdown-link class="nav_text" :href="route('products')">
+                            {{ __('Products') }}
+                        </x-dropdown-link> 
                         
                         @endauth
                         

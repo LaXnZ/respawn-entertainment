@@ -65,6 +65,7 @@ Route::get('/admin.products',[ShopComponent::class, 'render'])->middleware('auth
 Route::get('/admin.products/{slug}',[DetailsComponent::class, 'details'])->middleware('auth')->middleware('admin')->name('admin.product.details')->middleware('verified');
 Route::get('/admin.product-category/{slug}',[CategoryComponent::class, 'category'])->middleware('auth')->middleware('admin')->name('admin.product.category')->middleware('verified');
 
+
 // admin category routes
  Route::controller(CategoryController::class)->prefix('admin')->group(function(){
     Route::get('/categories','index')->middleware('auth')->middleware('admin')->name('category')->middleware('verified');
@@ -74,6 +75,7 @@ Route::get('/admin.product-category/{slug}',[CategoryComponent::class, 'category
     Route::put('/category-edit/{id}','update')->middleware('auth')->middleware('admin')->name('category.update')->middleware('verified');
     Route::delete('/category-destroy/{id}','destroy')->middleware('auth')->middleware('admin')->name('category.destroy')->middleware('verified');
  });
+ 
 
 // user management routes
 Route::controller(UserManagementController::class)->prefix('admin')->group(function(){
@@ -86,6 +88,18 @@ Route::controller(UserManagementController::class)->prefix('admin')->group(funct
  });
  
 
+ // product routes
+ Route::controller(ProductController::class)->prefix('admin')->group(function(){
+    Route::get('/products','index')->middleware('auth')->middleware('admin')->name('products')->middleware('verified');
+    Route::get('/product-create','create')->middleware('auth')->middleware('admin')->name('product.create')->middleware('verified');
+    Route::post('/product-store','store')->middleware('auth')->middleware('admin')->name('product.store')->middleware('verified');
+    Route::get('/product-edit/{id}','edit')->middleware('auth')->middleware('admin')->name('product.edit')->middleware('verified');
+    Route::put('/product-edit/{id}','update')->middleware('auth')->middleware('admin')->name('product.update')->middleware('verified');
+    Route::delete('/product-destroy/{id}','destroy')->middleware('auth')->middleware('admin')->name('product.destroy')->middleware('verified');
+ });
+ 
+
+ 
 //profile routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

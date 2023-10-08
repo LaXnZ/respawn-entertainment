@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -11,7 +11,8 @@ class ProductController extends Controller
      */
     public function index()
     {
- 
+        $product = Product::paginate(10);
+        return view('admin.products.products', compact('product'));
     }
 
     /**
@@ -19,7 +20,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.product-create');
     }
 
     /**
@@ -27,7 +28,35 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate the request, image should be only jpg
+        $this->validate(
+            $request,
+            [
+                'name' => 'required|max:255',
+                'slug' => 'required|max:255',
+                'short_description' => 'required|max:255',
+                'description' => 'required',
+                'regular_price' => 'required|numeric',
+                'SKU' => 'required',
+                'stock_status' => 'required',
+                'featured' => 'required',
+                'quantity' => 'required|numeric',
+                'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            ]
+        );
+        
+        $input = $request->all();
+        
+       if($image = $request->file('image')){
+           $destinationPath = 'assets/imgs/product_crud/';
+           $productImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+           $image->move($destinationPath, $productImage);
+           $input['image'] = "$productImage";
+         }
+        
+        Product::create($input);
+        
+        return redirect()->route('products')->with('success','Product added successfully!');
     }
 
     /**
@@ -43,7 +72,8 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('admin.products.product-edit', compact('product'));
     }
 
     /**
@@ -51,7 +81,36 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //validate the request, image should be only jpg
+        $this->validate(
+            $request,
+            [
+                'name' => 'required|max:255',
+                'slug' => 'required|max:255',
+                'short_description' => 'required|max:255',
+                'description' => 'required',
+                'regular_price' => 'required|numeric',
+                'SKU' => 'required',
+                'stock_status' => 'required',
+                'featured' => 'required',
+                'quantity' => 'required|numeric',
+                
+            ]
+        );
+        
+        $input = $request->all();
+        
+       if($image = $request->file('image')){
+           $destinationPath = 'assets/imgs/product_crud/';
+           $productImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+           $image->move($destinationPath, $productImage);
+           $input['image'] = "$productImage";
+         }
+        
+        $product = Product::findOrFail($id);
+        $product->update($input);
+        
+        return redirect()->route('products')->with('success','Product updated successfully!');
     }
 
     /**
@@ -59,6 +118,9 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+        
+        return redirect()->route('products')->with('success','Product deleted successfully!');
     }
 }
