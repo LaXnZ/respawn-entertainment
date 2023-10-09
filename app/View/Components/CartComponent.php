@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Product;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -10,14 +11,23 @@ use Illuminate\Support\Facades\Auth;
 class CartComponent extends Component
 {
     public function cart(){
+        
+        // pass products from the product module
+        $products = Product::paginate(12);
+        
         if(Auth::id()){
             $usertype = Auth::user()->usertype;
+            
 
             if($usertype == 'user'){
-                return view('shop/partials/cart-component');
+                return view('shop/partials/cart-component',[
+                    'products' => $products
+                ]);
             }
             else if($usertype == 'admin'){
-                return view('admin/admin_dashboard');
+                return view('admin/admin_dashboard',[
+                    'products' => $products
+                ]);
             }
             else{
                 return redirect()->back();

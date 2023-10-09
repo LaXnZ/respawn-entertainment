@@ -32,7 +32,12 @@
                                     @php $total += $details['price'] * $details['quantity'] @endphp
                                     
                                     <tr  data-id="{{$product_id}}">
-                                        <td class="image product-thumbnail inline-block"><img src="{{asset('assets/imgs/shop/product-')}}{{$product_id}}-1.jpg" alt="#"></td>
+                                        @foreach ($products as $product)
+                                            @if ($product->id == $product_id)
+                                                <td class="image product-thumbnail inline-block"><img src="{{asset('assets/imgs/product_crud/')}}/{{$product->image}}" alt="#"></td>
+                                            @endif
+                                                                                                   
+                                        @endforeach 
                                         <td class="product-des product-name">
                                             <h5 class="product-name"><a href="product-details.html">{{$details['name']}}</a></h5>
                                            
@@ -40,7 +45,7 @@
                                         <td class="price" data-title="Price"><span>${{$details['price']}}.00</span></td>
                                         <td class="text-center" data-title="Stock">
                                             <div class="w-16  m-auto flex-1">
-                                                
+                                                                                
                                                 <input type="number" onchange="updateCart(event,this)" class="qty-val" value="{{ $details['quantity'] }}" />
 
                                             </div>
@@ -57,12 +62,13 @@
                                         
                                         
                                     </tr>
+                                                                     
                                     @endforeach
                                     @else
-           <p>No item in the cart</p>
-            @endif
+                                    <p>No item in the cart</p>
+                                    @endif
 
-                                
+                                                                
                                     <tr>
                                         <td colspan="6" class="text-end">
                                             <a href="#" class="text-muted"> <i class="fi-rs-cross-small"></i> Clear Cart</a>

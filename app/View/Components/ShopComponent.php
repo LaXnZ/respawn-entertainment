@@ -87,6 +87,10 @@ class ShopComponent extends Component
         $categories = Category::orderBy('name','ASC')->get();
         $products = Product::whereBetween('regular_price', [$this->min_value, $this->max_value])->paginate(12);
         $nproducts = Product::latest()->take(3)->get();
+        //get image column from product
+        $images = Product::all('image');
+        
+
 
         if (Auth::id()) {
             $usertype = Auth::user()->usertype;
@@ -95,6 +99,7 @@ class ShopComponent extends Component
                 return view('shop/shop', [
                     'products' => $products,
                     'nproducts' => $nproducts,
+                    'images' => $images,
                     'categories' => $categories,
                     'min_value' => $this->min_value,
                     'max_value' => $this->max_value,
@@ -104,6 +109,7 @@ class ShopComponent extends Component
                     'products' => $products,
                     'nproducts' => $nproducts,
                     'categories' => $categories,
+                    'images' => $images,
                     'min_value' => $this->min_value,
                     'max_value' => $this->max_value,
                 ]);

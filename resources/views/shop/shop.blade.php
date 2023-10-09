@@ -51,13 +51,18 @@
                         @endforeach
                         @if(count((array) session('cart')) > 0)
                             @foreach (session('cart') as $product_id => $details)
+                            @foreach ($products as $product )
+                                @if ($product->id == $product_id)
+                                    
                                 <div class="px-2 py-1 border-b border-gray-200">
                                     <div class="flex justify-between items-center pr-2">
-                                        <img class="w-20" src="{{asset('assets/imgs/shop/product-')}}{{$product_id}}-1.jpg" alt="#">
+                                        <img class="w-20" src="{{asset('assets/imgs/product_crud/')}}/{{$product->image}}" alt="#">
                                         <p class="text-sm text-gray-700">{{ $details['name'] }}</p>
                                         <p class="text-sm font-semibold text-gray-700">${{ $details['price'] * $details['quantity'] }}.00</p>
                                     </div>
                                 </div>
+                                @endif
+                            @endforeach
                             @endforeach
                             <div class="text-right px-2 py-2">
                                 <p class="text-sm font-semibold text-gray-700">Total: <span class="text-info font-bold">${{ $total }}.00</span></p>
@@ -111,7 +116,7 @@
                                             
                                             <a href="{{ route('product.details', ['slug' => $product->slug]) }}">
                                                 @if ($product)
-                                                    <img class="default-img" src="{{ asset('assets/imgs/shop/product-' . $product->id . '-1.jpg') }}" alt="{{ $product->name }}">
+                                                    <img class="default-img" src="{{asset('assets/imgs/product_crud/')}}/{{$product->image}}" alt="{{ $product->name }}">
                                                     <img class="hover-img" src="{{ asset('assets/imgs/shop/product-' . $product->id . '-2.jpg') }}" alt="{{ $product->name }}">
                                                 @endif
                                             </a>
@@ -218,7 +223,7 @@
                             
                             <div class="single-post clearfix">
                                 <div class="image">
-                                    <img src="{{asset('assets/imgs/shop/product-')}}{{$nproduct->id}}-1.jpg" alt="{{$nproduct->name}}">
+                                    <img src="{{asset('assets/imgs/product_crud/')}}/{{$nproduct->image}}" alt="{{$nproduct->name}}">
                                 </div>
                                 <div class="content pt-10">
                                     <h5><a href="{{route('product.details',['slug'=>$nproduct->slug])}}">{{$nproduct->name}}</a></h5>

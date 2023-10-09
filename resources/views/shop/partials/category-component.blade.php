@@ -108,7 +108,7 @@
                                             
                                             <a href="{{ route('product.details', ['slug' => $product->slug]) }}">
                                                 @if ($product)
-                                                    <img class="default-img" src="{{ asset('assets/imgs/shop/product-' . $product->id . '-1.jpg') }}" alt="{{ $product->name }}">
+                                                    <img class="default-img" src="{{asset('assets/imgs/product_crud/')}}/{{$product->image}}" alt="{{ $product->name }}">
                                                     <img class="hover-img" src="{{ asset('assets/imgs/shop/product-' . $product->id . '-2.jpg') }}" alt="{{ $product->name }}">
                                                 @endif
                                             </a>

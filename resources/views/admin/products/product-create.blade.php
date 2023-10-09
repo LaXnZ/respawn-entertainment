@@ -40,6 +40,7 @@
                                             <div class="mb-3">
                                                 <label for="image" class="form-label"> Product Image</label>
                                                 <input type="file" class="form-control" id="image" name="image">
+                                              
                                                 @error('image')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror   
