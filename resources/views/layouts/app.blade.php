@@ -89,7 +89,7 @@
             <div class="md:flex md:justify-between">
               <div class="mb-6 md:mb-0">
                   <a href="https://github.com/LaXnZ/respawn-entertainment" class="flex items-center">
-                      <img src="assets/images/footer-logo.png" class="h-19" alt="Respawn Logo" />
+                      <img src="{{asset('assets/images/footer-logo.png')}}" class="h-19" alt="Respawn Logo" />
                      
                   </a>
                   <p class="w-60 pt-6">
@@ -138,7 +138,7 @@
                   </div>
               </div>
           </div>
-          <img src="assets/images/footer-brands.png" class="pt-6 w-10/12 pl-56" alt="footer-bg" />
+          <img src="{{asset('assets/images/footer-brands.png')}}" class="pt-6 w-10/12 pl-56" alt="footer-bg" />
           <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
           <div class="sm:flex sm:items-center sm:justify-between">
               <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a class=" nav_text" href="https://github.com/LaXnZ/respawn-entertainment" class="hover:underline">Respawn Entertainment ™</a>. All Rights Reserved.

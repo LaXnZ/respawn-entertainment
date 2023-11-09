@@ -22,6 +22,7 @@
             />
           </div>
         </div>
+        
         <div id="section2" class="section flex flex-row pt-12 pl-32 pb-20 ">
           <div class="basis-1/2 self-center">
             <img
@@ -44,7 +45,8 @@
             </button>
           </div>
         </div>
-        <div id="section3" class="section flex flex-row pt-12 pl-32 pb-32">
+
+        <div id="section3" class=" flex flex-row pt-12 pl-32 pb-32">
           <div class="basis-1/2 self-center pl-12">
             <img
               alt="product-intro"
@@ -67,6 +69,9 @@
             />
           </div>
         </div>
+
+        
+       
       </div>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/intersection-observer/2.0.0/intersection-observer.min.js"></script>
