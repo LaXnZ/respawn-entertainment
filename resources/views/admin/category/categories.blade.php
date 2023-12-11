@@ -16,10 +16,18 @@
                     <div class="card-body">
                        
                         @if (Session::has('success'))
-                            <div class="alert alert-success" role="alert">
-                                {{Session::get('success')}}
-                            </div>
+                             <p
+            x-data="{ show: true }"
+            x-show="show"
+            x-transition
+            x-init="setTimeout(() => show = false, 2000)"
+            class="alert alert-success" role="alert">
+            {{Session::get('success')}}
+            
+        </p>
+
                         @endif
+                       
                         
                         <table class="table table-striped ">
                             <thead>
@@ -42,11 +50,11 @@
                                             <td class="align-middle">
                                                 <div class="btn-group  " role="group" aria-label="Basic example">
                                               
-                                                    <a href="{{route('category.edit', $rs->id)}}" type="button" class="btn bg-gray-500  btn-warning mx-4 w-26"> Edit </a>
+                                                    <a href="{{route('category.edit', $rs->id)}}" class="btn bg-gray-700 hover:bg-gray-500  border-none mx-4 rounded"> Edit </a>
                                                     <form action="{{ route('category.destroy', $rs->id) }}" method="POST" onsubmit="return confirmDelete();">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn bg-red-400 btn-danger w-26">Delete</button>
+                                                        <button class="btn bg-red-700 hover:bg-red-500 btn-danger border-none"> Delete </button>
                                                     </form>
                                                 </div>
                                             </td>
@@ -54,7 +62,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="4" class="text-center">No Category Found</td>
+                                        <td colspan="5" class="text-center">No Category Found</td>
                                     </tr>
                                 @endif
                             </tbody>

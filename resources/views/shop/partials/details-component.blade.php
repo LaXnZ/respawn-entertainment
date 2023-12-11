@@ -74,7 +74,7 @@
                                         </div>
                                         <div class="clearfix product-price-cover">
                                             <div class="product-price primary-color float-left">
-                                                <ins><span class="text-brand">${{$product->regular_price}}.00</span></ins>
+                                                <ins><span class="text-brand">LKR {{$product->regular_price}}.00</span></ins>
                                                 
                                                 <span class="save-price  font-md color3 ml-15">25% Off</span>
                                             </div>
@@ -413,7 +413,7 @@
                                                     <div class="product-img product-img-zoom">
                                                         <a href="{{route('product.details',['slug'=>$rproduct->slug])}}" tabindex="0">
                                                             <img class="default-img" src="{{asset('assets/imgs/product_crud/')}}/{{$rproduct->image}}" alt="{{$rproduct->name}}">
-                                                            <img class="hover-img" src="{{asset('assets/imgs/shop/product-')}}{{$rproduct->id}}-2.jpg" alt="{{$rproduct->name}}">
+                                                            {{-- <img class="hover-img" src="{{asset('assets/imgs/shop/product-')}}{{$rproduct->id}}-2.jpg" alt="{{$rproduct->name}}"> --}}
                                                         </a>
                                                     </div>
                                                     <div class="product-action-1">
@@ -432,7 +432,7 @@
                                                         </span>
                                                     </div>
                                                     <div class="product-price">
-                                                        <span>{{$rproduct->regular_price}}</span>
+                                                        <span>LKR {{$rproduct->regular_price}}</span>
                                                         {{-- <span class="old-price">$645.8</span> --}}
                                                     </div>
                                                 </div>
@@ -472,7 +472,7 @@
                                 </div>
                                 <div class="content pt-10">
                                     <h5><a href="{{route('product.details',['slug'=>$nproduct->slug])}}" class="hover:text-orange-600">{{$nproduct->name}}</a></h5>
-                                    <p class="price mb-0 mt-5">{{$nproduct->regular_price}}</p>
+                                    <p class="price mb-0 mt-5">LKR {{$nproduct->regular_price}}</p>
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:90%"></div>
                                     </div>

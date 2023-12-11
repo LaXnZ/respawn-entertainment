@@ -15,10 +15,16 @@
                       </div>
                       <div class="card-body">
                          
-                          @if (Session::has('success'))
-                              <div class="alert alert-success" role="alert">
-                                  {{Session::get('success')}}
-                              </div>
+                        @if (Session::has('success'))
+                        <p
+       x-data="{ show: true }"
+       x-show="show"
+       x-transition
+       x-init="setTimeout(() => show = false, 2000)"
+       class="alert alert-success" role="alert">
+       {{Session::get('success')}}
+       
+   </p>
                           @endif
                           
                           <table class="table table-striped ">
@@ -45,27 +51,30 @@
                                                 <td>{{$rs->id}}</td>
                                                 <td><img src="{{asset('assets/imgs/product_crud/')}}/{{$rs->image}}" width="400" /></td>
                                                 <td>{{$rs->name}}</td>
-                                                <td>{{$rs->slug}}</td>
+                                                <td>{{$rs->slug}}</td>                          
                                                 <td>{{$rs->short_description}}</td>
                                                 <td>{{$rs->description}}</td>
+
+
                                                 <td>{{$rs->SKU}}</td>
                                                 <td>{{$rs->stock_status}}</td>
                                                 <td>{{$rs->quantity}}</td>
                                                 <td>{{$rs->category_id}}</td>
                                                 <td>{{$rs->regular_price}}</td>
                                                 <td>
-                                                    <a href="{{route('product.edit',$rs->id)}}" class="btn bg-gray-500  btn-warning mx-4 w-26">Edit</a>
+                                                    <a href="{{route('product.edit',$rs->id)}}" class="btn bg-gray-700 hover:bg-gray-500  border-none mx-4 rounded">Edit</a>
                                                     <form action="{{ route('product.destroy', $rs->id) }}" method="POST" onsubmit="return confirmDelete();">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="mt-2 btn bg-red-400 btn-danger w-26">Delete</button>
+                                                        <button  class="btn bg-red-700 hover:bg-red-500 btn-danger border-none">Delete</button>
                                                     </form>
+                                                    
                                                 </td>
                                             </tr>
                                       @endforeach
                                   @else
                                       <tr>
-                                          <td colspan="4" class="text-center">No Category Found</td>
+                                          <td colspan="12" class="text-center">No Porduct Found</td>
                                       </tr>
                                   @endif
                               </tbody>

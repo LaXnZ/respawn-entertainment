@@ -73,7 +73,7 @@ class ShopComponent extends Component
        }
     }
     
-    public function __construct($min_value = 0, $max_value = 1000)
+    public function __construct($min_value = 0, $max_value = 100000000)
     {
         $this->min_value = $min_value;
         $this->max_value = $max_value;
@@ -85,7 +85,7 @@ class ShopComponent extends Component
     public function render()
     {
         $categories = Category::orderBy('name','ASC')->get();
-        $products = Product::whereBetween('regular_price', [$this->min_value, $this->max_value])->paginate(12);
+        $products = Product::whereBetween('regular_price', [$this->min_value, $this->max_value])->paginate(9);
         $nproducts = Product::latest()->take(3)->get();
         //get image column from product
         $images = Product::all('image');

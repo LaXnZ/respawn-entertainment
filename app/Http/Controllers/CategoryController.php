@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::orderBy('created_at','DESC')->get();
+        $category = Category::orderBy('created_at','ASC')->get();
         return view('admin.category.categories', compact('category'));
     }
 
@@ -30,7 +30,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            
+            'name' => 'required|unique:categories|max:255',
+            'slug' => 'required|unique:categories|max:5',
+            
+        ]);
         Category::create($request->all());
+        
         
         return redirect()->route('category')->with('success','Category added successfully!');
     }

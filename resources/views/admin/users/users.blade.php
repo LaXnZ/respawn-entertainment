@@ -32,7 +32,6 @@
                                       <th>Mobile Number</th>
                                       <th>Home Address</th>
                                       <th>DOB</th>
-                                      
                                       <th>User Role</th>
                                       <th>Action</th>
                                   </tr>
@@ -61,11 +60,11 @@
                                             <td class="align-middle">
                                                 <div class="btn-group  " role="group" aria-label="Basic example">
                                               
-                                                    <a href="{{route('user.edit', $user->id)}}" type="button" class="btn bg-gray-500  btn-warning mx-4 w-26"> Edit </a>
+                                                    <a href="{{route('user.edit', $user->id)}}" class="btn bg-gray-700 hover:bg-gray-500  border-none mx-4 rounded"> Edit </a>
                                                     <form action="{{ route('user.destroy', $user->id) }}" method="POST"  onsubmit="return confirmDelete();">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn bg-red-400 btn-danger w-26" >Delete</button>
+                                                        <button class="btn bg-red-700 hover:bg-red-500 btn-danger border-none">Delete</button>
 
                                                     </form>
                                                 </div>
@@ -75,7 +74,7 @@
                                 @else
                                  
                                     <tr>
-                                        <td colspan="4" class="text-center">No Category Found</td>
+                                        <td colspan="9" class="text-center">No User Found</td>
                                     </tr>
 
 

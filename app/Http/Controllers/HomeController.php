@@ -24,6 +24,39 @@ class HomeController extends Controller
 
         }
     }
+
+    public function aboutUs(){
+        if(Auth::id()){
+            $usertype = Auth::user()->usertype;
+
+            if($usertype == 'user'){
+                return view('components/about-us');
+            }
+            else if($usertype == 'admin'){
+                return view('components/about-us');
+            }
+            else{
+                return redirect()->back();
+            }
+
+        }
+    }
     
+    public function contactUs(){
+        if(Auth::id()){
+            $usertype = Auth::user()->usertype;
+
+            if($usertype == 'user'){
+                return view('components/contact-us');
+            }
+            else if($usertype == 'admin'){
+                return view('components/contact-us');
+            }
+            else{
+                return redirect()->back();
+            }
+
+        }
+    }
 
 }

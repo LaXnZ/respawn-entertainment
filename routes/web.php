@@ -43,8 +43,10 @@ Auth::routes(
     ]
 );
 
-
+//common routes
 Route::get('/home',[HomeController::class, 'index'])->middleware('auth')->name('home')->middleware('verified');
+Route::get('/about-us',[HomeController::class, 'aboutUs'])->middleware('auth')->name('about-us')->middleware('verified');
+Route::get('/contact-us',[HomeController::class, 'contactUs'])->middleware('auth')->name('contact-us')->middleware('verified');
 
 
 //shop routes

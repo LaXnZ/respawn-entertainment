@@ -11,6 +11,10 @@
                 </div>
             </div>
             
+            
+            
+            @if (Auth::user()->usertype == 'user')
+            
             <div class="relative inline-block text-left">
                 <button
                     type="button"
@@ -80,8 +84,7 @@
                 }
             </style>
             
-            
-            
+            @endif
             
         </div>
 
@@ -104,6 +107,7 @@
                             <div class="totall-product">
                                 <p> We found <strong class="text-brand">{{$products->total()}}</strong> items for you!</p>
                             </div>
+                       
                            
                         </div>
                         <div class="row product-grid-3">
@@ -115,10 +119,11 @@
                                         <div class="product-img product-img-zoom">
                                             
                                             <a href="{{ route('product.details', ['slug' => $product->slug]) }}">
-                                                @if ($product)
+                                                {{-- @if ($product)
                                                     <img class="default-img" src="{{asset('assets/imgs/product_crud/')}}/{{$product->image}}" alt="{{ $product->name }}">
                                                     <img class="hover-img" src="{{ asset('assets/imgs/shop/product-' . $product->id . '-2.jpg') }}" alt="{{ $product->name }}">
-                                                @endif
+                                                @endif --}}
+                                                <img class="default-img" src="{{asset('assets/imgs/product_crud/')}}/{{$product->image}}" alt="{{ $product->name }}">
                                             </a>
                                        
                                             
@@ -149,7 +154,7 @@
                                             </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>${{$product->regular_price}}.00 </span>
+                                            <span>LKR {{$product->regular_price}}.00 </span>
                                             {{-- <span class="old-price">{{$product->}}</span> --}}
                                         </div>
                                         <div class="product-action-1 show">
@@ -226,8 +231,8 @@
                                     <img src="{{asset('assets/imgs/product_crud/')}}/{{$nproduct->image}}" alt="{{$nproduct->name}}">
                                 </div>
                                 <div class="content pt-10">
-                                    <h5><a href="{{route('product.details',['slug'=>$nproduct->slug])}}">{{$nproduct->name}}</a></h5>
-                                    <p class="price mb-0 mt-5">{{$nproduct->regular_price}}</p>
+                                    <h5><a class="hover:text-orange-600" href="{{route('product.details',['slug'=>$nproduct->slug])}}">{{$nproduct->name}}</a></h5>
+                                    <p class="price mb-0 mt-5">LKR {{$nproduct->regular_price}}</p>
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:90%"></div>
                                     </div>
