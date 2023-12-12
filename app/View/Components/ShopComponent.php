@@ -76,13 +76,38 @@ class ShopComponent extends Component
     public function clear(){
         session()->forget('cart');
     }
-    
+
     public function __construct($min_value = 0, $max_value = 100000000)
     {
         $this->min_value = $min_value;
         $this->max_value = $max_value;
     }
-
+    public function search(Request $request){
+        $request->validate([
+            'search' => 'required|min:2',
+        ]);
+        
+        $search = $_GET['search'];
+        $products = Product::query()
+        ->where('name','LIKE',"%{$search}%")
+        ->orWhere('description','LIKE',"%{$search}%")
+        ->paginate(9);
+        $nproducts = Product::latest()->take(3)->get();
+        $images = Product::all('image');
+        $categories = Category::orderBy('name','ASC')->get();
+        $allProducts = Product::all();
+        return view('shop/shop',[
+            'products' => $products,
+            'nproducts' => $nproducts,
+            'images' => $images,
+            'categories' => $categories,
+            'allProducts' => $allProducts,
+            'min_value' => $this->min_value,
+            'max_value' => $this->max_value,
+        ]);
+    }
+    
+    
 
 
     

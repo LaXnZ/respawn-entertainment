@@ -51,6 +51,7 @@ Route::get('/contact-us',[HomeController::class, 'contactUs'])->middleware('auth
 
 //shop routes
 Route::get('/shop',[ShopComponent::class, 'render'])->middleware('auth')->name('shop')->middleware('verified');
+Route::get('/search',[ShopComponent::class, 'search'])->middleware('auth')->name('search')->middleware('verified');
 Route::get('/product/{slug}',[DetailsComponent::class, 'details'])->middleware('auth')->name('product.details')->middleware('verified');
 Route::get('/cart',[ComponentsCartComponent::class, 'cart'])->middleware('auth')->name('shop.cart')->middleware('verified');
 Route::get('/add-to-cart/{id}',[ShopComponent::class, 'addToCart'])->middleware('auth')->name('add_to_cart')->middleware('verified');
