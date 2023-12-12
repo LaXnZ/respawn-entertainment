@@ -1,5 +1,5 @@
 <x-app-layout>
- 
+
     <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
     <main class="main pb-4 ">
         <div class="page-header breadcrumb-wrap mr-10 flex ">
@@ -21,7 +21,7 @@
                     aria-haspopup="true"
                     aria-expanded="true"
                 >
-                    <a href="cart" class="relative">
+                    <a href="/cart" class="relative">
                         <span class="absolute top-0 right-0 inline-flex items-center justify-center px-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">{{ count((array) session('cart')) }}</span>
                         <svg
                             class="h-6 w-6 text-orange-500"
@@ -53,7 +53,7 @@
                         @endforeach
                         @if(count((array) session('cart')) > 0)
                             @foreach (session('cart') as $product_id => $details)
-                            @foreach ($products as $product )
+                            @foreach ($allProducts as $product )
                                 @if ($product->id == $product_id)
                                     
                                 <div class="px-2 py-1 border-b border-gray-200">

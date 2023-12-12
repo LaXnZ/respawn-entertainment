@@ -55,7 +55,7 @@
                         @endforeach
                         @if(count((array) session('cart')) > 0)
                             @foreach (session('cart') as $product_id => $details)
-                            @foreach ($products as $product )
+                            @foreach ($allProducts as $product )
                                 @if ($product->id == $product_id)
                                     
                                 <div class="px-2 py-1 border-b border-gray-200">

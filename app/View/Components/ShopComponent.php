@@ -89,7 +89,7 @@ class ShopComponent extends Component
         $nproducts = Product::latest()->take(3)->get();
         //get image column from product
         $images = Product::all('image');
-        
+        $allProducts = Product::all();
 
 
         if (Auth::id()) {
@@ -103,6 +103,7 @@ class ShopComponent extends Component
                     'categories' => $categories,
                     'min_value' => $this->min_value,
                     'max_value' => $this->max_value,
+                    'allProducts' => $allProducts,
                 ]);
             } else if ($usertype == 'admin') {
                 return view('shop/shop', [
@@ -112,6 +113,7 @@ class ShopComponent extends Component
                     'images' => $images,
                     'min_value' => $this->min_value,
                     'max_value' => $this->max_value,
+                    'allProducts' => $allProducts,
                 ]);
             } else {
                 return redirect()->back();

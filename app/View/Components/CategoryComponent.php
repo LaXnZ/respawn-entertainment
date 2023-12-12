@@ -88,6 +88,8 @@ class CategoryComponent extends Component
 
         $categories = Category::orderBy('name','ASC')->get();
 
+        $allProducts = Product::all();
+        
         $products = Product::where('category_id', $category_id)->paginate(12);
 
         $nproducts = Product::latest()->take(3)->get();
@@ -95,10 +97,10 @@ class CategoryComponent extends Component
             $usertype = Auth::user()->usertype;
 
             if($usertype == 'user'){
-                return view('shop/partials/category-component', ['products' => $products, 'nproducts' => $nproducts,  'categories'=>$categories, 'category_name'=>$category_name]);
+                return view('shop/partials/category-component', ['products' => $products, 'nproducts' => $nproducts,  'categories'=>$categories, 'category_name'=>$category_name, 'allProducts'=>$allProducts]);
             }
             else if($usertype == 'admin'){
-                return view('shop/partials/category-component', ['products' => $products, 'nproducts' => $nproducts,  'categories'=>$categories, 'category_name'=>$category_name]);
+                return view('shop/partials/category-component', ['products' => $products, 'nproducts' => $nproducts,  'categories'=>$categories, 'category_name'=>$category_name, 'allProducts'=>$allProducts]);
          
             }
             else{
