@@ -72,6 +72,10 @@ class ShopComponent extends Component
             }
        }
     }
+
+    public function clear(){
+        session()->forget('cart');
+    }
     
     public function __construct($min_value = 0, $max_value = 100000000)
     {
