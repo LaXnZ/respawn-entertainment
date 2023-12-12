@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('dob')->nullable();
             $table->string('password');
             $table->string('usertype')->default('user');
+            $table->boolean('cafe_member')->default(false);
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

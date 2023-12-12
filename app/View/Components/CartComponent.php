@@ -17,11 +17,13 @@ class CartComponent extends Component
         
         if(Auth::id()){
             $usertype = Auth::user()->usertype;
-            
+            $userAddress = Auth::user()->address;
+            $cafe_member = Auth::user()->cafe_member;
 
             if($usertype == 'user'){
                 return view('shop/partials/cart-component',[
-                    'products' => $products
+                    'products' => $products,
+                    'cafe_member' => $cafe_member,
                 ]);
             }
             else if($usertype == 'admin'){

@@ -60,7 +60,7 @@
                                     <div class="flex justify-between items-center pr-2">
                                         <img class="w-20" src="{{asset('assets/imgs/product_crud/')}}/{{$product->image}}" alt="#">
                                         <p class="text-sm text-gray-700">{{ $details['name'] }}</p>
-                                        <p class="text-sm font-semibold text-gray-700">${{ $details['price'] * $details['quantity'] }}.00</p>
+                                        <p class="text-sm font-semibold text-gray-700">LKR {{ $details['price'] * $details['quantity'] }}.00</p>
                                     </div>
                                 </div>
                                 @endif
@@ -152,7 +152,7 @@
                                             </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>${{$product->regular_price}}.00 </span>
+                                            <span>LKR {{$product->regular_price}}.00 </span>
                                             {{-- <span class="old-price">{{$product->}}</span> --}}
                                         </div>
                                         <div class="product-action-1 show">
