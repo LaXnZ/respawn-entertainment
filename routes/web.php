@@ -9,6 +9,7 @@ use App\View\Components\CategoryComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\UserManagementController;
 use App\View\Components\admin\AdminAddCategoryComponent;
 use App\View\Components\admin\AdminCategoryComponent;
@@ -58,7 +59,7 @@ Route::get('/add-to-cart/{id}',[ShopComponent::class, 'addToCart'])->middleware(
 Route::patch('/update-cart',[ShopComponent::class, 'update'])->middleware('auth')->name('update_cart')->middleware('verified');
 Route::delete('/remove-from-cart',[ShopComponent::class, 'remove'])->middleware('auth')->name('remove_from_cart')->middleware('verified');
 Route::delete('/clear-cart',[ShopComponent::class, 'clear'])->middleware('auth')->name('clear_cart')->middleware('verified');
-Route::get('/checkout',[ComponentsCheckoutComponent::class, 'checkout'])->middleware('auth')->name('shop.checkout')->middleware('verified');
+// Route::get('/checkout',[ComponentsCheckoutComponent::class, 'checkout'])->middleware('auth')->name('shop.checkout')->middleware('verified');
 Route::get('/product-category/{slug}',[CategoryComponent::class, 'category'])->middleware('auth')->name('product.category')->middleware('verified');
 
 
@@ -102,7 +103,10 @@ Route::controller(UserManagementController::class)->prefix('admin')->group(funct
     Route::delete('/product-destroy/{id}','destroy')->middleware('auth')->middleware('admin')->name('product.destroy')->middleware('verified');
  });
  
-
+// checkout routes
+Route::get('/checkout',[StripeController::class, 'index'])->middleware('auth')->name('checkout')->middleware('verified');
+Route::post('/checkout/process',[StripeController::class, 'checkout'])->middleware('auth')->name('checkout.process')->middleware('verified');
+Route::get('/checkout/success',[StripeController::class, 'success'])->middleware('auth')->name('checkout.success')->middleware('verified');
  
 //profile routes
 Route::middleware('auth')->group(function () {
