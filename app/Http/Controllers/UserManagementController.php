@@ -21,6 +21,7 @@ class UserManagementController extends Controller
      */
     public function create()
     {
+        
         return view('admin.users.user-create');
     }
 
@@ -29,7 +30,17 @@ class UserManagementController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name'=> 'required|max:255',
+            'email'=> 'required|email|unique:users',
+            'phone'=> 'required',
+            'dob'=> 'required|date',
+            'address'=> 'required|max:255',
+            'password'=> 'required|min:6',
+            ]);
+          
         User::create($request->all());
+        
         return redirect()->route('users')->with('success','User added successfully!');
     }
 

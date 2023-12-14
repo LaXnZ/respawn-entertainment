@@ -40,9 +40,7 @@
 
             <div class="mt-4">
                 <h5>Shipping Address</h5>
-                <!-- Display shipping address information here -->
-
-                {{-- Example (Replace this with actual shipping address data) --}}
+    
                 <p>
                     John Doe<br>
                     123 Street, City<br>
@@ -54,12 +52,10 @@
 
             <div class="mt-4">
                 <h5>Payment Information</h5>
-                <!-- Display payment information here -->
-
-                {{-- Example (Replace this with actual payment information data) --}}
+              
                 <p>
                     Payment Method: Cash On Delivery<br>
-                    <!-- Add more payment details if needed -->
+                    Payment Status: Paid
                 </p>
             </div>
 

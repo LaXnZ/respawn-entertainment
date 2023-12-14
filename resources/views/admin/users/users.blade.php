@@ -32,7 +32,9 @@
                                       <th>Mobile Number</th>
                                       <th>Home Address</th>
                                       <th>DOB</th>
+                                      <th>Membership</th>
                                       <th>User Role</th>
+
                                       <th>Action</th>
                                   </tr>
                               </thead>
@@ -50,6 +52,13 @@
                                             <td class="align-middle">{{$user->phone}}</td>
                                             <td class="align-middle">{{$user->address}}</td>
                                             <td class="align-middle">{{$user->dob}}</td>
+                                            <td class="align-middle">
+                                                @if ($user->cafe_member === 0)
+                                                    <span class="align-middle">No</span>
+                                                @else
+                                                    <span class="align-middle">Yes</span>
+                                                @endif
+                                            </td>
                                             <td class="align-middle">
                                                 @if ($user->usertype === 'user')
                                                     <span class="badge alert-success m-1 text-base">{{$user->usertype}}</span>
@@ -97,7 +106,7 @@
     <script>
         function confirmDelete() {
             // Display a confirmation dialog
-            if (confirm('Are you sure you want to delete this record?')) {
+            if (confirm('Are you sure you want to delete this user?')) {
                 return true; // Continue with form submission
             } else {
                 return false; // Cancel form submission

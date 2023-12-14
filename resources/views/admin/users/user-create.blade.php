@@ -68,16 +68,25 @@
                                         @error('dob')
                                             <p class="text-danger">{{$message}}</p>
                                         @enderror
+                                 
                                     </div>
-                                    <div class="mb-3 mt-3"> 
-                                        <label for="usertype" class="form-label"> User's Role </label>
-                                        <select name="usertype" class="form-control">
-                                            <option value="user">User</option>
-                                            <option value="admin">Admin</option>
+                                    <div class="mb-3 mt-3">
+                                        <label for="cafe_member" class="form-label"> Membership </label>
+                                        <select name="cafe_member" class="form-control" >
+                                            
+                                            <option value=1>Yes</option>
+                                            <option value=0>No</option>
                                         </select>
-                                        @error('usertype')
-                                            <p class="text-danger">{{$message}}</p>
-                                        @enderror
+                                     </div>
+
+                                    <div class="mb-3 mt-3">
+                                    <label for="usertype" class="form-label"> User Role </label>
+                                    <select name="usertype" class="form-control">
+                                       
+                                        <option value="user">User</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                               
                                     </div>
                                 
                                  <button type="submit" class="btn btn-primary float-end">Add User</button>

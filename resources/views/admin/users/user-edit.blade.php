@@ -73,14 +73,31 @@
                                         @enderror
                                         </div>
                                         <div class="mb-3 mt-3">
-                                        <label for="role" class="form-label"> User Role </label>
-                                        <select name="role" class="form-control">
+                                            <label for="cafe_member" class="form-label"> Membership </label>
+                                            <select name="cafe_member" class="form-control" >
+                                                <option hidden value={{$user->cafe_member}}> @if ($user->cafe_member === 0)
+                                                    No
+                                                @else
+
+                                                    Yes
+                                                @endif </option>
+                                                <option value=1>Yes</option>
+                                                <option value=0>No</option>
+                                            </select>
+                                         </div>
+
+                                        <div class="mb-3 mt-3">
+                                        <label for="usertype" class="form-label"> User Role </label>
+                                        <select name="usertype" class="form-control">
+                                            <option hidden value={{$user->usertype}}> @if ($user->usertype === "user")
+                                                User
+                                            @else
+                                                Admin
+                                            @endif </option>
                                             <option value="user">User</option>
                                             <option value="admin">Admin</option>
                                         </select>
-                                        @error('role')
-                                            <p class="text-danger">{{$message}}</p>
-                                        @enderror
+                                   
                                         </div>
 
                                     
