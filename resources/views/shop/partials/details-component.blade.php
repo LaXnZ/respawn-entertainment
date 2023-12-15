@@ -107,8 +107,7 @@
                                         </div>
                                         <ul class="product-meta font-xs color-grey mt-50">
                                             <li class="mb-5 ">SKU: <a class="nav_text" href="#">{{$product->SKU}}</a></li>
-                                            <li class="mb-5 ">Tags: <a class="nav_text" href="#" rel="tag">Cloth</a>, <a  class="nav_text" href="#" rel="tag">Women</a>, <a  class="nav_text" href="#" rel="tag">Dress</a> </li>
-                                            <li>Availability:<span class="in-stock text-success ml-5">{{$product->quantity}} Items {{$product->stock_status}}</span></li>
+                                              <li>Availability:<span class="in-stock text-success ml-5">{{$product->quantity}} Items {{$product->stock_status}}</span></li>
                                         </ul>
                                     </div>
                                     <!-- Detail Info -->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,8 @@ class StripeController extends Controller
         return view('checkout/checkout', compact('products'));
     }
     
+    
+    
     public function checkout(){
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
 
@@ -20,6 +23,11 @@ class StripeController extends Controller
 
         $lineItems = [];
 
+     
+     
+        
+       
+        
         // Iterate over the items in the cart
         foreach (session('cart') as $product_id => $details) {
             foreach ($products as $product) {
