@@ -113,6 +113,9 @@ class ShopComponent extends Component
     
     public function render()
     {
+       
+        
+        
         $categories = Category::orderBy('name','ASC')->get();
         $products = Product::whereBetween('regular_price', [$this->min_value, $this->max_value])->paginate(9);
         $nproducts = Product::latest()->take(3)->get();

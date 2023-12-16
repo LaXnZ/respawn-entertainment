@@ -13,6 +13,53 @@
         </div>
         <section class="mt-8 pb-8">
             <div class="container flex flex-wrap bg-white p-4 rounded-lg border">
+
+                <!-- Order Confirmation on the left side -->
+                <div class="w-full md:w-7/12 mb-8 md:mb-0 p-6 mr-14 rounded-lg ">
+                    <h4 class="mb-4 text-lg font-semibold">Order Confirmation</h4>
+                
+                    <table class="table shopping-summery text-center clean bg-white p-4 rounded-lg border">
+                        <thead>
+                            <tr class="main-heading">
+                                <th scope="col">Image</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php $total = 0; @endphp
+                           
+                            @foreach ($latestOrder->orderDetails as $orderDetail)
+                                <tr>
+                                    <!-- Assuming you have an image URL in the order details -->
+                                    <td class="image product-thumbnail inline-block">
+                                        <img src="{{asset('assets/imgs/product_crud/')}}/{{$orderDetail->image}}" alt="#" class="w-16">
+                                    </td>
+                                    <td class="product-des product-name">
+                                        <h5 class="product-name text-sm">{{ $orderDetail->product_name }}</h5>
+                                    </td>
+                                    <td class="price" data-title="Price"><span>{{ $orderDetail->product_price }}</span></td>
+                                    <td class="text-center" data-title="Stock">
+                                        <span>{{ $orderDetail->quantity }}</span>
+                                    </td>
+                                    <td class="text-center" data-title="Cart">
+                                        <span>{{ $orderDetail->total }}</span>
+                                    </td>
+                                </tr>
+                                @php $total += $orderDetail->total; @endphp
+                            @endforeach
+
+                            <tr>
+                                <td colspan="4" class="text-end font-semibold">Total</td>
+                                <td class="font-semibold">LKR {{ $total }}.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            
                 <!-- Checkout form on the right side -->
                 <div class="w-full md:w-4/12 mt-8 md:mt-0">
                     <div class="bg-gray-100 p-6 rounded-lg border">

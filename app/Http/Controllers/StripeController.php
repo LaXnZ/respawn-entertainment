@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StripeController extends Controller
 {
@@ -59,6 +60,26 @@ class StripeController extends Controller
 
     public function success()
     {
-        return view('checkout/success');
+
+        $products = Product::paginate(10);
+        $latestOrder = Order::where('user_id', Auth::id())
+            ->latest('created_at')
+            ->with('orderDetails') 
+            ->first();
+            
+        $otherOrders = Order::where('user_id', Auth::id())
+            ->where('id', '!=', optional($latestOrder)->id) 
+            ->orderBy('created_at', 'desc')
+            ->paginate(3);
+            
+            
+        $orderDetails = Order::where('user_id', Auth::id())
+            ->latest('created_at')
+            ->with('orderDetails') 
+            ->first();
+            
+   
+        session()->forget('cart');
+        return view('checkout/success' , compact('latestOrder', 'otherOrders', 'products', 'orderDetails'));
     }
 }

@@ -44,11 +44,10 @@
                                         </td>
                                         <td class="price" data-title="Price"><span>LKR {{$details['price']}}.00</span></td>
                                         <td class="text-center" data-title="Stock">
-                                            <div class="w-16  m-auto flex-1">
-                                                                                
-                                                <input type="number" onchange="updateCart(event,this)" class="qty-val" value="{{ $details['quantity'] }}" />
-
+                                            <div class="w-16 m-auto flex-1">
+                                                <input type="number" onchange="updateCart(event, this)" class="qty-val" value="{{ $details['quantity'] }}" min="0" />
                                             </div>
+                                            
                                         </td>
                                         <td class="text-center" data-title="Cart">
                                             <span>LKR {{$details['price'] * $details['quantity']}}.00 </span>
