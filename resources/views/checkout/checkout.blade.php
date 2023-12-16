@@ -27,7 +27,7 @@
                         </thead>
                         <tbody>
                             @php $total = 0; @endphp
-                            @if(session('cart') > 0) 
+                           
                                 @foreach (session('cart') as $product_id => $details)
                                     @php $total += $details['price'] * $details['quantity'] @endphp
                                     <tr data-id="{{$product_id}}">
@@ -52,13 +52,7 @@
                                     <td colspan="4" class="text-end font-semibold">Total</td>
                                     <td class="font-semibold">LKR {{ $total }}.00</td>
                                 </tr>
-                            @else
-                                <tr>
-                                    <td colspan="5" class="text-center">
-                                        <p>No items in the cart</p>
-                                    </td>
-                                </tr>
-                            @endif
+                          
                         </tbody>
                     </table>
                 </div>
@@ -67,14 +61,14 @@
                 <!-- Checkout form on the right side -->
                 <div class="w-full md:w-4/12 mt-8 md:mt-0">
                     <div class="bg-gray-100 p-6 rounded-lg border">
-                        <p class="mb-4 text-lg font-semibold">Are you sure you want to proceed with the order?</p>
+                        <p class="mb-4 text-lg font-semibold">Enter Billing Details</p>
                         <form action="{{ route('checkout.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
 
                             <div class="mb-4">
                                 <label for="firstname" class="block text-sm font-medium text-gray-700">First Name:</label>
-                                <input type="text" id="firstname" name="firstname" class="mt-1 p-2 w-full border rounded-md" required>
+                                <input type="text" id="firstname" name="firstname" class="mt-1 p-2 w-full border rounded-md" >
                                 @error('firstname')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -82,7 +76,7 @@
 
                             <div class="mb-4">
                                 <label for="lastname" class="block text-sm font-medium text-gray-700">Last Name:</label>
-                                <input type="text" id="lastname" name="lastname" class="mt-1 p-2 w-full border rounded-md" required>
+                                <input type="text" id="lastname" name="lastname" class="mt-1 p-2 w-full border rounded-md" >
                                 @error('lastname')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -90,7 +84,7 @@
 
                             <div class="mb-4">
                                 <label for="mobile" class="block text-sm font-medium text-gray-700">Mobile:</label>
-                                <input type="text" id="mobile" name="mobile" class="mt-1 p-2 w-full border rounded-md" required>
+                                <input type="tel" id="mobile" name="mobile" class="mt-1 p-2 w-full border rounded-md" >
                                 @error('mobile')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -98,14 +92,14 @@
 
                             <div class="mb-4">
                                 <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
-                                <input type="email" id="email" name="email" class="mt-1 p-2 w-full border rounded-md" required>
+                                <input type="email" id="email" name="email" class="mt-1 p-2 w-full border rounded-md" >
                                 @error('email')
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror
                             </div>
                             <div class="mb-4">
                                 <label for="addressLine1" class="block text-sm font-medium text-gray-700">Address Line 1:</label>
-                                <input type="text" id="addressLine1" name="line1" class="mt-1 p-2 w-full border rounded-md" required>
+                                <input type="text" id="addressLine1" name="line1" class="mt-1 p-2 w-full border rounded-md" >
                                 @error('line1')
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror
@@ -114,12 +108,14 @@
                             <div class="mb-4">
                                 <label for="line2" class="block text-sm font-medium text-gray-700">Address Line 2:</label>
                                 <input type="text" id="addressLine2" name="line2" class="mt-1 p-2 w-full border rounded-md">
-
+                                @error('line2')
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-4">
                                 <label for="city" class="block text-sm font-medium text-gray-700">City:</label>
-                                <input type="text" id="city" name="city" class="mt-1 p-2 w-full border rounded-md" required>
+                                <input type="text" id="city" name="city" class="mt-1 p-2 w-full border rounded-md" >
                                 @error('city')
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror
@@ -127,14 +123,15 @@
 
                             <div class="mb-4">
                                 <label for="postalCode" class="block text-sm font-medium text-gray-700">Postal Code:</label>
-                                <input type="text" id="postalCode" name="postalcode" class="mt-1 p-2 w-full border rounded-md" required>
-                                @error('postalCode')
-                                <span class="text-danger">{{$message}}</span>
+                                <input type="number" id="postalCode" name="postalcode" class="mt-1 p-2 w-full border rounded-md">
+                                @error('postalcode')
+                                    <span class="text-danger">{{$message}}</span>
                                 @enderror
                             </div>
+                            
 
 
-                            <button type="submit" class="w-full p-2 bg-green-500 text-white rounded-md hover:bg-green-600">Confirm Order</button>
+                            <button type="submit" class="w-full p-2 bg-green-500 text-white rounded-md hover:bg-green-600">Save Details</button>
                         </form>
                     </div>
                 </div>

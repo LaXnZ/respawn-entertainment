@@ -125,7 +125,12 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <a href="checkout" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
+                                    @if((session('cart')) > 0) 
+                                    <a href="checkout" class="btn"> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
+                                @else
+                                    <button class="btn" disabled> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</button>
+                                @endif
+                                
                                 </div>
                             </div>
                         </div>

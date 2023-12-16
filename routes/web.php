@@ -107,7 +107,11 @@ Route::controller(UserManagementController::class)->prefix('admin')->group(funct
 // checkout routes
 Route::get('/checkout',[StripeController::class, 'index'])->middleware('auth')->name('checkout')->middleware('verified');
 Route::post('/checkout/store',[OrderController::class, 'store'])->middleware('auth')->name('checkout.store')->middleware('verified');
-Route::post('/checkout/process',[StripeController::class, 'checkout'])->middleware('auth')->name('checkout.process')->middleware('verified');
+Route::get('/checkout/view',[OrderController::class, 'index'])->middleware('auth')->name('checkout.view')->middleware('verified');
+Route::post('/checkout/process', [StripeController::class, 'checkout'])
+    ->middleware(['auth', 'verified'])
+    ->name('checkout.process');
+
 Route::get('/checkout/success',[StripeController::class, 'success'])->middleware('auth')->name('checkout.success')->middleware('verified');
  
 //profile routes
