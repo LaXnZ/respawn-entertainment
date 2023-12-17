@@ -65,4 +65,15 @@ class OrderController extends Controller
     return view('checkout/order-confirmation', compact('latestOrder', 'otherOrders', 'products'));
 }
 
+public function view()
+{
+    $products = Product::paginate(10);
+
+ 
+    $orders = Order::where('user_id', Auth::id())->paginate(10);
+
+    return view('checkout/orders', compact('orders', 'products'));
+}
+
+
 }

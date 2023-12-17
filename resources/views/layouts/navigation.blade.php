@@ -59,6 +59,10 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
+                        <x-dropdown-link class="nav_text" :href="route('checkout.orders')">
+                            {{ __('Orders') }}
+                        </x-dropdown-link>
+
                         @auth
 
                         <x-dropdown-link class="nav_text" :href="route('users')">
