@@ -2,6 +2,7 @@
 
 <x-app-layout>
     <main class="main">
+        @if ($orders->count()>0)
         <div class="container mt-5">
             <h4 class="mb-3">All Orders</h4>
 
@@ -50,5 +51,19 @@
                 <a href="{{ route('shop') }}" class="btn btn-primary" >Continue Shopping</a>
             </div>
         </div>
+        @else
+            <div class="container mt-5">
+                <div class="alert" >
+                    <h4 class="alert-heading">No Orders!</h4>
+                    <p>You have not placed any orders yet.</p>
+                    <hr>
+                    <p class="mb-0">Please visit our shop and place your order.</p>
+                </div>
+                <div class="text-end mt-4 pb-4">
+                    <a href="{{ route('shop') }}" class="btn btn-primary" >Continue Shopping</a>
+                </div>
+            </div>
+            
+        @endif
     </main>
 </x-app-layout>

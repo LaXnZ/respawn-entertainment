@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
+   
     <main class="main pb-4 ">
         <div class="page-header breadcrumb-wrap mr-10 flex ">
             

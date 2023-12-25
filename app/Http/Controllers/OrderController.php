@@ -54,7 +54,7 @@ class OrderController extends Controller
     
     $latestOrder = Order::where('user_id', Auth::id())
         ->latest('created_at')
-        ->with('orderDetails') // Eager load order details
+        ->with('orderDetails') 
         ->first();
 
     $otherOrders = Order::where('user_id', Auth::id())
@@ -66,14 +66,15 @@ class OrderController extends Controller
 }
 
 public function view()
-{
-    $products = Product::paginate(10);
+    {
+        $products = Product::paginate(10);
 
- 
-    $orders = Order::where('user_id', Auth::id())->paginate(10);
+    
+      
+        $orders = Order::where('user_id', Auth::id())->orderBy('created_at', 'desc')->paginate(10);
 
-    return view('checkout/orders', compact('orders', 'products'));
-}
+        return view('checkout/orders', compact('orders', 'products'));
+    }
 
 
 }
