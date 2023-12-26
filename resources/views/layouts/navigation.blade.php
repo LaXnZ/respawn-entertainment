@@ -59,11 +59,17 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
+                        @if (Auth::user()->usertype == 'user')
                         <x-dropdown-link class="nav_text" :href="route('checkout.orders')">
                             {{ __('Orders') }}
                         </x-dropdown-link>
+                            
+                        @endif
 
                         @auth
+                        <x-dropdown-link class="nav_text" :href="route('orders')">
+                            {{ __('Orders') }}
+                        </x-dropdown-link>
 
                         <x-dropdown-link class="nav_text" :href="route('users')">
                             {{ __('Users') }}

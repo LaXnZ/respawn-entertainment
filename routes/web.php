@@ -114,6 +114,8 @@ Route::post('/checkout/process', [StripeController::class, 'checkout'])
 Route::get('/checkout/success',[StripeController::class, 'success'])->middleware('auth')->name('checkout.success')->middleware('verified');
 Route::get('/chekout/orders',[OrderController::class, 'view'])->middleware('auth')->name('checkout.orders')->middleware('verified');
 
+//admin order routes
+Route::get('/orders',[OrderController::class, 'adminOrderIndex'])->middleware('auth')->middleware('admin')->name('orders')->middleware('verified');
 
 //profile routes
 Route::middleware('auth')->group(function () {
