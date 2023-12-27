@@ -9,8 +9,8 @@
             </div>
 
             <!-- Display Latest Order Details -->
-            <div class="mt-4 border-bottom pb-3">
-                <h5 class="mb-3">Latest Order Details</h5>
+            <div class="mt-4 border-bottom pb-3 bg-white p-4 rounded-lg">
+                <h2 class="mb-3">Latest Order Details</h2>
                 <p><strong>Order ID:</strong> {{ $latestOrder->id }}</p>
                 <p><strong>Order Date:</strong> {{ $latestOrder->created_at->format('Y-m-d H:i:s') }}</p>
 
@@ -45,7 +45,7 @@
             </div>
 
             <!-- Display Billing Details -->
-            <div class="mt-4 border-bottom pb-3">
+            <div class="mt-4 border-bottom pb-3 bg-white p-4 rounded-lg">
                 <h5 class="mb-3">Billing Details</h5>
                 <p><strong>First Name:</strong> {{ $latestOrder->firstname }}</p>
                 <p><strong>Last Name:</strong> {{ $latestOrder->lastname }}</p>
@@ -59,10 +59,10 @@
 
             <!-- Display Other Orders if Available -->
             @if (!$otherOrders->isEmpty())
-                <div class="mt-4">
-                    <h5 class="mb-3">Other Orders</h5>
+                <div class="mt-4 ">
+                    <h2 class="mb-3">Other Orders</h2>
                     @foreach ($otherOrders as $order)
-                        <div class="border-bottom pb-3">
+                        <div class="border-bottom pb-3 bg-white p-4 rounded-lg mb-3">
                             <p><strong>Order ID:</strong> {{ $order->id }}</p>
                             <p><strong>Order Date:</strong> {{ $order->created_at->format('Y-m-d H:i:s') }}</p>
 

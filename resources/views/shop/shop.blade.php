@@ -2,7 +2,7 @@
 
    
     <main class="main pb-4 ">
-        <div class="page-header breadcrumb-wrap mr-10 flex ">
+        <div class="page-header breadcrumb-wrap mr-10 flex mt-6">
             
             <div class="container">
                 <div class="breadcrumb ">
@@ -92,7 +92,7 @@
 
         
 
-        <section class="mt-50 mb-50">
+        <section class="mt-20 ">
             <div class="container">
                 @if (session('success'))
                     <div class="alert alert-success">
@@ -183,16 +183,7 @@
                         <!--pagination-->
                         <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
                             {{$products->links()}}
-                            {{-- <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-start">
-                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                    <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">16</a></li>
-                                    <li class="page-item"><a class="page-link" href="#"><i class="fi-rs-angle-double-small-right"></i></a></li>
-                                </ul>
-                            </nav> --}}
+                           
                         </div>
                     </div>
                     <div class="col-lg-3 primary-sidebar sticky-sidebar">
