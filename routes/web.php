@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\BusinessHourController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
-
-
 use App\View\Components\DetailsComponent;
 use App\View\Components\CategoryComponent;
 use Illuminate\Support\Facades\Route;
@@ -64,6 +64,10 @@ Route::delete('/clear-cart',[ShopComponent::class, 'clear'])->middleware('auth')
 Route::get('/product-category/{slug}',[CategoryComponent::class, 'category'])->middleware('auth')->name('product.category')->middleware('verified');
 
 
+//user appointment routes (reserves)
+Route::get('/reserve',[AppointmentController::class, 'index'])->middleware('auth')->name('appointments.reserve')->middleware('verified');
+Route::post('post-appointment',[AppointmentController::class, 'reserve'])->middleware('auth')->name('appointments.reserve.post')->middleware('verified');
+
 //admin routes 
 Route::get('/admin/categories',[AdminCategoryComponent::class, 'render'])->middleware('auth')->middleware('admin')->name('admin.categories')->middleware('verified');
 Route::get('/admin/category/add',[AdminAddCategoryComponent::class, 'render'])->middleware('auth')->middleware('admin')->name('admin.category.add')->middleware('verified');
@@ -71,6 +75,11 @@ Route::get('/admin.products',[ShopComponent::class, 'render'])->middleware('auth
 Route::get('/admin.products/{slug}',[DetailsComponent::class, 'details'])->middleware('auth')->middleware('admin')->name('admin.product.details')->middleware('verified');
 Route::get('/admin.product-category/{slug}',[CategoryComponent::class, 'category'])->middleware('auth')->middleware('admin')->name('admin.product.category')->middleware('verified');
 
+// admin reserve hours 
+Route::controller(CategoryController::class)->prefix('admin')->group(function(){
+    Route::get('/business-hours',[BusinessHourController::class, 'index'])->middleware('auth')->name('appointments')->middleware('verified');
+    Route::post('/business-hours',[BusinessHourController::class, 'update'])->middleware('auth')->name('appointments.update')->middleware('verified');
+ });
 
 // admin category routes
  Route::controller(CategoryController::class)->prefix('admin')->group(function(){

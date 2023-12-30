@@ -14,9 +14,9 @@ class DatabaseSeeder extends Seeder
     {
        
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call([
+            BusinessHourSeeder::class,
+            // AppointmentSeeder::class,
+        ]);
     }
 }
