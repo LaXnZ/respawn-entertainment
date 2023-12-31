@@ -12,7 +12,7 @@
                             Users
                         </div>
                         <div class="bg-blue-500 text-white px-3 py-1 rounded-full">
-                            100
+                            {{ $users->count() }}
                         </div>
                     </div>
                     <div>
@@ -30,7 +30,7 @@
                             Products
                         </div>
                         <div class="bg-green-500 text-white px-3 py-1 rounded-full">
-                            200
+                            {{ $products->count() }}
                         </div>
                     </div>
                     <div>
@@ -66,7 +66,7 @@
                             Categories
                         </div>
                         <div class="bg-yellow-500 text-white px-3 py-1 rounded-full">
-                            400
+                            {{ $categories->count() }}
                         </div>
                     </div>
                     <div>
@@ -84,7 +84,7 @@
                             Orders
                         </div>
                         <div class="bg-cyan-500 text-white px-3 py-1 rounded-full">
-                            500
+                            {{ $orders->count()}}
                         </div>
                     </div>
                     <div>
@@ -99,12 +99,12 @@
                         <div class="text-xl font-bold text-gray-800">
                             Reservations
                         </div>
-                        <div class="bg-cyan-500 text-white px-3 py-1 rounded-full">
-                            500
+                        <div class="bg-purple-500 text-white px-3 py-1 rounded-full">
+                            {{ $reservations->count()}}
                         </div>
                     </div>
                     <div>
-                        <a href="{{ route('reservations') }}" class="text-cyan-500 hover:text-cyan-600">View All Reservations</a>
+                        <a href="{{ route('reservations') }}" class="text-purple-500 hover:text-purple-600">View All Reservations</a>
                     </div>
                     
                 </div>
