@@ -67,6 +67,7 @@ Route::get('/product-category/{slug}',[CategoryComponent::class, 'category'])->m
 //user appointment routes (reserves)
 Route::get('/reserve',[AppointmentController::class, 'index'])->middleware('auth')->name('appointments.reserve')->middleware('verified');
 Route::post('post-appointment',[AppointmentController::class, 'reserve'])->middleware('auth')->name('appointments.reserve.post')->middleware('verified');
+Route::get('/my-reservations',[AppointmentController::class, 'myReservations'])->middleware('auth')->name('appointments.my-reservations')->middleware('verified');
 
 //admin routes 
 Route::get('/admin/categories',[AdminCategoryComponent::class, 'render'])->middleware('auth')->middleware('admin')->name('admin.categories')->middleware('verified');
@@ -79,6 +80,7 @@ Route::get('/admin.product-category/{slug}',[CategoryComponent::class, 'category
 Route::controller(CategoryController::class)->prefix('admin')->group(function(){
     Route::get('/business-hours',[BusinessHourController::class, 'index'])->middleware('auth')->name('appointments')->middleware('verified');
     Route::post('/business-hours',[BusinessHourController::class, 'update'])->middleware('auth')->name('appointments.update')->middleware('verified');
+    Route::get('/reservations',[AppointmentController::class, 'adminReservationsView'])->middleware('auth')->name('reservations')->middleware('verified');
  });
 
 // admin category routes

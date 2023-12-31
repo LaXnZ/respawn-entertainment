@@ -92,6 +92,22 @@
                     </div>
                     
                 </div>
+
+                 <!-- Card 6 -->
+                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg mb-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-xl font-bold text-gray-800">
+                            Reservations
+                        </div>
+                        <div class="bg-cyan-500 text-white px-3 py-1 rounded-full">
+                            500
+                        </div>
+                    </div>
+                    <div>
+                        <a href="{{ route('reservations') }}" class="text-cyan-500 hover:text-cyan-600">View All Reservations</a>
+                    </div>
+                    
+                </div>
             </div>
        
     </main>

@@ -69,7 +69,10 @@
 
                         @if (Auth::user()->usertype == 'user')
                             <x-dropdown-link class="nav_text" :href="route('checkout.orders')">
-                                {{ __('Orders') }}
+                                {{ __('My Orders') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link class="nav_text" :href="route('appointments.my-reservations')">
+                                {{ __('My Reservations') }}
                             </x-dropdown-link>
                         @endif
 
