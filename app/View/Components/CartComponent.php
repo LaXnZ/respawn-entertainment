@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Game;
 use App\Models\Product;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -13,6 +14,8 @@ class CartComponent extends Component
     public function cart(){
         
         // pass products from the product module
+        $games = Game::all();
+        $allProducts = Product::all();
         $products = Product::paginate(12);
         
         if(Auth::id()){
@@ -24,6 +27,8 @@ class CartComponent extends Component
                 return view('shop/partials/cart-component',[
                     'products' => $products,
                     'cafe_member' => $cafe_member,
+                    'games' => $games,
+                    'allProducts' => $allProducts,
                 ]);
             }
             else if($usertype == 'admin'){

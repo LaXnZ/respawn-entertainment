@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Game;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
@@ -15,7 +16,9 @@ class StripeController extends Controller
     public function index()
     {
         $products = Product::paginate(10);
-        return view('checkout/checkout', compact('products'));
+        $allProducts = Product::all();
+        $allGames = Game::all();
+        return view('checkout/checkout', compact('products', 'allProducts', 'allGames'));
     }
     
     public function checkout(){
@@ -26,19 +29,31 @@ class StripeController extends Controller
         $lineItems = [];
 
         foreach (session('cart') as $product_id => $details) {
-            foreach ($products as $product) {
-                if ($product->id == $product_id) {
-                    $lineItems[] = [
-                        'price_data' => [
-                            'currency' => 'lkr', 
-                            'product_data' => [
-                                'name' => $details['name'],
-                            ],
-                            'unit_amount' => $details['price'] * 100, 
+            if($details['type'] == 'product'){
+                $product = Product::find($product_id);
+                $lineItems[] = [
+                    'price_data' => [
+                        'currency' => 'lkr',
+                        'product_data' => [
+                            'name' => $product->name,
                         ],
-                        'quantity' => $details['quantity'],
-                    ];
-                }
+                        'unit_amount' => $product->regular_price * 100,
+                    ],
+                    'quantity' => $details['quantity'],
+                ];
+            }
+            else if($details['type'] == 'game'){
+                $game = Game::find($product_id);
+                $lineItems[] = [
+                    'price_data' => [
+                        'currency' => 'lkr',
+                        'product_data' => [
+                            'name' => $game->name,
+                        ],
+                        'unit_amount' => $game->price * 100,
+                    ],
+                    'quantity' => $details['quantity'],
+                ];
             }
         }
         
@@ -60,6 +75,7 @@ class StripeController extends Controller
     public function success()
     {
         $products = Product::paginate(10);
+        $games = Game::all();
         $latestOrder = Order::where('user_id', Auth::id())
             ->latest('created_at')
             ->with('orderDetails') 
@@ -96,6 +112,6 @@ class StripeController extends Controller
 
         Notification::send($user, new OrderEmailNotification($details));
     
-        return view('checkout/success' , compact('latestOrder', 'otherOrders', 'products', 'orderDetails'));
+        return view('checkout/success' , compact('latestOrder', 'otherOrders', 'products', 'orderDetails', 'games'));
     }
 }

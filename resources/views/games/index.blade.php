@@ -1,20 +1,17 @@
+<!-- resources/views/games/index.blade.php -->
+
 <x-app-layout>
 
-
-    <main class="main pb-4 ">
+    <main class="main pb-4">
         <div class="page-header breadcrumb-wrap mr-10 flex mt-6">
-
             <div class="container">
-                <div class="breadcrumb ">
+                <div class="breadcrumb">
                     <a class="nav_text" href="home" rel="nofollow">Home</a>
-                    <span></span> Shop
+                    <span></span> Games
                 </div>
             </div>
 
-
-
             @if (Auth::user()->usertype == 'user')
-
                 <div class="relative inline-block text-left">
                     <button type="button"
                         class="inline-flex items-center px-2 py-1 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
@@ -118,10 +115,6 @@
 
         </div>
 
-
-
-
-
         <section class="mt-20 ">
             <div class="container">
                 @if (session('success'))
@@ -132,12 +125,11 @@
             </div>
             <div class="container">
 
-
                 <form class="relative m-4" action="{{ route('search') }}" method="GET">
                     @csrf
                     <input type="search" name="search" id="default-search"
                         class="block w-full p-4 ps-10 text-md text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
-                        placeholder="Search Products.." required>
+                        placeholder="Search Games.." required>
                     @error('search')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
@@ -152,30 +144,22 @@
                     <div class="col-lg-9">
                         <div class="shop-product-fillter">
                             <div class="totall-product">
-                                <p> We found <strong class="text-brand">{{ $products->total() }}</strong> items for
-                                    you!
-                                </p>
+                                <p> We found <strong class="text-brand">{{ $games->total() }}</strong> items for
+                                    you!</p>
                             </div>
-
-
                         </div>
                         <div class="row product-grid-3">
-                            @foreach ($products as $product)
+                            @foreach ($games as $game)
                                 <div class="col-lg-4 col-md-4 col-6 col-sm-6">
                                     <div class="product-cart-wrap mb-30">
                                         <div class="product-img-action-wrap">
                                             <div class="product-img product-img-zoom">
 
-                                                <a href="{{ route('product.details', ['slug' => $product->slug]) }}">
-                                                    {{-- @if ($product)
-                                                    <img class="default-img" src="{{asset('assets/imgs/product_crud/')}}/{{$product->image}}" alt="{{ $product->name }}">
-                                                    <img class="hover-img" src="{{ asset('assets/imgs/shop/product-' . $product->id . '-2.jpg') }}" alt="{{ $product->name }}">
-                                                @endif --}}
+                                                <a href="{{ route('game.details', ['id' => $game->id]) }}">
                                                     <img class="default-img"
-                                                        src="{{ asset('assets/imgs/product_crud/') }}/{{ $product->image }}"
-                                                        alt="{{ $product->name }}">
+                                                        src="{{ asset('storage/games/' . $game->image) }}"
+                                                        alt="{{ $game->name }}">
                                                 </a>
-
 
                                             </div>
                                             <div class="product-action-1">
@@ -192,28 +176,19 @@
                                             </div>
                                         </div>
                                         <div class="product-content-wrap">
-                                            @foreach ($categories as $category)
-                                                @if ($product->category_id == $category->id)
-                                                    <div class="product-category">
-                                                        <a href="#">{{ $category->name }}</a>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                            <h2><a href="product-details.html">{{ $product->name }}</a></h2>
-                                            <div class="rating-result" title="90%">
-                                                <span>
-                                                    <span>90%</span>
-                                                </span>
-                                            </div>
+                                            <h2><a
+                                                    href="{{ route('game.details', ['id' => $game->id]) }}">{{ $game->name }}</a>
+                                            </h2>
+                                            <p class="card-text">{{ $game->description }}</p>
                                             <div class="product-price">
-                                                <span>LKR {{ $product->regular_price }}.00 </span>
-                                                {{-- <span class="old-price">{{$product->}}</span> --}}
+                                                <span>LKR {{ $game->price }}.00 </span>
                                             </div>
                                             <div class="product-action-1 show">
                                                 <a aria-label="Add To Cart" class="action-btn hover-up"
-                                                    href="{{ route('add_to_cart', ['id' => $product->id, 'type' => 'product']) }}">
+                                                    href="{{ route('add_to_cart', ['id' => $game->id, 'type' => 'game']) }}">
                                                     <i class="fi-rs-shopping-bag-add"></i>
                                                 </a>
+
                                             </div>
                                         </div>
                                     </div>
@@ -223,7 +198,7 @@
 
                         <!--pagination-->
                         <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
-                            {{ $products->links() }}
+                            {{ $games->links() }}
 
                         </div>
                     </div>
@@ -233,89 +208,11 @@
                             <div class="col-lg-12 col-mg-6"></div>
                         </div>
 
-                        <div class="widget-category mb-30 bg-white">
-                            <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
-                            <ul class="categories">
-                                @foreach ($categories as $category)
-                                    <li><a
-                                            href="{{ route('product.category', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
-                                    </li>
-                                @endforeach
 
-                            </ul>
-                        </div>
-                        <!-- Fillter By Price -->
-                        <div class="sidebar-widget price_range range mb-30 bg-white  ">
-                            <div class="widget-header position-relative mb-20 pb-10">
-                                <h5 class="widget-title mb-10">Fill by price</h5>
-                                <div class="bt-1 border-color-1"></div>
-                            </div>
-                            <div class="price-filter">
-                                <div class="price-filter-inner">
-                                    <div id="slider-range"></div>
-                                    <div class="price_slider_amount">
-                                        <div class="label-input">
-                                            <span>Range:</span><strong><span class="text-info">
-                                                    ${{ $min_value }}</span> - <span class="text-info">
-                                                    ${{ $max_value }}</span></strong>
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {{-- <a href="shop.html" class="btn btn-sm btn-default mt-2"><i class="fi-rs-filter mr-5"></i> Fillter</a> --}}
-                        </div>
-                        <!-- Product sidebar Widget -->
-                        <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10 bg-white">
-                            <div class="widget-header position-relative mb-20 pb-10">
-                                <h5 class="widget-title mb-10">New products</h5>
-                                <div class="bt-1 border-color-1"></div>
-                            </div>
-                            @foreach ($nproducts as $nproduct)
-                                <div class="single-post clearfix">
-                                    <div class="image">
-                                        <img src="{{ asset('assets/imgs/product_crud/') }}/{{ $nproduct->image }}"
-                                            alt="{{ $nproduct->name }}">
-                                    </div>
-                                    <div class="content pt-10">
-                                        <h5><a class="hover:text-orange-600"
-                                                href="{{ route('product.details', ['slug' => $nproduct->slug]) }}">{{ $nproduct->name }}</a>
-                                        </h5>
-                                        <p class="price mb-0 mt-5">LKR {{ $nproduct->regular_price }}</p>
-                                        <div class="product-rate">
-                                            <div class="product-rating" style="width:90%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 </x-app-layout>
-
-
-<script>
-    $(document).ready(function() {
-        // var min_value = {{ $min_value }};
-        // var max_value = {{ $max_value }};
-        var slider_range = $("#slider-range");
-        slider_range.slider({
-            range: true,
-            min: 0,
-            max: 1000,
-            values: [0, 1000],
-            change: function(event, ui) {
-                $(".text-info").eq(0).text("$" + ui.values[0]);
-                $(".text-info").eq(1).text("$" + ui.values[1]);
-                $this.set('min_value', ui.values[0]);
-                $this.set('max_value', ui.values[1]);
-            }
-        });
-        console.log("Slider initialized");
-    });
-</script>

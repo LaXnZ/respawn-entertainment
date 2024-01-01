@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BusinessHourController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\ProfileController;
 use App\View\Components\DetailsComponent;
 use App\View\Components\CategoryComponent;
@@ -63,6 +64,9 @@ Route::delete('/clear-cart',[ShopComponent::class, 'clear'])->middleware('auth')
 // Route::get('/checkout',[ComponentsCheckoutComponent::class, 'checkout'])->middleware('auth')->name('shop.checkout')->middleware('verified');
 Route::get('/product-category/{slug}',[CategoryComponent::class, 'category'])->middleware('auth')->name('product.category')->middleware('verified');
 
+//games routes
+Route::get('/games',[GameController::class, 'index'])->middleware('auth')->name('games')->middleware('verified');
+Route::get('/game/{id}',[GameController::class, 'details'])->middleware('auth')->name('game.details')->middleware('verified');
 
 //user appointment routes (reserves)
 Route::get('/reserve',[AppointmentController::class, 'index'])->middleware('auth')->name('appointments.reserve')->middleware('verified');

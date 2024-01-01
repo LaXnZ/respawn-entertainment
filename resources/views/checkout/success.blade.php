@@ -26,15 +26,28 @@
                     </thead>
                     <tbody>
                         @foreach ($latestOrder->orderDetails as $orderDetail)
-                            <tr>
-                                <td>{{ $orderDetail->product_name }}</td>
-                                <td>{{ $orderDetail->quantity }}</td>
-                                <td>LKR {{ $orderDetail->product_price }}.00</td>
-                                <td>LKR {{ $orderDetail->total }}.00</td>
-                                <td>
-                                    <img src="{{ asset('assets/imgs/product_crud/') }}/{{ $orderDetail->image }}" alt="{{ $orderDetail->product_name }}" class="w-16">
-                                </td>
-                            </tr>
+                            @if ($orderDetail->order_type == 'game')
+                                <tr>
+                                    <td>{{ $orderDetail->product_name }}</td>
+                                    <td>{{ $orderDetail->quantity }}</td>
+                                    <td>LKR {{ $orderDetail->product_price }}.00</td>
+                                    <td>LKR {{ $orderDetail->total }}.00</td>
+                                    <td>
+                                        <img src="{{ asset('assets/imgs/games/') }}/{{ $orderDetail->image }}"
+                                            alt="{{ $orderDetail->product_name }}" class="w-16">
+                                    </td>
+                                </tr>
+                            @else
+                                <tr>
+                                    <td>{{ $orderDetail->product_name }}</td>
+                                    <td>{{ $orderDetail->quantity }}</td>
+                                    <td>LKR {{ $orderDetail->product_price }}.00</td>
+                                    <td>LKR {{ $orderDetail->total }}.00</td>
+                                    <td>
+                                        <img src="{{ asset('assets/imgs/product_crud/') }}/{{ $orderDetail->image }}"
+                                            alt="{{ $orderDetail->product_name }}" class="w-16">
+                                    </td>
+                            @endif
                         @endforeach
                         <tr>
                             <td colspan="4" class="text-end font-weight-bold">Total</td>
@@ -78,15 +91,28 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($order->orderDetails as $orderDetail)
-                                        <tr>
-                                            <td>{{ $orderDetail->product_name }}</td>
-                                            <td>{{ $orderDetail->quantity }}</td>
-                                            <td>LKR {{ $orderDetail->product_price }}.00</td>
-                                            <td>LKR {{ $orderDetail->total }}.00</td>
-                                            <td>
-                                                <img src="{{ asset('assets/imgs/product_crud/') }}/{{ $orderDetail->image }}" alt="{{ $orderDetail->product_name }}" class="w-16">
-                                            </td>
-                                        </tr>
+                                        @if ($orderDetail->order_type == 'game')
+                                            <tr>
+                                                <td>{{ $orderDetail->product_name }}</td>
+                                                <td>{{ $orderDetail->quantity }}</td>
+                                                <td>LKR {{ $orderDetail->product_price }}.00</td>
+                                                <td>LKR {{ $orderDetail->total }}.00</td>
+                                                <td>
+                                                    <img src="{{ asset('assets/imgs/games/') }}/{{ $orderDetail->image }}"
+                                                        alt="{{ $orderDetail->product_name }}" class="w-16">
+                                                </td>
+                                            </tr>
+                                        @else
+                                            <tr>
+                                                <td>{{ $orderDetail->product_name }}</td>
+                                                <td>{{ $orderDetail->quantity }}</td>
+                                                <td>LKR {{ $orderDetail->product_price }}.00</td>
+                                                <td>LKR {{ $orderDetail->total }}.00</td>
+                                                <td>
+                                                    <img src="{{ asset('assets/imgs/product_crud/') }}/{{ $orderDetail->image }}"
+                                                        alt="{{ $orderDetail->product_name }}" class="w-16">
+                                                </td>
+                                        @endif
                                     @endforeach
                                     <tr>
                                         <td colspan="4" class="text-end font-weight-bold">Total</td>
@@ -100,7 +126,7 @@
             @endif
 
             <div class="text-end mt-4 pb-4">
-                <a href="{{ route('shop') }}" class="btn btn-primary" >Continue Shopping</a>
+                <a href="{{ route('shop') }}" class="btn btn-primary">Continue Shopping</a>
             </div>
         </div>
     </main>

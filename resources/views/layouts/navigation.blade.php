@@ -12,7 +12,8 @@
 
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex pt-3">
-                    <x-nav-link class="bg-slate-300 hover:bg-orange-600 w-13 h-7 rounded-md mt-5  px-2">
+                    <x-nav-link class="bg-slate-300 hover:bg-orange-600 w-13 h-7 rounded-md mt-5  px-2"
+                        :href="route('games')" :active="request()->routeIs('games')">
                         {{ __('Games') }}
                     </x-nav-link>
                 </div>
@@ -93,6 +94,9 @@
 
                             <x-dropdown-link class="nav_text" :href="route('appointments')">
                                 {{ __('Business Hours') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link class="nav_text" :href="route('reservations')">
+                                {{ __('Reservations') }}
                             </x-dropdown-link>
 
                         @endauth

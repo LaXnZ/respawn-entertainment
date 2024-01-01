@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use Stripe\Service\Climate\OrderService;
 use App\Models\User;
+use App\Models\Game;
 
 class OrderController extends Controller
 {
@@ -30,16 +31,31 @@ class OrderController extends Controller
         foreach (session('cart') as $product_id => $details) {
             // Retrieve the product based on the product_id
             $product = Product::find($product_id);
+            $game = Game::find($product_id);
 
-            // Check if the product is found
-            if ($product) {
-                OrderDetail::create([
+            //first check the type to see if it is a product or a game, then store
+            if ($details['type'] == 'product') {
+                $order->orderDetails()->create([
                     'order_id' => $order->id,
+                    'order_type' => $details['type'],
                     'image' => $product->image,
-                    'product_name' => $details['name'],
-                    'product_price' => $details['price'],
+                    'product_id' => $product_id,
+                    'product_name' => $product->name,
                     'quantity' => $details['quantity'],
-                    'total' => $details['price'] * $details['quantity'],
+                    'product_price' => $product->regular_price,
+                    'total' => $product->regular_price * $details['quantity'],
+                ]);
+            } else if ($details['type'] == 'game') {
+                $order->orderDetails()->create([
+                    'order_id' => $order->id,
+                    'order_type' => $details['type'],
+                    'image' => $game->image,
+                    'product_id' => $product_id,
+                    'product_name' => $game->name,
+                    'quantity' => $details['quantity'],
+                    'product_price' => $game->price,
+                    'total' => $game->price * $details['quantity'],
+
                 ]);
             }
         }
@@ -52,6 +68,8 @@ class OrderController extends Controller
     public function index()
     {
         $products = Product::paginate(10);
+        $allProducts = Product::all();
+        $allGames = Game::all();
 
         $latestOrder = Order::where('user_id', Auth::id())
             ->latest('created_at')
@@ -63,7 +81,7 @@ class OrderController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 
-        return view('checkout/order-confirmation', compact('latestOrder', 'otherOrders', 'products'));
+        return view('checkout/order-confirmation', compact('latestOrder', 'otherOrders', 'products', 'allProducts', 'allGames'));
     }
 
     public function view()
@@ -79,20 +97,18 @@ class OrderController extends Controller
 
 
     public function adminOrderIndex(Request $request)
-{
-    $users = User::all(); 
-    $selectedUserId = $request->query('user');
+    {
+        $users = User::all();
+        $selectedUserId = $request->query('user');
 
-    if ($selectedUserId) {
-       
-        $orders = Order::where('user_id', $selectedUserId)->paginate(10);
-    } else {
-       
-        $orders = Order::paginate(10);
+        if ($selectedUserId) {
+
+            $orders = Order::where('user_id', $selectedUserId)->paginate(10);
+        } else {
+
+            $orders = Order::paginate(10);
+        }
+
+        return view('admin/orders/orders', compact('orders', 'users'));
     }
-
-    return view('admin/orders/orders', compact('orders', 'users'));
-}
-
-    
 }

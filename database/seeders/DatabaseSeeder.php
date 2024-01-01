@@ -15,8 +15,9 @@ class DatabaseSeeder extends Seeder
        
 
         $this->call([
-            BusinessHourSeeder::class,
+            // BusinessHourSeeder::class,
             // AppointmentSeeder::class,
+            GameSeeder::class,
         ]);
     }
 }

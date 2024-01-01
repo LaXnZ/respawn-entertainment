@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use App\Models\Category;
+use App\Models\Game;
 use App\Models\Product;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -30,14 +31,12 @@ class ShopComponent extends Component
     public $max_value;
     public $pageSize = 12;
 
-    public function addToCart($product_id){
+    public function addToCart($product_id, Request $request){
         $product = Product::findOrFail($product_id);
-
-        
-        $cart = session()->get('cart',[]);
-
+    
+        $cart = session()->get('cart', []);
+    
         if(isset($cart[$product_id])){
-           
             $cart[$product_id]['quantity']++;
         }
         else{
@@ -46,13 +45,14 @@ class ShopComponent extends Component
                 'quantity' => 1,
                 'price' => $product->regular_price,
                 'id' => $product->id,
+                'type' => $request->type ?? 'product', // Default to 'product' if 'type' is not provided
             ];
         }
-
+    
         session()->put('cart', $cart);
         return redirect()->back()->with('success','Product add to cart successfully!');
-
     }
+    
 
     public function update(Request $request){
         if($request-> id && $request->quantity){
@@ -113,15 +113,14 @@ class ShopComponent extends Component
     
     public function render()
     {
-       
-        
-        
+
         $categories = Category::orderBy('name','ASC')->get();
         $products = Product::whereBetween('regular_price', [$this->min_value, $this->max_value])->paginate(9);
         $nproducts = Product::latest()->take(3)->get();
         //get image column from product
         $images = Product::all('image');
         $allProducts = Product::all();
+        $allGames = Game::all();
 
 
         if (Auth::id()) {
@@ -136,6 +135,7 @@ class ShopComponent extends Component
                     'min_value' => $this->min_value,
                     'max_value' => $this->max_value,
                     'allProducts' => $allProducts,
+                    'allGames' => $allGames,
                 ]);
             } else if ($usertype == 'admin') {
                 return view('shop/shop', [
