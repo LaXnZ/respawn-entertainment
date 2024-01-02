@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -13,13 +14,13 @@ class ProductController extends Controller
     public function index()
     {
         $product = Product::paginate(10);
-       
+
         foreach ($product as $item) {
             $item->description = Str::limit($item->description, 400);
         }
-        
-        
-        
+
+
+
         return view('admin.products.products', compact('product'));
     }
 
@@ -36,7 +37,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //validate the request, image should be only jpg
+
         $this->validate(
             $request,
             [
@@ -52,19 +53,19 @@ class ProductController extends Controller
                 'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
             ]
         );
-        
+
         $input = $request->all();
-        
-       if($image = $request->file('image')){
-           $destinationPath = 'assets/imgs/product_crud/';
-           $productImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-           $image->move($destinationPath, $productImage);
-           $input['image'] = "$productImage";
-         }
-        
+
+        if ($image = $request->file('image')) {
+            $destinationPath = 'assets/imgs/product_crud/';
+            $productImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $productImage);
+            $input['image'] = "$productImage";
+        }
+
         Product::create($input);
-        
-        return redirect()->route('products')->with('success','Product added successfully!');
+
+        return redirect()->route('products')->with('success', 'Product added successfully!');
     }
 
     /**
@@ -102,23 +103,23 @@ class ProductController extends Controller
                 'stock_status' => 'required',
                 'featured' => 'required',
                 'quantity' => 'required|numeric',
-                
+
             ]
         );
-        
+
         $input = $request->all();
-        
-       if($image = $request->file('image')){
-           $destinationPath = 'assets/imgs/product_crud/';
-           $productImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-           $image->move($destinationPath, $productImage);
-           $input['image'] = "$productImage";
-         }
-        
+
+        if ($image = $request->file('image')) {
+            $destinationPath = 'assets/imgs/product_crud/';
+            $productImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $productImage);
+            $input['image'] = "$productImage";
+        }
+
         $product = Product::findOrFail($id);
         $product->update($input);
-        
-        return redirect()->route('products')->with('success','Product updated successfully!');
+
+        return redirect()->route('products')->with('success', 'Product updated successfully!');
     }
 
     /**
@@ -128,7 +129,7 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $product->delete();
-        
-        return redirect()->route('products')->with('success','Product deleted successfully!');
+
+        return redirect()->route('products')->with('success', 'Product deleted successfully!');
     }
 }

@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Appointment;
+use App\Models\Game;
 
 class HomeController extends Controller
 {
@@ -18,6 +19,7 @@ class HomeController extends Controller
         $users = User::all();
         $orders = Order::all();
         $reservations = Appointment::all();
+        $games = Game::all();
         
         if(Auth::id()){
             $usertype = Auth::user()->usertype;
@@ -26,7 +28,7 @@ class HomeController extends Controller
                 return view('user/user_homepage');
             }
             else if($usertype == 'admin'){
-                return view('admin/admin_dashboard')->with('products',$products)->with('categories',$categories)->with('users',$users)->with('orders',$orders)->with('reservations',$reservations);
+                return view('admin/admin_dashboard')->with('products',$products)->with('categories',$categories)->with('users',$users)->with('orders',$orders)->with('reservations',$reservations)->with('games',$games);
             }
             else{
                 return redirect()->back();

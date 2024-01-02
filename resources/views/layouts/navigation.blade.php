@@ -91,7 +91,9 @@
                             <x-dropdown-link class="nav_text" :href="route('products')">
                                 {{ __('Products') }}
                             </x-dropdown-link>
-
+                            <x-dropdown-link class="nav_text" :href="route('admin.games')">
+                                {{ __('Games') }}
+                            </x-dropdown-link>
                             <x-dropdown-link class="nav_text" :href="route('appointments')">
                                 {{ __('Business Hours') }}
                             </x-dropdown-link>

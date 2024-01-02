@@ -149,6 +149,7 @@ class ShopComponent extends Component
                     'min_value' => $this->min_value,
                     'max_value' => $this->max_value,
                     'allProducts' => $allProducts,
+                    'allGames' => $allGames,
                 ]);
             } else {
                 return redirect()->back();

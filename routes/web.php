@@ -89,6 +89,16 @@ Route::controller(CategoryController::class)->prefix('admin')->group(function(){
     Route::get('/reservations',[AppointmentController::class, 'adminReservationsView'])->middleware('auth')->name('reservations')->middleware('verified');
  });
 
+ //admin gaming routes
+    Route::controller(GameController::class)->prefix('admin')->group(function(){
+        Route::get('/games','adminView')->middleware('auth')->middleware('admin')->name('admin.games')->middleware('verified');
+        Route::get('/game-create','create')->middleware('auth')->middleware('admin')->name('game.create')->middleware('verified');
+        Route::post('/game-store','store')->middleware('auth')->middleware('admin')->name('game.store')->middleware('verified');
+        Route::get('/game-edit/{id}','edit')->middleware('auth')->middleware('admin')->name('game.edit')->middleware('verified');
+        Route::put('/game-edit/{id}','update')->middleware('auth')->middleware('admin')->name('game.update')->middleware('verified');
+        Route::delete('/game-destroy/{id}','destroy')->middleware('auth')->middleware('admin')->name('game.destroy')->middleware('verified');
+    });
+
 // admin category routes
  Route::controller(CategoryController::class)->prefix('admin')->group(function(){
     Route::get('/categories','index')->middleware('auth')->middleware('admin')->name('category')->middleware('verified');
