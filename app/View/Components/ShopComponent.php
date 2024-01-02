@@ -32,6 +32,7 @@ class ShopComponent extends Component
     public $pageSize = 12;
 
     public function addToCart($product_id, Request $request){
+       
         $product = Product::findOrFail($product_id);
     
         $cart = session()->get('cart', []);
@@ -96,6 +97,7 @@ class ShopComponent extends Component
         $images = Product::all('image');
         $categories = Category::orderBy('name','ASC')->get();
         $allProducts = Product::all();
+        $allGames = Game::all();
         return view('shop/shop',[
             'products' => $products,
             'nproducts' => $nproducts,
@@ -104,6 +106,7 @@ class ShopComponent extends Component
             'allProducts' => $allProducts,
             'min_value' => $this->min_value,
             'max_value' => $this->max_value,
+            'allGames' => $allGames,
         ]);
     }
     

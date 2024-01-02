@@ -37,7 +37,6 @@
                                 $total = 0;
                             @endphp
                             @foreach ((array) session('cart') as $id => $details)
-                           
                                 @php
                                     if ($details['type'] == 'game') {
                                         $totalGames += $allGames->find($id)->price * $details['quantity'];
@@ -54,9 +53,10 @@
                                     @if ($details['type'] == 'game')
                                         @foreach ($allGames as $game)
                                             @if ($game->id == $product_id)
-                                                <div class="px-2 py-1 border-b border-gray-200">
+                                                <div class="px-2 py-1 border border-gray-200 rounded-lg m-2">
                                                     <div class="flex justify-between items-center pr-2">
-                                                        <img src="{{ asset('assets/imgs/games/') }}/{{ $game->image }}"
+                                                        <img class="w-20 pr-2"
+                                                            src="{{ asset('assets/imgs/games/') }}/{{ $game->image }}"
                                                             alt="{{ $game->name }}" class="img-fluid">
                                                         <p class="text-sm text-gray-700">{{ $game->name }}</p>
                                                         <p class="text-sm font-semibold text-gray-700">LKR
@@ -73,9 +73,9 @@
                                     @if ($details['type'] == 'product')
                                         @foreach ($allProducts as $product)
                                             @if ($product->id == $product_id)
-                                                <div class="px-2 py-1 border-b border-gray-200">
+                                                <div class="px-2 py-1 border border-gray-200 rounded-lg m-2">
                                                     <div class="flex justify-between items-center pr-2">
-                                                        <img class="w-20"
+                                                        <img class="w-20 pr-2"
                                                             src="{{ asset('assets/imgs/product_crud/') }}/{{ $product->image }}"
                                                             alt="#">
                                                         <p class="text-sm text-gray-700">{{ $details['name'] }}</p>
@@ -125,7 +125,7 @@
             </div>
             <div class="container">
 
-                <form class="relative m-4" action="{{ route('search') }}" method="GET">
+                <form class="relative m-4" action="{{ route('games.search') }}" method="GET">
                     @csrf
                     <input type="search" name="search" id="default-search"
                         class="block w-full p-4 ps-10 text-md text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
@@ -144,7 +144,7 @@
                     <div class="col-lg-9">
                         <div class="shop-product-fillter">
                             <div class="totall-product">
-                                <p> We found <strong class="text-brand">{{ $games->total() }}</strong> items for
+                                <p> We found <strong class="text-brand">{{ $games->total() }}</strong> games for
                                     you!</p>
                             </div>
                         </div>
@@ -157,23 +157,13 @@
 
                                                 <a href="{{ route('game.details', ['id' => $game->id]) }}">
                                                     <img class="default-img"
-                                                        src="{{ asset('storage/games/' . $game->image) }}"
+                                                        src="{{ asset('assets/imgs/games/' . $game->image) }}"
                                                         alt="{{ $game->name }}">
                                                 </a>
 
                                             </div>
-                                            <div class="product-action-1">
-                                                <a aria-label="Quick view" class="action-btn hover-up"
-                                                    data-bs-toggle="modal" data-bs-target="#quickViewModal">
-                                                    <i class="fi-rs-search"></i></a>
-                                                <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                                    href="wishlist.php"><i class="fi-rs-heart"></i></a>
-                                                <a aria-label="Compare" class="action-btn hover-up"
-                                                    href="compare.php"><i class="fi-rs-shuffle"></i></a>
-                                            </div>
-                                            <div class="product-badges product-badges-position product-badges-mrg">
-                                                <span class="hot">Hot</span>
-                                            </div>
+
+
                                         </div>
                                         <div class="product-content-wrap">
                                             <h2><a
@@ -202,14 +192,34 @@
 
                         </div>
                     </div>
-                    <div class="col-lg-3 primary-sidebar sticky-sidebar">
-                        <div class="row">
-                            <div class="col-lg-12 col-mg-6"></div>
-                            <div class="col-lg-12 col-mg-6"></div>
+                    <div class="col-lg-3 primary-sidebar sticky-sidebar pt-6">
+                        <div class="widget-category mb-30 bg-white">
+                            <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
+                                
+                                <ul class="categories">
+                                    <li><a class="hover:text-orange-600 " href="{{ route('games.category', ['genre' => 'action']) }}">Action</a></li>
+                                    <li><a class="hover:text-orange-600 "
+                                            href="{{ route('games.category', ['genre' => 'adventure']) }}">Adventure</a>
+                                    </li>
+                                    <li><a  class="hover:text-orange-600 " href="{{ route('games.category', ['genre' => 'rpg']) }}">RPG</a></li>
+                                    <li><a class="hover:text-orange-600 " href="{{ route('games.category', ['genre' => 'shooter']) }}">Shooter</a>
+                                    </li>
+                                    <li><a class="hover:text-orange-600 "
+                                            href="{{ route('games.category', ['genre' => 'simulation']) }}">Simulation</a>
+                                    </li>
+                                    <li><a  class="hover:text-orange-600 " href="{{ route('games.category', ['genre' => 'strategy']) }}">Strategy</a>
+                                    </li>
+                                    <li><a class="hover:text-orange-600 " href="{{ route('games.category', ['genre' => 'battle-royale']) }}">Battle
+                                            Royale</a></li>
+                                </ul>
+                            </div>
+    
+                            <!-- You can add more sidebar widgets as needed -->
+    
                         </div>
-
-
-
+    
+    
+    
                     </div>
                 </div>
             </div>

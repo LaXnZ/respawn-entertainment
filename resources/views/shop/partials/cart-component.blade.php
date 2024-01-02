@@ -2,7 +2,7 @@
     <main class="main pb-24">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
-                <div class="breadcrumb">
+                <div class="breadcrumb pt-4">
                     <a class="nav_text" href="home" rel="nofollow">Home</a>
                     <span></span> <a class="nav_text" href="shop" rel="nofollow">Shop</a>
                     <span></span> Your Cart

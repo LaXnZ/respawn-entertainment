@@ -67,6 +67,8 @@ Route::get('/product-category/{slug}',[CategoryComponent::class, 'category'])->m
 //games routes
 Route::get('/games',[GameController::class, 'index'])->middleware('auth')->name('games')->middleware('verified');
 Route::get('/game/{id}',[GameController::class, 'details'])->middleware('auth')->name('game.details')->middleware('verified');
+Route::get('/games/category/{genre}', [GameController::class, 'showCategory'])->name('games.category')->middleware('verified');
+Route::get('/games/search', [GameController::class, 'search'])->name('games.search')->middleware('verified');
 
 //user appointment routes (reserves)
 Route::get('/reserve',[AppointmentController::class, 'index'])->middleware('auth')->name('appointments.reserve')->middleware('verified');

@@ -69,20 +69,14 @@
                                                         href="shop.html">{{ explode(' ', $product->name)[0] }}</a></span>
 
                                             </div>
-                                            <div class="product-rate-cover text-end">
-                                                <div class="product-rate d-inline-block">
-                                                    <div class="product-rating" style="width:90%">
-                                                    </div>
-                                                </div>
-                                                <span class="font-small ml-5 text-muted"> (25 reviews)</span>
-                                            </div>
+                                           
                                         </div>
                                         <div class="clearfix product-price-cover">
                                             <div class="product-price primary-color float-left">
                                                 <ins><span class="text-brand">LKR
                                                         {{ $product->regular_price }}.00</span></ins>
 
-                                                <span class="save-price  font-md color3 ml-15">25% Off</span>
+                                               
                                             </div>
                                         </div>
                                         <div class="bt-1 border-color-1 mt-15 mb-15"></div>
@@ -94,22 +88,13 @@
 
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                         <div class="detail-extralink">
-                                            <div class="detail-qty border radius">
-                                                <a href="#" class="qty-down"><i
-                                                        class="fi-rs-angle-small-down"></i></a>
-                                                <span class="qty-val">1</span>
-                                                <a href="#" class="qty-up"><i
-                                                        class="fi-rs-angle-small-up"></i></a>
-                                            </div>
+                                           
                                             <div class="product-extra-link2">
                                                 <button
                                                     onclick="window.location.href='{{ route('add_to_cart', $product->id) }}'"
                                                     class="button button-add-to-cart">Add to cart</button>
 
-                                                <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                                    href="wishlist.php"><i class="fi-rs-heart"></i></a>
-                                                <a aria-label="Compare" class="action-btn hover-up"
-                                                    href="compare.php"><i class="fi-rs-shuffle"></i></a>
+                                                
                                             </div>
                                         </div>
                                         <ul class="product-meta font-xs color-grey mt-50">
@@ -130,10 +115,7 @@
                                             href="#Description">Description</a>
                                     </li>
 
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab"
-                                            href="#Reviews">Reviews (3)</a>
-                                    </li>
+                                   
                                 </ul>
                                 <div class="tab-content shop_info_tab entry-main-content">
                                     <div class="tab-pane fade show active" id="Description">
@@ -143,190 +125,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade" id="Reviews">
-                                        <!--Comments-->
-                                        <div class="comments-area">
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    <h4 class="mb-30">Customer questions & answers</h4>
-                                                    <div class="comment-list">
-                                                        <div class="single-comment justify-content-between d-flex">
-                                                            <div class="user justify-content-between d-flex">
-                                                                <div class="thumb text-center">
-                                                                    <img src="{{ asset('assets/imgs/page/avatar-6.jpg') }}"
-                                                                        alt="">
-                                                                    <h6><a href="#">Jacky Chan</a></h6>
-                                                                    <p class="font-xxs">Since 2012</p>
-                                                                </div>
-                                                                <div class="desc">
-                                                                    <div class="product-rate d-inline-block">
-                                                                        <div class="product-rating" style="width:90%">
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>Thank you very fast shipping from Poland only
-                                                                        3days.</p>
-                                                                    <div class="d-flex justify-content-between">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <p class="font-xs mr-30">December 4, 2020
-                                                                                at 3:12 pm </p>
-                                                                            <a href="#"
-                                                                                class="text-brand btn-reply">Reply <i
-                                                                                    class="fi-rs-arrow-right"></i> </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!--single-comment -->
-                                                        <div class="single-comment justify-content-between d-flex">
-                                                            <div class="user justify-content-between d-flex">
-                                                                <div class="thumb text-center">
-                                                                    <img src="{{ asset('assets/imgs/page/avatar-7.jpg') }}"
-                                                                        alt="">
-                                                                    <h6><a href="#">Ana Rosie</a></h6>
-                                                                    <p class="font-xxs">Since 2008</p>
-                                                                </div>
-                                                                <div class="desc">
-                                                                    <div class="product-rate d-inline-block">
-                                                                        <div class="product-rating" style="width:90%">
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>Great low price and works well.</p>
-                                                                    <div class="d-flex justify-content-between">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <p class="font-xs mr-30">December 4, 2020
-                                                                                at 3:12 pm </p>
-                                                                            <a href="#"
-                                                                                class="text-brand btn-reply">Reply <i
-                                                                                    class="fi-rs-arrow-right"></i> </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!--single-comment -->
-                                                        <div class="single-comment justify-content-between d-flex">
-                                                            <div class="user justify-content-between d-flex">
-                                                                <div class="thumb text-center">
-                                                                    <img src="{{ asset('assets/imgs/page/avatar-8.jpg') }}"
-                                                                        alt="">
-                                                                    <h6><a href="#">Steven Keny</a></h6>
-                                                                    <p class="font-xxs">Since 2010</p>
-                                                                </div>
-                                                                <div class="desc">
-                                                                    <div class="product-rate d-inline-block">
-                                                                        <div class="product-rating" style="width:90%">
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>Authentic and Beautiful, Love these way more than
-                                                                        ever expected They are Great earphones</p>
-                                                                    <div class="d-flex justify-content-between">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <p class="font-xs mr-30">December 4, 2020
-                                                                                at 3:12 pm </p>
-                                                                            <a href="#"
-                                                                                class="text-brand btn-reply">Reply <i
-                                                                                    class="fi-rs-arrow-right"></i> </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!--single-comment -->
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <h4 class="mb-30">Customer reviews</h4>
-                                                    <div class="d-flex mb-30">
-                                                        <div class="product-rate d-inline-block mr-15">
-                                                            <div class="product-rating" style="width:90%">
-                                                            </div>
-                                                        </div>
-                                                        <h6>4.8 out of 5</h6>
-                                                    </div>
-                                                    <div class="progress">
-                                                        <span>5 star</span>
-                                                        <div class="progress-bar" role="progressbar"
-                                                            style="width: 50%;" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100">50%</div>
-                                                    </div>
-                                                    <div class="progress">
-                                                        <span>4 star</span>
-                                                        <div class="progress-bar" role="progressbar"
-                                                            style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                                                            aria-valuemax="100">25%</div>
-                                                    </div>
-                                                    <div class="progress">
-                                                        <span>3 star</span>
-                                                        <div class="progress-bar" role="progressbar"
-                                                            style="width: 45%;" aria-valuenow="45" aria-valuemin="0"
-                                                            aria-valuemax="100">45%</div>
-                                                    </div>
-                                                    <div class="progress">
-                                                        <span>2 star</span>
-                                                        <div class="progress-bar" role="progressbar"
-                                                            style="width: 65%;" aria-valuenow="65" aria-valuemin="0"
-                                                            aria-valuemax="100">65%</div>
-                                                    </div>
-                                                    <div class="progress mb-30">
-                                                        <span>1 star</span>
-                                                        <div class="progress-bar" role="progressbar"
-                                                            style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
-                                                            aria-valuemax="100">85%</div>
-                                                    </div>
-                                                    <a href="#" class="font-xs text-muted">How are ratings
-                                                        calculated?</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--comment form-->
-                                        <div class="comment-form">
-                                            <h4 class="mb-15">Add a review</h4>
-                                            <div class="product-rate d-inline-block mb-30">
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-8 col-md-12">
-                                                    <form class="form-contact comment_form" action="#"
-                                                        id="commentForm">
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <div class="form-group">
-                                                                    <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                                                                        placeholder="Write Comment"></textarea>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <div class="form-group">
-                                                                    <input class="form-control" name="name"
-                                                                        id="name" type="text"
-                                                                        placeholder="Name">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <div class="form-group">
-                                                                    <input class="form-control" name="email"
-                                                                        id="email" type="email"
-                                                                        placeholder="Email">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <div class="form-group">
-                                                                    <input class="form-control" name="website"
-                                                                        id="website" type="text"
-                                                                        placeholder="Website">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <button type="submit"
-                                                                class="button button-contactForm">Submit
-                                                                Review</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                             </div>
                             <div class="row mt-60 ">
@@ -337,7 +136,7 @@
                                     <div class="row related-products">
                                         @foreach ($rproducts as $rproduct)
                                             <div class="col-lg-3 col-md-4 col-12 col-sm-6 ">
-                                                <div class="product-cart-wrap small hover-up bg-slate-100 p-2">
+                                                <div class="product-cart-wrap small hover-up bg-white border border-gray-600 p-2">
                                                     <div class="product-img-action-wrap rounded-lg">
                                                         <div class="product-img product-img-zoom">
                                                             <a href="{{ route('product.details', ['slug' => $rproduct->slug]) }}"
@@ -347,19 +146,7 @@
                                                                     alt="{{ $rproduct->name }}">
                                                             </a>
                                                         </div>
-                                                        <div class="product-action-1">
-                                                            <a aria-label="Quick view"
-                                                                class="action-btn small hover-up"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#quickViewModal"><i
-                                                                    class="fi-rs-search"></i></a>
-                                                            <a aria-label="Add To Wishlist"
-                                                                class="action-btn small hover-up" href="wishlist.php"
-                                                                tabindex="0"><i class="fi-rs-heart"></i></a>
-                                                            <a aria-label="Compare" class="action-btn small hover-up"
-                                                                href="compare.php" tabindex="0"><i
-                                                                    class="fi-rs-shuffle"></i></a>
-                                                        </div>
+                                                       
                                                         <div
                                                             class="product-badges product-badges-position product-badges-mrg">
                                                             <span class="hot">Hot</span>
@@ -368,12 +155,9 @@
                                                     <div class="product-content-wrap">
                                                         <h2><a href="{{ route('product.details', ['slug' => $rproduct->slug]) }}"
                                                                 tabindex="0">{{ $rproduct->name }}</a></h2>
-                                                        <div class="rating-result" title="90%">
-                                                            <span>
-                                                            </span>
-                                                        </div>
+                                                        
                                                         <div class="product-price">
-                                                            <span>LKR {{ $rproduct->regular_price }}</span>
+                                                            <span>LKR {{ $rproduct->regular_price }}.00</span>
                                                             {{-- <span class="old-price">$645.8</span> --}}
                                                         </div>
                                                     </div>
@@ -414,10 +198,8 @@
                                     <div class="content pt-10">
                                         <h5><a href="{{ route('product.details', ['slug' => $nproduct->slug]) }}"
                                                 class="hover:text-orange-600">{{ $nproduct->name }}</a></h5>
-                                        <p class="price mb-0 mt-5">LKR {{ $nproduct->regular_price }}</p>
-                                        <div class="product-rate">
-                                            <div class="product-rating" style="width:90%"></div>
-                                        </div>
+                                        <p class="price mb-0 mt-5">LKR {{ $nproduct->regular_price }}.00</p>
+                                        
                                     </div>
                                 </div>
                             @endforeach

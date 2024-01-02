@@ -40,7 +40,6 @@
                                 $total = 0;
                             @endphp
                             @foreach ((array) session('cart') as $id => $details)
-                           
                                 @php
                                     if ($details['type'] == 'game') {
                                         $totalGames += $allGames->find($id)->price * $details['quantity'];
@@ -57,9 +56,10 @@
                                     @if ($details['type'] == 'game')
                                         @foreach ($allGames as $game)
                                             @if ($game->id == $product_id)
-                                                <div class="px-2 py-1 border-b border-gray-200">
+                                                <div class="px-2 py-1 border border-gray-200 rounded-lg m-2">
                                                     <div class="flex justify-between items-center pr-2">
-                                                        <img src="{{ asset('assets/imgs/games/') }}/{{ $game->image }}"
+                                                        <img class="w-20 pr-2"
+                                                            src="{{ asset('assets/imgs/games/') }}/{{ $game->image }}"
                                                             alt="{{ $game->name }}" class="img-fluid">
                                                         <p class="text-sm text-gray-700">{{ $game->name }}</p>
                                                         <p class="text-sm font-semibold text-gray-700">LKR
@@ -76,7 +76,7 @@
                                     @if ($details['type'] == 'product')
                                         @foreach ($allProducts as $product)
                                             @if ($product->id == $product_id)
-                                                <div class="px-2 py-1 border-b border-gray-200">
+                                                <div class="px-2 py-1 border border-gray-200 rounded-lg m-2">
                                                     <div class="flex justify-between items-center pr-2">
                                                         <img class="w-20"
                                                             src="{{ asset('assets/imgs/product_crud/') }}/{{ $product->image }}"
@@ -178,18 +178,8 @@
 
 
                                             </div>
-                                            <div class="product-action-1">
-                                                <a aria-label="Quick view" class="action-btn hover-up"
-                                                    data-bs-toggle="modal" data-bs-target="#quickViewModal">
-                                                    <i class="fi-rs-search"></i></a>
-                                                <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                                    href="wishlist.php"><i class="fi-rs-heart"></i></a>
-                                                <a aria-label="Compare" class="action-btn hover-up"
-                                                    href="compare.php"><i class="fi-rs-shuffle"></i></a>
-                                            </div>
-                                            <div class="product-badges product-badges-position product-badges-mrg">
-                                                <span class="hot">Hot</span>
-                                            </div>
+
+
                                         </div>
                                         <div class="product-content-wrap">
                                             @foreach ($categories as $category)
@@ -200,11 +190,7 @@
                                                 @endif
                                             @endforeach
                                             <h2><a href="product-details.html">{{ $product->name }}</a></h2>
-                                            <div class="rating-result" title="90%">
-                                                <span>
-                                                    <span>90%</span>
-                                                </span>
-                                            </div>
+
                                             <div class="product-price">
                                                 <span>LKR {{ $product->regular_price }}.00 </span>
                                                 {{-- <span class="old-price">{{$product->}}</span> --}}
@@ -244,28 +230,7 @@
 
                             </ul>
                         </div>
-                        <!-- Fillter By Price -->
-                        <div class="sidebar-widget price_range range mb-30 bg-white  ">
-                            <div class="widget-header position-relative mb-20 pb-10">
-                                <h5 class="widget-title mb-10">Fill by price</h5>
-                                <div class="bt-1 border-color-1"></div>
-                            </div>
-                            <div class="price-filter">
-                                <div class="price-filter-inner">
-                                    <div id="slider-range"></div>
-                                    <div class="price_slider_amount">
-                                        <div class="label-input">
-                                            <span>Range:</span><strong><span class="text-info">
-                                                    ${{ $min_value }}</span> - <span class="text-info">
-                                                    ${{ $max_value }}</span></strong>
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {{-- <a href="shop.html" class="btn btn-sm btn-default mt-2"><i class="fi-rs-filter mr-5"></i> Fillter</a> --}}
-                        </div>
                         <!-- Product sidebar Widget -->
                         <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10 bg-white">
                             <div class="widget-header position-relative mb-20 pb-10">
@@ -283,9 +248,7 @@
                                                 href="{{ route('product.details', ['slug' => $nproduct->slug]) }}">{{ $nproduct->name }}</a>
                                         </h5>
                                         <p class="price mb-0 mt-5">LKR {{ $nproduct->regular_price }}</p>
-                                        <div class="product-rate">
-                                            <div class="product-rating" style="width:90%"></div>
-                                        </div>
+
                                     </div>
                                 </div>
                             @endforeach
@@ -299,23 +262,3 @@
 </x-app-layout>
 
 
-<script>
-    $(document).ready(function() {
-        // var min_value = {{ $min_value }};
-        // var max_value = {{ $max_value }};
-        var slider_range = $("#slider-range");
-        slider_range.slider({
-            range: true,
-            min: 0,
-            max: 1000,
-            values: [0, 1000],
-            change: function(event, ui) {
-                $(".text-info").eq(0).text("$" + ui.values[0]);
-                $(".text-info").eq(1).text("$" + ui.values[1]);
-                $this.set('min_value', ui.values[0]);
-                $this.set('max_value', ui.values[1]);
-            }
-        });
-        console.log("Slider initialized");
-    });
-</script>

@@ -14,31 +14,17 @@ class GameSeeder extends Seeder
     public function run(): void
     {
         Game::create([
-            'name' => 'Sample Game 1',
-            'description' => 'This is a sample game description.',
-            'genre' => 'Adventure',
-            'release_date' => '2022-01-01',
-            'platform' => 'PC',
-            'rating' => 4.5,
-            'publisher' => 'Sample Publisher',
-            'image' => 'sample1.jpg',
-            'developer' => 'Sample Developer',
-            'multiplayer' => true,
-            'price' => '59.99'
-        ]);
-
-        Game::create([
-            'name' => 'Sample Game 2',
-            'description' => 'Another sample game description.',
-            'genre' => 'Action',
+            'name' => 'The Finals',
+            'description' => 'Finals is a game about the NBA Finals.',
+            'genre' => 'battle royale',
             'release_date' => '2022-02-01',
             'platform' => 'Console',
             'rating' => 3.8,
             'publisher' => 'Another Publisher',
-            'image' => 'sample2.jpg',
-            'developer' => 'Another Developer',
+            'image' => 'sample3.jpg',
+            'developer' => 'Steam Developer',
             'multiplayer' => false,
-            'price' => '49.99'
+            'price' => '149.99'
         ]);
     }
 }

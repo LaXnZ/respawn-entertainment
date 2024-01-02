@@ -1,10 +1,12 @@
 <x-app-layout>
+
     <main class="main pb-4">
         <div class="page-header breadcrumb-wrap mr-10 flex mt-6">
             <div class="container">
                 <div class="breadcrumb">
                     <a class="nav_text" href="home" rel="nofollow">Home</a>
-                    <span></span> Games
+                    <span></span><a class="nav_text" href="/games" rel="nofollow">Games</a>
+                    <span> </span> {{ $genre }}
                 </div>
             </div>
 
@@ -111,32 +113,95 @@
             @endif
 
         </div>
-        <div class="container mt-6">
-            @if(session('success'))
-                <div class="alert alert-success">{{ session('success') }}</div>
-            @endif
-
+        <section class="container mt-6">
             <div class="row">
-                <div class="col-lg-6 bg-white border border-gray-700 rounded-lg p-3">
-                    <div class="product-details-img">
-                        <img class="rounded-lg w-full" src="{{ asset('assets/imgs/games/') }}/{{ $game->image }}" alt="{{ $game->name }}">
+                <div class="col-lg-9">
+                    <div class="totall-product pb-4">
+                        <p> We found <strong class="text-brand">{{ $games->count() }}</strong> game in {{ $genre }} category for
+                            you!</p>
                     </div>
-                </div>
-                <div class="col-lg-3 text-center">
-                    <div class="product-details-content border border-gray-700 bg-white rounded-lg p-4">
-                        <h2 class="text-2xl font-semibold mb-3">{{ $game->name }}</h2>
-                        <p class="text-lg font-bold mb-3">LKR {{ $game->price }}.00</p>
-                        <p class="text-gray-600 mb-4">{{ $game->description }}</p>
+                    @if ($games->count() > 0)
+                        <div class="row product-grid-3">
+                            @foreach ($games as $game)
+                                <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
 
-                        <div class="product-action mt-3">
-                            <a aria-label="Add To Cart" class="button button-add-to-cart action-btn hover-up"
-                                href="{{ route('add_to_cart', ['id' => $game->id, 'type' => 'game']) }}">
-                                <i class="fi-rs-shopping-bag-add"></i> Add To Cart
-                            </a>
+                                                <a href="{{ route('game.details', ['id' => $game->id]) }}">
+                                                    <img class="default-img"
+                                                        src="{{ asset('assets/imgs/games/' . $game->image) }}"
+                                                        alt="{{ $game->name }}">
+                                                </a>
+
+                                            </div>
+
+
+                                        </div>
+                                        <div class="product-content-wrap">
+                                            <h2><a
+                                                    href="{{ route('game.details', ['id' => $game->id]) }}">{{ $game->name }}</a>
+                                            </h2>
+                                            <p class="card-text">{{ $game->description }}</p>
+                                            <div class="product-price">
+                                                <span>LKR {{ $game->price }}.00 </span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up"
+                                                    href="{{ route('add_to_cart', ['id' => $game->id, 'type' => 'game']) }}">
+                                                    <i class="fi-rs-shopping-bag-add"></i>
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
+                    @else
+                        <div class="alert">No games found in this category.</div>
+
+
+                    @endif
+
+                    <!--pagination-->
+                    @if ($games->count() > 1)
+                        <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
+                            {{ $games->links() }}
+                        </div>
+                    @endif
+                </div>
+                <div class="col-lg-3 primary-sidebar sticky-sidebar pt-6">
+                    <div class="widget-category mb-30 bg-white">
+                        <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
+                            
+                            <ul class="categories">
+                                <li><a class="hover:text-orange-600 " href="{{ route('games.category', ['genre' => 'action']) }}">Action</a></li>
+                                <li><a class="hover:text-orange-600 "
+                                        href="{{ route('games.category', ['genre' => 'adventure']) }}">Adventure</a>
+                                </li>
+                                <li><a  class="hover:text-orange-600 " href="{{ route('games.category', ['genre' => 'rpg']) }}">RPG</a></li>
+                                <li><a class="hover:text-orange-600 " href="{{ route('games.category', ['genre' => 'shooter']) }}">Shooter</a>
+                                </li>
+                                <li><a class="hover:text-orange-600 "
+                                        href="{{ route('games.category', ['genre' => 'simulation']) }}">Simulation</a>
+                                </li>
+                                <li><a  class="hover:text-orange-600 " href="{{ route('games.category', ['genre' => 'strategy']) }}">Strategy</a>
+                                </li>
+                                <li><a class="hover:text-orange-600 " href="{{ route('games.category', ['genre' => 'battle-royale']) }}">Battle
+                                        Royale</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- You can add more sidebar widgets as needed -->
+
                     </div>
+
+
+
                 </div>
             </div>
-        </div>
+        </section>
     </main>
+
 </x-app-layout>

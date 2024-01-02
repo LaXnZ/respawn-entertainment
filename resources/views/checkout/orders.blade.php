@@ -28,10 +28,17 @@
                                         <td>{{ $orderDetail->quantity }}</td>
                                         <td>LKR {{ $orderDetail->product_price }}.00</td>
                                         <td>LKR {{ $orderDetail->total }}.00</td>
-                                        <td>
-                                            <img src="{{ asset('assets/imgs/product_crud/') }}/{{ $orderDetail->image }}"
-                                                alt="{{ $orderDetail->product_name }}" class="w-16">
-                                        </td>
+                                        @if ($orderDetail->order_type == 'product')
+                                            <td>
+                                                <img src="{{ asset('assets/imgs/product_crud/') }}/{{ $orderDetail->image }}"
+                                                    alt="{{ $orderDetail->product_name }}" class="w-16">
+                                            </td>
+                                        @else
+                                            <td>
+                                                <img src="{{ asset('assets/imgs/games/') }}/{{ $orderDetail->image }}"
+                                                    alt="{{ $orderDetail->product_name }}" class="w-16">
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 <tr>
