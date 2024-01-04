@@ -26,44 +26,61 @@
                         <div class="swiper-slide">
                             <div class="flex">
                                 <div class="w-1/4">
-                                    <img src="{{ asset('assets/images/cafe-1.jpg') }}" alt="Image 1" class="rounded-lg">
+                                    <img src="{{ asset('assets/images/cafe-1.jpg') }}" alt="Image 1"
+                                        class="rounded-lg">
                                 </div>
                                 <div class="w-3/4 pl-4">
                                     <p class="text-2xl font-bold mb-2">Location:</p>
-                                    <p class="text-xl bg-gray-100 p-4 rounded-lg">Welcome to Respawn Game Cafe, your portal to the vibrant world of pixelated adventures! We're located at 1/1/1 Kolonnawa Road, Colombo, Western Province 1, ready to transport you to a gaming haven where thrills, challenges, and camaraderie await.</p>
+                                    <p class="text-xl bg-gray-100 p-4 rounded-lg">Welcome to Respawn Game Cafe, your
+                                        portal to the vibrant world of pixelated adventures! We're located at 1/1/1
+                                        Kolonnawa Road, Colombo, Western Province 1, ready to transport you to a gaming
+                                        haven where thrills, challenges, and camaraderie await.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="flex">
                                 <div class="w-1/4">
-                                    <img src="{{ asset('assets/images/cafe-2.jpg') }}" alt="Image 2" class="rounded-lg">
+                                    <img src="{{ asset('assets/images/cafe-2.jpg') }}" alt="Image 2"
+                                        class="rounded-lg">
                                 </div>
                                 <div class="w-3/4 pl-4">
                                     <p class="text-2xl font-bold mb-2">Services:</p>
-                                    <p class="text-xl bg-gray-100 p-4 rounded-lg">Unleash your inner champion with Respawn's cutting-edge arsenal! We boast 12 RLG Gaming PCs and 2 Pro PCs loaded with GTX 1650 graphics cards, PlayStation Pros connected to 55-inch curved 4K TVs, and VR stations powered by next-gen headsets. Whether you're a solo slayer or a party of pixelated pioneers, we have the tools to conquer any digital challenge.</p>
+                                    <p class="text-xl bg-gray-100 p-4 rounded-lg">Unleash your inner champion with
+                                        Respawn's cutting-edge arsenal! We boast 12 RLG Gaming PCs and 2 Pro PCs loaded
+                                        with GTX 1650 graphics cards, PlayStation Pros connected to 55-inch curved 4K
+                                        TVs, and VR stations powered by next-gen headsets. Whether you're a solo slayer
+                                        or a party of pixelated pioneers, we have the tools to conquer any digital
+                                        challenge.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="flex">
                                 <div class="w-1/4">
-                                    <img src="{{ asset('assets/images/cafe-3.jpg') }}" alt="Image 3" class="rounded-lg">
+                                    <img src="{{ asset('assets/images/cafe-3.jpg') }}" alt="Image 3"
+                                        class="rounded-lg">
                                 </div>
                                 <div class="w-3/4 pl-4">
                                     <p class="text-2xl font-bold mb-2">Reviews:</p>
                                     <ul class="text-xl bg-gray-100 p-4 rounded-lg">
                                         <li class="mb-4">
-                                            <span class="font-bold">Don't just take our word for it!</span> Respawn has earned a 5-star rating from over 50 reviews on Google. Our customers praise our superior gaming experience, friendly staff, and hygienic environment. Here's what they say:
+                                            <span class="font-bold">Don't just take our word for it!</span> Respawn has
+                                            earned a 5-star rating from over 50 reviews on Google. Our customers praise
+                                            our superior gaming experience, friendly staff, and hygienic environment.
+                                            Here's what they say:
                                         </li>
                                         <li class="mb-2">
-                                            <span class="font-bold">"Pixel Flux is the ultimate gaming oasis!"</span> - CyberNinja99
+                                            <span class="font-bold">"Pixel Flux is the ultimate gaming oasis!"</span> -
+                                            CyberNinja99
                                         </li>
                                         <li class="mb-2">
-                                            <span class="font-bold">"I've never felt so immersed in a game before!"</span> - PixelPrincess
+                                            <span class="font-bold">"I've never felt so immersed in a game
+                                                before!"</span> - PixelPrincess
                                         </li>
                                         <li class="mb-2">
-                                            <span class="font-bold">"This place is a gamer's dream come true."</span> - GameMaster420
+                                            <span class="font-bold">"This place is a gamer's dream come true."</span> -
+                                            GameMaster420
                                         </li>
                                     </ul>
                                 </div>
@@ -120,18 +137,16 @@
                                         </p>
                                     @endif
                                 </td>
-                                <td class="py-3 px-6 text-left">
+
+                                <td class="py-3 px-4 text-left flex overflow-scroll gap-4">
                                     @if (!$appointment['off'])
                                         @foreach ($appointment['business_hours'] as $time)
                                             @if (!in_array($time, $appointment['reserved_hours']))
                                                 <form action="{{ route('appointments.reserve.post') }}" method="post">
                                                     @csrf
-                                                    <input type="hidden" name="date"
-                                                        value="{{ $appointment['full_date'] }}">
+                                                    <input type="hidden" name="date" value="{{ $appointment['full_date'] }}">
                                                     <input type="hidden" name="time" value="{{ $time }}">
-                                                    <button
-                                                        class="px-4 py-2 my-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
-                                                        type="submit">
+                                                    <button class="px-4 py-2 my-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue" type="submit">
                                                         Reserve {{ $time }}
                                                     </button>
                                                 </form>
@@ -139,6 +154,7 @@
                                         @endforeach
                                     @endif
                                 </td>
+
                             </tr>
                         @endforeach
                     </tbody>

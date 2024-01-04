@@ -47,7 +47,9 @@ class AppointmentController extends Controller
     public function adminReservationsView(Request $request)
     {
         $users = User::all();
-        $userName = User::where('id', $request->query('user'))->first()->name;
+    
+        // $userName = User::where('id', $request->query('user'))->first()->name;
+        
         $selectedUserId = $request->query('user');
        
         
@@ -56,6 +58,6 @@ class AppointmentController extends Controller
             return $query->where('user_id', $selectedUserId);
         })->paginate(10);
 
-        return view('admin.reservations.reservation', compact('reservations', 'users','userName'));
+        return view('admin.reservations.reservation', compact('reservations', 'users'));
     }
 }

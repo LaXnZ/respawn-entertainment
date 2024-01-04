@@ -1,6 +1,5 @@
 <x-app-layout>
     <main class="main p-4">
-
         <h2 class="alert alert-success font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Admin Dashboard') }}
         </h2>
@@ -169,21 +168,27 @@
                     </div>
                 </div>
 
-                <div>
+                <div class=" pb-3">
                     <a href="{{ route('orders') }}" class="text-cyan-500 hover:text-cyan-600">View All Orders</a>
                 </div>
                 <div class="flex justify-between">
+                    <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800">
+                        <div class="flex justify-between p-4 md:p-6 pb-0 md:pb-0">
+                            <div>
+                                <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">LKR
+                                    {{ $currentMonthSales }}.00
+                                </h5>
+                                <p class="text-base font-normal text-gray-500 dark:text-gray-400">Sales this month</p>
+                            </div>
 
-
-                    <div class=" bg-white rounded-lg shadow-sm dark:bg-gray-800 p-2 md:p-4">
-                        <h3 class="text-cyan-500 hover:text-cyan-600 text-lg">Total Sales : LKR
-                            {{ $totalSales }}.00</h3>
-
+                        </div>
+                        <div id="labels-chart" class="px-2.5"></div>
+                       
                     </div>
+
                 </div>
 
             </div>
-
             <!-- Card 6 -->
             <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg mb-8">
                 <div class="flex items-center justify-between mb-4">
@@ -200,7 +205,6 @@
                 </div>
 
             </div>
-        </div>
 
     </main>
 
@@ -210,10 +214,14 @@
             const getChartOptions = (products) => {
                 return {
                     series: products.map(product => product.regular_price),
-                    colors: ["#1C64F2", "#16BDCA", "#9061F9", "#F2C94C", "#F2994A", "#F26B4A", "#EB5757",
-                        "#6FCF97", "#56CCF2", "#2F80ED", "#9B51E0", "#BB6BD9", "#F2C94C", "#F2994A",
-                        "#F26B4A", "#EB5757", "#6FCF97", "#56CCF2", "#2F80ED", "#9B51E0", "#BB6BD9"
-                    ],
+                    colors: [
+    "#1C64F2", "#16BDCA", "#9061F9", "#F2C94C", "#F2994A", "#F26B4A", "#EB5757",
+    "#F26B4A", "#EB5757", "#6FCF97", "#56CCF2", "#2F80ED", "#9B51E0", "#BB6BD9",
+    "#4B5563", "#374151", "#1E293B", "#111827", "#6B7280", "#4B5563", "#374151",
+    "#1E293B", "#111827", "#6B7280", "#4B5563", "#374151", "#1E293B", "#111827",
+    "#6FCF97", "#56CCF2", "#2F80ED", "#9B51E0", "#BB6BD9", "#F2C94C", "#F2994A",
+],
+
                     chart: {
                         height: 420,
                         width: "100%",
@@ -647,6 +655,102 @@
                 }
             @endif
 
+        });
+
+        window.addEventListener("load", function() {
+            let options = {
+                xaxis: {
+                    show: true,
+                    categories: @json(
+                        $currentMonthOrders->pluck('created_at')->map(function ($date) {
+                            return $date->format('d M');
+                        })),
+                    labels: {
+                        show: true,
+                        style: {
+                            fontFamily: "Inter, sans-serif",
+                            cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+                        }
+                    },
+                    axisBorder: {
+                        show: false,
+                    },
+                    axisTicks: {
+                        show: false,
+                    },
+                },
+                yaxis: {
+                    show: true,
+                    labels: {
+                        show: true,
+                        style: {
+                            fontFamily: "Inter, sans-serif",
+                            cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+                        },
+                        formatter: function(value) {
+                            return 'LKR ' + value;
+                        }
+                    }
+                },
+                series: [{
+                        name: "Current Month",
+                        data: @json($currentMonthOrders->pluck('total')),
+                        color: "#1A56DB",
+                    },
+                    {
+                        name: "Last Month",
+                        data: @json($lastMonthOrders->pluck('total')),
+                        color: "#7E3BF2",
+                    },
+                ],
+                chart: {
+                    sparkline: {
+                        enabled: false
+                    },
+                    height: "100%",
+                    width: "100%",
+                    type: "area",
+                    fontFamily: "Inter, sans-serif",
+                    dropShadow: {
+                        enabled: false,
+                    },
+                    toolbar: {
+                        show: false,
+                    },
+                },
+                tooltip: {
+                    enabled: true,
+                    x: {
+                        show: false,
+                    },
+                },
+                fill: {
+                    type: "gradient",
+                    gradient: {
+                        opacityFrom: 0.55,
+                        opacityTo: 0,
+                        shade: "#1C64F2",
+                        gradientToColors: ["#1C64F2"],
+                    },
+                },
+                dataLabels: {
+                    enabled: false,
+                },
+                stroke: {
+                    width: 6,
+                },
+                legend: {
+                    show: false
+                },
+                grid: {
+                    show: false,
+                },
+            };
+
+            if (document.getElementById("labels-chart") && typeof ApexCharts !== 'undefined') {
+                const chart = new ApexCharts(document.getElementById("labels-chart"), options);
+                chart.render();
+            }
         });
     </script>
 

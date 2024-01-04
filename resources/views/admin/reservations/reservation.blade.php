@@ -18,7 +18,6 @@
                 @foreach ($reservations as $reservation)
                     <div class="mt-4 border-bottom pb-3 bg-white rounded-lg shadow-md p-4">
                         <h5 class="mb-3">Reservation Details</h5>
-                        <p><strong>Name:</strong> {{ $userName }}</p>
                         <p><strong>Reservation ID:</strong> {{ $reservation->id }}</p>
                         <p><strong>Reservation Date:</strong> {{ $reservation->date }}</p>
                         <p><strong>Reservation Time:</strong> {{ \Carbon\Carbon::parse($reservation->time)->format('H:i') }}</p>

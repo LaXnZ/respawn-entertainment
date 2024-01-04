@@ -78,6 +78,9 @@
                         @endif
 
                         @auth
+                            <x-dropdown-link class="nav_text" :href="route('home')">
+                                {{ __('Dashboard') }}
+                            </x-dropdown-link>
                             <x-dropdown-link class="nav_text" :href="route('orders')">
                                 {{ __('Orders') }}
                             </x-dropdown-link>
