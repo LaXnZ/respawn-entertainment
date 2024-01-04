@@ -92,38 +92,39 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-       
+
         $this->validate(
             $request,
             [
                 'name' => 'required|max:255',
-                'slug' => 'required|max:255',
+                // 'slug' => 'required|max:255',
                 'description' => 'required',
-                'price' => 'required|numeric',
+                'price' => 'required',
                 'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
                 'release_date' => 'required|date',
                 'platform' => 'required|max:255',
                 'rating' => 'required|numeric|between:0,10',
                 'publisher' => 'required|max:255',
                 'developer' => 'required|max:255',
-                
+
             ]
         );
-    
+
+
         $input = $request->all();
-    
+
         if ($image = $request->file('image')) {
             $destinationPath = 'assets/imgs/games/';
             $gameImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $gameImage);
             $input['image'] = "$gameImage";
         }
-    
+
         Game::create($input);
-    
+
         return redirect()->route('admin.games')->with('success', 'Game added successfully!');
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -132,7 +133,7 @@ class GameController extends Controller
     {
         //
     }
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -156,28 +157,28 @@ class GameController extends Controller
                 'slug' => 'required|max:255',
                 'description' => 'required',
                 'price' => 'required|numeric',
- 
+
                 'release_date' => 'required|date',
                 'platform' => 'required|max:255',
                 'rating' => 'required|numeric|between:0,10',
                 'publisher' => 'required|max:255',
                 'developer' => 'required|max:255',
-                
+
             ]
         );
-    
+
         $input = $request->all();
-    
+
         if ($image = $request->file('image')) {
             $destinationPath = 'assets/imgs/games/';
             $gameImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $gameImage);
             $input['image'] = "$gameImage";
         }
-    
+
         $game = Game::findOrFail($id);
         $game->update($input);
-    
+
         return redirect()->route('admin.games')->with('success', 'Game updated successfully!');
     }
 
@@ -188,7 +189,7 @@ class GameController extends Controller
     {
         $game = Game::findOrFail($id);
         $game->delete();
-        
+
         return redirect()->route('admin.games')->with('success', 'Game deleted successfully!');
     }
 }

@@ -136,7 +136,8 @@
         </div>
 
         <!-- Scripts -->
-       
+        <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 @livewireScripts()
         <script src="//unpkg.com/alpinejs" defer></script>
             <!-- Vendor JS-->

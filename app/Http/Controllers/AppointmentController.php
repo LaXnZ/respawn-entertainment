@@ -44,16 +44,18 @@ class AppointmentController extends Controller
         return view('appointments.my-reservations', compact('reservations'));
     }
 
-    public function adminReservationsView()
+    public function adminReservationsView(Request $request)
     {
         $users = User::all();
-        $selectedUserId = request('user');
+        $userName = User::where('id', $request->query('user'))->first()->name;
+        $selectedUserId = $request->query('user');
+       
         
  
         $reservations = Appointment::when($selectedUserId, function ($query, $selectedUserId) {
             return $query->where('user_id', $selectedUserId);
         })->paginate(10);
 
-        return view('admin.reservations.reservation', compact('reservations', 'users'));
+        return view('admin.reservations.reservation', compact('reservations', 'users','userName'));
     }
 }

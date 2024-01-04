@@ -16,8 +16,8 @@
                         <div class="card-body">
 
                             @if (Session::has('success'))
-                                <p x-data="{ show: true }" x-show="show" x-transition
-                                    x-init="setTimeout(() => show = false, 2000)" class="alert alert-success" role="alert">
+                                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
+                                    class="alert alert-success" role="alert">
                                     {{ Session::get('success') }}
                                 </p>
                             @endif
@@ -46,15 +46,18 @@
                                                 <td>{{ $game->description }}</td>
                                                 <td>LKR {{ $game->price }}.00</td>
                                                 <td>
-                                                    <a href="{{ route('game.edit', $game->id) }}"
-                                                        class="btn bg-gray-700 hover:bg-gray-500  border-none mx-4 rounded">Edit</a>
-                                                    <form action="{{ route('game.destroy', $game->id) }}" method="POST"
-                                                        onsubmit="return confirmDelete();">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button
-                                                            class="btn bg-red-700 hover:bg-red-500 btn-danger border-none">Delete</button>
-                                                    </form>
+                                                    <div class="flex h-auto">
+                                                        <a href="{{ route('game.edit', $game->id) }}"
+                                                            class="btn bg-gray-700 hover:bg-gray-500  border-none mx-4 rounded">Edit</a>
+                                                        <form action="{{ route('game.destroy', $game->id) }}"
+                                                            method="POST" onsubmit="return confirmDelete();">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button
+                                                                class="btn bg-red-700 hover:bg-red-500 btn-danger border-none">Delete</button>
+                                                        </form>
+                                                    </div>
+
                                                 </td>
                                             </tr>
                                         @endforeach
