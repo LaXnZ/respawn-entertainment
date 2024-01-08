@@ -19,6 +19,7 @@ use App\View\Components\CartComponent as ComponentsCartComponent;
 use App\View\Components\CheckoutComponent as ComponentsCheckoutComponent;
 use App\View\Components\ShopComponent as ShopComponent;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\OpenAIController;
 
 
 /*
@@ -50,7 +51,8 @@ Auth::routes(
 Route::get('/home',[HomeController::class, 'index'])->middleware('auth')->name('home')->middleware('verified');
 Route::get('/about-us',[HomeController::class, 'aboutUs'])->middleware('auth')->name('about-us')->middleware('verified');
 Route::get('/contact-us',[HomeController::class, 'contactUs'])->middleware('auth')->name('contact-us')->middleware('verified');
-
+Route::get('/chat', [OpenAIController::class, 'index'])->middleware('auth')->name('chat')->middleware('verified');
+Route::post('/chat', [OpenAIController::class, 'getResponse'])->middleware('auth')->name('chat.post')->middleware('verified');
 
 //shop routes
 Route::get('/shop',[ShopComponent::class, 'render'])->middleware('auth')->name('shop')->middleware('verified');

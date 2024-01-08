@@ -14,6 +14,7 @@
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.2",
         "livewire/livewire": "^3.0",
+        "openai-php/laravel": "^0.7.0",
         "stripe/stripe-php": "^13.6"
     },
     "require-dev": {
@@ -22,7 +23,7 @@
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
-        "pestphp/pest": "^2.0",
+        "pestphp/pest": "^2.30",
         "pestphp/pest-plugin-laravel": "^2.0",
         "spatie/laravel-ignition": "^2.0"
     },

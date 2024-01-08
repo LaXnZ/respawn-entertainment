@@ -260,5 +260,3 @@
         </section>
     </main>
 </x-app-layout>
-
-

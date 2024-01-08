@@ -75,6 +75,9 @@
                             <x-dropdown-link class="nav_text" :href="route('appointments.my-reservations')">
                                 {{ __('My Reservations') }}
                             </x-dropdown-link>
+                            <x-dropdown-link class="nav_text" :href="route('chat')">
+                                {{ __('Customer Support') }}
+                            </x-dropdown-link>
                         @endif
 
                         @auth
