@@ -78,6 +78,7 @@ class OpenAIController extends Controller
 
 
         return view('user.chat', [
+            'question' => $request->get('message'),
             'message' => $result->choices[0]->message->content
         ]);
     }
