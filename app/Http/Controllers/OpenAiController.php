@@ -28,9 +28,9 @@ class OpenAIController extends Controller
         $workingHours = (new \App\Models\BusinessHour())->pluck('day', 'from', 'to')->toArray();
 
         $prompt = '
-        Below is a description about a gaming cafe called respawn entertainment.
+        Below is a description about a gaming shop called respawn entertainment. It also have a gaming cafe in a separate location. The gaming shop sells gaming products and games and the cafe provides gaming services. 
 
-        Following are the products and services the cafe has:
+        Following are the products and games the shop has:
 
         - ' . implode(' - ', $products) . '
 

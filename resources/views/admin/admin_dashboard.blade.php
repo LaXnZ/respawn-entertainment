@@ -256,14 +256,14 @@
                     yaxis: {
                         labels: {
                             formatter: function(value) {
-                                return value + "%"
+                                return value + " LKR"
                             },
                         },
                     },
                     xaxis: {
                         labels: {
                             formatter: function(value) {
-                                return value + "%"
+                                return value + " LKR"
                             },
                         },
                         axisTicks: {
@@ -330,14 +330,14 @@
                     yaxis: {
                         labels: {
                             formatter: function(value) {
-                                return value + "%"
+                                return value + " LKR"
                             },
                         },
                     },
                     xaxis: {
                         labels: {
                             formatter: function(value) {
-                                return value + "%"
+                                return value + " LKR"
                             },
                         },
                         axisTicks: {
@@ -404,14 +404,14 @@
                     yaxis: {
                         labels: {
                             formatter: function(value) {
-                                return value + "%"
+                                return value + " LKR"
                             },
                         },
                     },
                     xaxis: {
                         labels: {
                             formatter: function(value) {
-                                return value + "%"
+                                return value + " LKR"
                             },
                         },
                         axisTicks: {
@@ -478,14 +478,14 @@
                     yaxis: {
                         labels: {
                             formatter: function(value) {
-                                return value + "%"
+                                return value + " LKR"
                             },
                         },
                     },
                     xaxis: {
                         labels: {
                             formatter: function(value) {
-                                return value + "%"
+                                return value + " LKR"
                             },
                         },
                         axisTicks: {
@@ -552,14 +552,14 @@
                     yaxis: {
                         labels: {
                             formatter: function(value) {
-                                return value + "%"
+                                return value + " LKR"
                             },
                         },
                     },
                     xaxis: {
                         labels: {
                             formatter: function(value) {
-                                return value + "%"
+                                return value + " LKR"
                             },
                         },
                         axisTicks: {
@@ -626,14 +626,14 @@
                     yaxis: {
                         labels: {
                             formatter: function(value) {
-                                return value + "%"
+                                return value + " LKR"
                             },
                         },
                     },
                     xaxis: {
                         labels: {
                             formatter: function(value) {
-                                return value + "%"
+                                return value + " LKR"
                             },
                         },
                         axisTicks: {
