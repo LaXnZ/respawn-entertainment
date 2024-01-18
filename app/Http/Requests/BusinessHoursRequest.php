@@ -19,30 +19,30 @@ class BusinessHoursRequest extends FormRequest
 
     public function prepareForValidation()
     {
-       $data = array_values($this->all()['data']);
+        $data = array_values($this->all()['data']);
 
-       foreach ($data as $index=>$day) {
+        foreach ($data as $index => $day) {
             if (!isset($day['off'])) {
                 $data[$index]['off'] = false;
                 continue;
             }
 
             $data[$index]['off'] = !!$data[$index]['off'];
-       }
+        }
 
-       $this->replace([
-        'data'=>$data
-       ]);
+        $this->replace([
+            'data' => $data
+        ]);
     }
     public function rules()
     {
         return [
             'data' => ['array', 'size:7'],
             'data.*.day' => ['required'],
-            'data.*.from' => ['required', 'date_format:H:i:s'],
-            'data.*.to' => ['required', 'date_format:H:i:s'],
-            'data.*.step' => ['required','integer','min:1'],
-            'data.*.off' => ['required','boolean'],
+            'data.*.from' => ['required', 'date_format:H:i'],
+            'data.*.to' => ['required', 'date_format:H:i'],
+            'data.*.step' => ['required', 'integer', 'min:1'],
+            'data.*.off' => ['required', 'boolean'],
         ];
     }
 
