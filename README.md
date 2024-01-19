@@ -22,7 +22,7 @@ Welcome to the Respawn Entertainment CRM (Customer Relationship Management) syst
 
 7. **Reservation History:** Users can check their upcoming and past reservations.
 
-8. **Admin Dashboard:** Admins have access to a dashboard with management capabilities.
+8. **Admin Dashboard:** Admins have access to a dashboard with management capabilities and analytics.
 
 9. **Email Notifications:** Users receive confirmation emails for orders and reservations.
 
