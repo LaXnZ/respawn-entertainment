@@ -31,7 +31,7 @@ class HomeController extends Controller
 
         //game analytics
         $popularGames = Game::orderBy('views', 'desc')->take(5)->get();
-        $mostOrderedGames = Order::with('orderDetails')->get()->pluck('orderDetails')->flatten()->pluck('product_name')->countBy()->sortDesc()->take(5);
+        $mostOrderedGames = Order::with('orderDetails')->get()->pluck('orderDetails')->flatten()->pluck('product_name')->countBy()->sortDesc()->take(30);
         $mostOrderedGames = Game::whereIn('name', $mostOrderedGames->keys())->get();
         $mostPricedGames = Game::orderBy('price', 'desc')->take(5)->get();
 
@@ -43,8 +43,8 @@ class HomeController extends Controller
             ->get();
 
         $currentMonthSales = OrderDetail::whereYear('created_at', '=', now()->year)
-        ->whereMonth('created_at', '=', now()->month)
-        ->get()->sum('total');
+            ->whereMonth('created_at', '=', now()->month)
+            ->get()->sum('total');
 
         $lastMonthOrders = OrderDetail::whereYear('created_at', '=', now()->subMonth()->year)
             ->whereMonth('created_at', '=', now()->subMonth()->month)
@@ -62,7 +62,7 @@ class HomeController extends Controller
                     ->with('games', $games)->with('popularProducts', $popularProducts)->with('mostOrderedProducts', $mostOrderedProducts)
                     ->with('mostPricedProducts', $mostPricedProducts)->with('popularGames', $popularGames)->with('mostOrderedGames', $mostOrderedGames)
                     ->with('mostPricedGames', $mostPricedGames)->with('totalSales', $totalSales)->with('currentMonthOrders', $currentMonthOrders)
-                    ->with('lastMonthOrders', $lastMonthOrders)->with('currentMonthSales',$currentMonthSales);
+                    ->with('lastMonthOrders', $lastMonthOrders)->with('currentMonthSales', $currentMonthSales);
             } else {
                 return redirect()->back();
             }
