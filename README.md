@@ -8,25 +8,26 @@ Welcome to the Respawn Entertainment CRM (Customer Relationship Management) syst
 
 ## Features
 
-### 1. Online Presence
+1. **User Authentication:** Users can register, log in, and manage their accounts.
 
-- Establish an online presence for your gaming cafe or shop.
-- Allow users to explore products, place orders, and engage with the community beyond physical confines.
+2. **Product and Game Management:** Admins can add, edit, and delete products and games.
 
-### 2. Unified User Experience
+3. **Online Orders:** Users can browse products/games and place orders securely.
 
-- Integrate user data and interactions to provide a unified experience.
-- Offer tailored services seamlessly based on user preferences and history.
+4. **Gaming Cafe Reservation:** Users can reserve slots at the gaming cafe.
 
-### 3. Automated Operations
+5. **Two-Factor Authentication (2FA):** Enhanced security with 2FA options.
 
-- Automate order management, reservations, and payments to streamline processes.
-- Reduce errors and enhance operational efficiency.
+6. **Order History:** Users can view their past orders.
 
-### 4. Personalization
+7. **Reservation History:** Users can check their upcoming and past reservations.
 
-- Leverage customer insights to suggest personalized products and promotions.
-- Foster customer loyalty and satisfaction by offering customized experiences.
+8. **Admin Dashboard:** Admins have access to a dashboard with management capabilities.
+
+9. **Email Notifications:** Users receive confirmation emails for orders and reservations.
+
+10. **Payment Gateway Integration:** Seamless online payments through integrated gateways.
+
 
 ## Technologies Used
 
@@ -92,19 +93,33 @@ Follow these steps to set up the Respawn Entertainment CRM system on your local 
     MAIL_ENCRYPTION=null
     ```
 
-9. Migrate the database:
+9. Add your OpenAI details to the `.env` file:
+
+    ```shell
+    OPENAI_API_KEY=
+    OPENAI_ORGANIZATION=
+    ```
+
+10. Add your Stripe details to the `.env` file:
+
+    ```shell
+    STRIPE_SK=
+    STRIPE_PK=
+    ```
+
+11. Migrate the database:
 
     ```shell
     php artisan migrate
     ```
 
-10. Start the development server:
+12. Start the development server:
 
     ```shell
     php artisan serve
     ```
 
-11. Visit `http://localhost:8000` in your web browser to access the CRM system.
+13. Visit `http://localhost:8000` in your web browser to access the CRM system.
 
 ---
 
