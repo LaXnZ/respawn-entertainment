@@ -28,6 +28,7 @@ Welcome to the Respawn Entertainment CRM (Customer Relationship Management) syst
 
 10. **Payment Gateway Integration:** Seamless online payments through integrated gateways.
 
+11. **AI Support Chat Bot:** AI-driven customer support chat bot powered by [OpenAI](https://openai.com/). The chat bot serves as an intelligent assistant, capable of answering user queries, providing information about products and services, and offering assistance in real-time.
 
 ## Technologies Used
 
