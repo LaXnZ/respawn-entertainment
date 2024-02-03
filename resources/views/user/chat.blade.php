@@ -21,9 +21,11 @@
                     </form>
                 </div>
             </div>
+
             <div class="message-response bg-gray-200 text-gray-800 m-4 p-4 rounded-lg mb-2">
-                Q: {{ $question }}
+                Q: {{ $question ?? 'Ask anything from me' }}
             </div>
+
             <div class="message-response bg-gray-200 text-gray-800 m-4 p-4 rounded-lg mb-2">
                 {{ $message }}
             </div>
