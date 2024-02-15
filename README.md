@@ -2,39 +2,6 @@
 
 ![Respawn Entertainment](public/assets/images/logo.png)
 
-## Overview
-
-Welcome to the Respawn Entertainment CRM (Customer Relationship Management) system. This CRM is specifically designed to address the unique challenges faced by gaming cafes and shops. It leverages the power of Laravel, Tailwind CSS, and SQLite to provide a comprehensive solution that enhances customer engagement, streamlines operations, and ensures compliance.
-
-## Features
-
-1. **User Authentication:** Users can register, log in, and manage their accounts.
-
-2. **Product and Game Management:** Admins can add, edit, and delete products and games.
-
-3. **Online Orders:** Users can browse products/games and place orders securely.
-
-4. **Gaming Cafe Reservation:** Users can reserve slots at the gaming cafe.
-
-5. **Two-Factor Authentication (2FA):** Enhanced security with 2FA options.
-
-6. **Order History:** Users can view their past orders.
-
-7. **Reservation History:** Users can check their upcoming and past reservations.
-
-8. **Admin Dashboard:** Admins have access to a dashboard with management capabilities and analytics.
-
-9. **Email Notifications:** Users receive confirmation emails for orders and reservations.
-
-10. **Payment Gateway Integration:** Seamless online payments through integrated gateways.
-
-11. **AI Support Chat Bot:** AI-driven customer support chat bot powered by [OpenAI](https://openai.com/). The chat bot serves as an intelligent assistant, capable of answering user queries, providing information about products and services, and offering assistance in real-time.
-
-## Technologies Used
-
-- Laravel: A powerful PHP framework for building web applications.
-- Tailwind CSS: A utility-first CSS framework for creating responsive and customizable UI components.
-- SQLite: A lightweight and easy-to-use database engine.
 
 ## Installation
 
@@ -125,6 +92,44 @@ Follow these steps to set up the Respawn Entertainment CRM system on your local 
 ---
 
 **Note:** Ensure you replace `your-mailtrap-username` and `your-mailtrap-password` with your actual Mailtrap SMTP credentials.
+
+
+## Overview
+
+Welcome to the Respawn Entertainment CRM (Customer Relationship Management) system. This CRM is specifically designed to address the unique challenges faced by gaming cafes and shops. It leverages the power of Laravel, Tailwind CSS, and SQLite to provide a comprehensive solution that enhances customer engagement, streamlines operations, and ensures compliance.
+
+
+## Features
+
+1. **User Authentication:** Users can register, log in, and manage their accounts.
+
+2. **Product and Game Management:** Admins can add, edit, and delete products and games.
+
+3. **Online Orders:** Users can browse products/games and place orders securely.
+
+4. **Gaming Cafe Reservation:** Users can reserve slots at the gaming cafe.
+
+5. **Two-Factor Authentication (2FA):** Enhanced security with 2FA options.
+
+6. **Order History:** Users can view their past orders.
+
+7. **Reservation History:** Users can check their upcoming and past reservations.
+
+8. **Admin Dashboard:** Admins have access to a dashboard with management capabilities and analytics.
+
+9. **Email Notifications:** Users receive confirmation emails for orders and reservations.
+
+10. **Payment Gateway Integration:** Seamless online payments through integrated gateways.
+
+11. **AI Support Chat Bot:** AI-driven customer support chat bot powered by [OpenAI](https://openai.com/). The chat bot serves as an intelligent assistant, capable of answering user queries, providing information about products and services, and offering assistance in real-time.
+
+
+## Technologies Used
+
+- Laravel: A powerful PHP framework for building web applications.
+- Tailwind CSS: A utility-first CSS framework for creating responsive and customizable UI components.
+- SQLite: A lightweight and easy-to-use database engine.
+
 
 With these steps, you'll have the Respawn Entertainment CRM system up and running on your local environment.
 
